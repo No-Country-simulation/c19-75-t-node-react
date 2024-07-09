@@ -1,0 +1,94 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #027634; 
+    color: white;
+    transition: 0.5s all ease;
+    position: sticky;
+    top: 0;
+
+    &.active{
+        background-color: #f7f7f8;
+        color: black;
+    }
+
+    .container{
+        width: 1400px;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 0px;
+
+        .logo{
+            display: flex;
+            align-items: center;
+            .text{
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+        .links{
+            align-items: center;
+            display: flex;
+            gap: 24px;
+            font-weight:500;
+            button{
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 1px solid white;
+                cursor: pointer;
+                background-color: transparent;
+
+                &:hover{
+                    background-color: #009641;
+                    border-color: #00c04f;
+                }
+            }
+            .user {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                position: relative;
+
+                img{ 
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                
+                .options {
+                    position: absolute;
+                    top: 50px;
+                    right: 0;
+                    padding: 20px;
+                    background-color: white;
+                    border-radius: 10px;
+                    border: 1px solid lightgrey;
+                    color: rgb(96, 96, 96);
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    width: 200px;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+
+    hr{
+        width: 100%;
+        height: 0%;
+        border: 0.5px solid #d8d8d8;
+    }
+    .menu {
+        width: 1400px;
+        padding: 10px 0px;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 200;
+        color: #7c7c7c;
+    }
+}
