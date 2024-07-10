@@ -1,31 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-*.link {
-    text-decoration: none;
-    color: inherit;
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0px;
 }
 
-$font-family: "Inter", sans-serif;
 
-$primary-green: #00f068;
-$secondary-green: #00c04f;
-$third-green: #067537;
+.home {
+    font-size: 200px;
+}
 
-$primary-yellow: #fbff00;
-$secondary-yellow: #d1c200;
-$third-yellow: #a68d02;
 
-$primary-orange: #ff980a;
-$secondary-orange: #ff8000;
-$third-orange: #cc5d02;
 
-$primary-blue: #029ef5;
-$secondary-blue: #007cd2;
-$third-blue: #0063aa;
-
-$primary-brown: #ae6931;
-$secondary-brown: #914f2c;
-$third-brown: #774029;
 
 
 
