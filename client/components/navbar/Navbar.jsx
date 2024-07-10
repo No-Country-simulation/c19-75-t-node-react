@@ -6,7 +6,7 @@ import Link from "next/link";
 import "./Navbar.scss";
 
 const Navbar = () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
@@ -17,10 +17,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', isActive);
+    window.addEventListener("scroll", isActive);
 
     return () => {
-      window.removeEventListener('scroll', isActive);
+      window.removeEventListener("scroll", isActive);
     };
   }, []);
 
@@ -31,7 +31,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
+    <div className={active ? "navbar active" : "navbar"}> 
       <div className="container">
         <div className="logo">
           <Link href="/" className="link">
@@ -47,33 +47,32 @@ const Navbar = () => {
           {!user && <button>Registrarse</button>}
           {user && (
             <div className="user" onClick={() => setOpen(!open)}>
-            <img src="" alt="" />
-            <span>{user.username}</span>
-            {open && (
-              <div className="options">
-                {user?.isTrabajador && (
-                  <>
-                    <Link href="/" legacyBehavior>
-                      <a className="link">Laburos</a>
-                    </Link>
-                    <Link href="/" legacyBehavior>
-                      <a className="link">Agregar nuevo laburo</a>
-                    </Link>
-                    <Link href="/" legacyBehavior>
-                      <a className="link">Encargos</a>
-                    </Link>
-                  </>
-                )}
-                <Link href="/" legacyBehavior>
-                  <a className="link">Mensajes</a>
-                </Link>
-                <Link href="/" legacyBehavior>
-                  <a className="link">Cerrar sesión</a>
-                </Link>
-              </div>
-            )}
-          </div>
-          
+              <img src="" alt="" />
+              <span>{user.username}</span>
+              {open && (
+                <div className="options">
+                  {user?.isTrabajador && (
+                    <>
+                      <Link href="/" legacyBehavior>
+                        <a className="link">Laburos</a>
+                      </Link>
+                      <Link href="/" legacyBehavior>
+                        <a className="link">Agregar nuevo laburo</a>
+                      </Link>
+                      <Link href="/" legacyBehavior>
+                        <a className="link">Encargos</a>
+                      </Link>
+                    </>
+                  )}
+                  <Link href="/" legacyBehavior>
+                    <a className="link">Mensajes</a>
+                  </Link>
+                  <Link href="/" legacyBehavior>
+                    <a className="link">Cerrar sesión</a>
+                  </Link>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>
