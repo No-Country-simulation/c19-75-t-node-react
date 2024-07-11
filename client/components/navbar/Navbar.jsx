@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import "./Navbar.scss";
 
@@ -9,8 +9,7 @@ const Navbar = () => {
   const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const router = useRouter();
-  const { pathname } = router;
+  const pathname = usePathname();
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -31,7 +30,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={active ? "navbar active" : "navbar"}> 
+    <div className={active || pathname !=="/" ? "navbar active" : "navbar"}> 
       <div className="container">
         <div className="logo">
           <Link href="/" className="link">
