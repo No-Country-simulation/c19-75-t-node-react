@@ -3,6 +3,11 @@
     color: inherit;
 }
 
+Link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .navbar {
     display: flex;
     flex-direction: column;
@@ -112,10 +117,10 @@
     }
   
     .menu {
-        
       width: 1400px;
       padding: 10px 0px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
       color: rgb(158, 158, 158);
       font-weight: 300;

@@ -39,8 +39,12 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="links">
-          <span>Quiero trabajar</span>
-          <span>Quiero contratar</span>
+          <Link href="/register" legacyBehavior>
+            <a className="link">Quiero trabajar</a>
+          </Link>
+          <Link href="/register" legacyBehavior>
+            <a className="link">Quiero contratar</a>
+          </Link>
           {!user && <span>Iniciar Sesión</span>}
           {!user?.isTrabajador && <span>Ofrecer mis changas</span>}
           {!user && <button>Registrarse</button>}
