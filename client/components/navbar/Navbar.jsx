@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="logo">
           <Link href="/" className="link">
             <img src="" />
-            <span className="text">LaburApp</span>
+            <span className="text">Laburapp.</span>
           </Link>
         </div>
         <div className="links">
@@ -53,18 +53,18 @@ const Navbar = () => {
                 <div className="options">
                   {user?.isTrabajador && (
                     <>
-                      <Link href="/" legacyBehavior>
+                      <Link href="/mislaburos" legacyBehavior>
                         <a className="link">Laburos</a>
                       </Link>
-                      <Link href="/" legacyBehavior>
+                      <Link href="/add" legacyBehavior>
                         <a className="link">Agregar nuevo laburo</a>
                       </Link>
-                      <Link href="/" legacyBehavior>
+                      <Link href="/orders" legacyBehavior>
                         <a className="link">Encargos</a>
                       </Link>
                     </>
                   )}
-                  <Link href="/" legacyBehavior>
+                  <Link href="/messages" legacyBehavior>
                     <a className="link">Mensajes</a>
                   </Link>
                   <Link href="/" legacyBehavior>
