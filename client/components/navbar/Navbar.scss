@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #0d662a;
+    background-color: #707070;
     color: white;
     position: sticky;
     top: 0;
@@ -111,11 +111,12 @@
     }
   
     .menu {
+        
       width: 1400px;
       padding: 10px 0px;
       display: flex;
       justify-content: space-between;
-      color: gray;
+      color: rgb(158, 158, 158);
       font-weight: 300;
     }
   }
