@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="logo">
           <Link href="/" className="link">
             <img src="" />
-            <span className="text">Laburapp.</span>
+            <span className="text"><span className="labur">Labur</span>app.</span>
           </Link>
         </div>
         <div className="links">
