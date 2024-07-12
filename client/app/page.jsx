@@ -1,34 +1,20 @@
 "use client";
 
-
 import "./globals.scss";
-import Featured from "@/components/featured/Featured.jsx"
-
+import Slide from "@/components/slide/Slide.jsx";
+import Featured from "@/components/featured/Featured.jsx";
+import { cards } from "../../client/data.js";
+import CatCard from "@/components/catCard/CatCard.jsx";
 
 export default function Home() {
   return (
     <>
-      <Featured/>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nemo consequatur, beatae dolorum deleniti eveniet dolor, asperiores corrupti unde quis, commodi necessitatibus sed accusamus cum vero. Voluptatum officiis corrupti velit.
-      </h1>
-      
+      <Featured />
+      <Slide slidesToShow={5} arrowsScroll={5}>
+        {cards.map((card) => (
+          <CatCard key={card.id} item={card} />
+        ))}
+      </Slide>
     </>
   );
 }
