@@ -1,95 +1,79 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [connectionStatus, setConnectionStatus] = useState('Conectando...');
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Función para verificar el estado de la conexión
+    const checkConnection = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/status');
+        setConnectionStatus(response.data);
+      } catch (error) {
+        setConnectionStatus('No se pudo establecer la conexión');
+        console.error('Error fetching connection status: ', error);
+      }
+    };
+
+    // Función para obtener los datos de los usuarios
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/data');
+        setUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching users: ', error);
+      }
+    };
+
+    checkConnection(); // Verificar la conexión al montar el componente
+    fetchUsers(); // Obtener los datos de los usuarios al montar el componente
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className="App">
+      <h1>Estado de la Conexión</h1>
+      <p>{connectionStatus}</p>
+      <h2>Usuarios</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Direccion</th>
+            <th>Ciudad</th>
+            <th>Provincia</th>
+            <th>Cp</th>
+            <th>Tel</th>
+            <th>Email</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.id}>
+              <td>{user.id}</td>
+              <td>{user.nombre}</td>
+              <td>{user.apellido}</td>
+              <td>{user.direccion}</td>
+              <td>{user.ciudad}</td>
+              <td>{user.provincia}</td>
+              <td>{user.cp}</td>
+              <td>{user.tel}</td>
+              <td>{user.mail}</td>
+              <td>{user.tipo}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
+
+export default App;
+
+
