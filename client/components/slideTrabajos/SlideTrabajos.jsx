@@ -1,5 +1,5 @@
 import React from "react";
-import "./Slide.scss";
+import "./SlideTrabajos.scss";
 import { Slider } from "infinite-react-carousel";
 import Link from "next/link";
 
@@ -9,13 +9,10 @@ const Slide = ({ children, slidesToShow, arrowsScroll }) => {
       <div className="container">
         <div className="title">
           <h1>
-            Cual es tu <span>urgencia?</span>
+            Explorá los <span>laburos</span> ya realizados.
             <div className="subtitle">
-              Explora los distintos profesionales que pueden darle una solución
-              a tus problemas.
-              <Link href="/" legacyBehavior>
-                <a>Ver todas</a>
-              </Link>
+              Estos son algunos de los laburos ya terminados por profesionales
+              de Laburapp.
             </div>
           </h1>
         </div>

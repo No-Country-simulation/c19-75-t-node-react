@@ -1,5 +1,7 @@
 import React from "react";
 import "./Featured.scss";
+import { IoSearch } from "react-icons/io5";
+
 
 const Featured = () => {
   return (
@@ -12,7 +14,7 @@ const Featured = () => {
           </div>
           <div className="search">
             <div className="searchInput">
-              <img src="" alt="" />
+              <IoSearch className="icon" />
               <input type="text" placeholder='"Reparación de heladeras..."' />
             </div>
             <button>Buscar</button>

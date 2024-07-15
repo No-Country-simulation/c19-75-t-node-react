@@ -40,10 +40,10 @@ const Navbar = () => {
         </div>
         <div className="links">
           <Link href="/register" legacyBehavior>
-            <a className="link">Quiero trabajar</a>
+            <h4 className="link">Quiero trabajar</h4>
           </Link>
           <Link href="/register" legacyBehavior>
-            <a className="link">Quiero contratar</a>
+            <h4 className="link">Quiero contratar</h4>
           </Link>
           {!user && <span>Iniciar Sesión</span>}
           {!user?.isTrabajador && <span>Ofrecer mis changas</span>}

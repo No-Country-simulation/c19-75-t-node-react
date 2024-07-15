@@ -54,3 +54,69 @@ export const cards = [
         img: '',
     },
 ]
+
+export const projects = [
+    {
+        id: 1,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 2,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 3,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 4,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 5,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 6,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 7,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 8,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 9,
+        img: '/img/asador.jpg' ,
+        pp: '/img/pp.png',
+        cat: "Asador",
+        username: "Walter Ferreyra",
+    }
+]
