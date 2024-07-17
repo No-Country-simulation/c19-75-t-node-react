@@ -1,8 +1,12 @@
+.container {
+  width: 100%;
+}
 .input {
   border-radius: 8px;
   border-width: 1.25px;
   padding: 12px;
   width: 100%;
+
   line-height: 22.5px;
   background-color: #f8f8f8;
   border-color: #e8e8e8;
@@ -30,4 +34,5 @@
   text-align: center;
   padding: 6px;
   width: 50px;
+  height: 100%;
 }

@@ -1,6 +1,5 @@
-'use client';
 import { useEffect, useState } from 'react';
-
+import ZodErrors from '@/components/Forms/Custom';
 import styles from './Input.module.scss';
 
 export default function Input({
@@ -16,7 +15,7 @@ export default function Input({
     setIsEditing(false);
   }, [error]);
   return (
-    <>
+    <div className={styles.container}>
       <input
         className={`${styles.input}
         ${otherStyles ? styles[otherStyles] : ''}
@@ -29,6 +28,7 @@ export default function Input({
         onChange={() => !isEditing && setIsEditing(true)}
         {...props}
       />
-    </>
+      {!isEditing && error ? <ZodErrors error={error} /> : null}
+    </div>
   );
 }
