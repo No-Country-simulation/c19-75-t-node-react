@@ -3,14 +3,33 @@ import styles from '../Form.module.scss';
 import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
 
+import { resetPasswordAction } from '@/lib/auth';
+import { useFormState } from 'react-dom';
+const INITIAL_STATE_FORM = {
+  zodErrors: {},
+  message: '',
+  data: {
+    email: '',
+  },
+};
+
 const ResetPasswordForm = () => {
+  const [formState, formAction] = useFormState(
+    resetPasswordAction,
+    INITIAL_STATE_FORM
+  );
   return (
-    <form action="" className={styles.form} name="resetPasswordForm">
+    <form action={formAction} className={styles.form} name="resetPasswordForm">
       <p className={`${styles.text} ${styles.text__major}`}>
         Ingresa tu dirección de correo electrónico y recibirás instrucciones
         para restablecer tu contraseña.
       </p>
-      <Input type="text" name="email" placeholder="Email" />
+      <Input
+        type="text"
+        name="email"
+        placeholder="Email"
+        error={formState?.zodErrors?.email}
+      />
 
       <ButtonForm type="submit">Restablecer Contraseña</ButtonForm>
     </form>
