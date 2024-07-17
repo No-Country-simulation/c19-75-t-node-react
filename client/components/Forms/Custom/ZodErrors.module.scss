@@ -1,0 +1,16 @@
+.error {
+  margin-top: 5px;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 5px;
+    margin-left: 5px;
+  }
+  &__message {
+    list-style-position: inside;
+    font-size: 10px;
+    line-height: 1;
+    color: rgb(236, 71, 71);
+  }
+}
