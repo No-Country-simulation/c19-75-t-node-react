@@ -63,7 +63,7 @@ const Footer = () => {
         <div className="bottom">
           <div className="left">
             <h2>Laburapp.</h2>
-            <span>™ Laburapp.® 2024</span>
+            <span>™ Laburapp. 2024 ®</span>
           </div>
           <div className="right">
             <div className="social">
