@@ -1,0 +1,89 @@
+.contenedor {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contenedorPerfil {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+.perfilImagen {
+    border-radius: 50%;
+    border: 2px solid #333;
+    margin-right: 20px;
+}
+
+.contenedorPerfilTexto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    padding-left: 30px;
+}
+
+.tituloNombre {
+    margin-bottom: 10px;
+    font-size: 4em;
+    color: #333;
+}
+
+.contenedorValoraciones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: #ff9900;
+    margin-top: 10px;
+}
+
+.contenedorUsuario {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contenedorUsuario p {
+    margin: 5px 0;
+    text-align: justify;
+}
+
+.contenedorUsuario button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contenedorUusario button:hover {
+    background-color: #005bb5;
+}
+
+.tituloTrabajos {
+    text-align: left;
+}
+
+.contenedorUsuario ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contenedorUsuario li {
+    margin: 5px 0;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
