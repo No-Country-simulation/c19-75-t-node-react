@@ -17,18 +17,17 @@
     color: #bebebe;
     font-size: 0.8rem;
   }
+  &__error {
+    border-color: red;
+  }
+
+  &__success {
+    border-color: green;
+  }
 }
 
 .areaCode {
   text-align: center;
   padding: 6px;
   width: 50px;
-}
-
-.input__error {
-  border-color: red;
-}
-
-.input__success {
-  border-color: green;
 }

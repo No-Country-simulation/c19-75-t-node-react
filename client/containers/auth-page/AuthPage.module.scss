@@ -2,9 +2,10 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 12px;
+  padding: 42px;
+  gap: 5px;
   max-width: 420px;
   min-height: 350px;
   border-radius: 8px;
@@ -13,7 +14,7 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 
   > * {
-    padding: 0 42px;
+    // padding: 0 42px;
   }
 }
 
@@ -26,8 +27,8 @@
   width: 100%;
 }
 
-.header {
-  margin-bottom: 12px;
+.body {
+  margin: 15px 0 10px 0;
 }
 
 .divider {
