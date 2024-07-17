@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import "./Laburos.scss";
+import "./Trabajadores.scss";
 import { FaSort } from "react-icons/fa";
-import LaburoCard from "@/components/laburoCard/LaburoCard";
-import { ofertas } from "@/data";
+import TrabajadoresCard from "@/components/trabajadoresCard/TrabajadoresCard";
+import { laburos } from "@/data";
 
-const Laburos = () => {
+const Trabajadores = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("laburos");
 
@@ -16,43 +16,42 @@ const Laburos = () => {
   };
 
   return (
-    <div className="laburos">
+    <div className="trabajadores">
       <div className="container">
-        <span className="breadcrumbs">LABURAPP / OFERTAS / ALBAÑILERIA /</span>
-        <h1>Laburos de Albañilería</h1>
+        <span className="breadcrumbs">LABURAPP / TRABAJADORES / ALBAÑILERIA /</span>
+        <h1>Albañiles</h1>
         <p>
-          Explora los distintos laburos de albañileria a los que puedes
-          postularte.
+          Explora los distintos profesionales en albañileria que podrían darte una solución.
         </p>
         <div className="menu">
-          {/*<div className="left">
+          <div className="left">
             <span>Presupuesto</span>
             <input type="text" placeholder="min" />
             <input type="text" placeholder="max" />
             <button>Aplicar</button>
-          </div>*/}
+          </div>
           <div className="right">
             <span className="sortBy">Ordenar por:</span>
             <span className="sortType">
-              {sort === "laburos" ? "Más valorados" : "Más cercanos"}
+              {sort === "laburos" ? "Más baratos" : "Más contratados"}
             </span>
             <FaSort className="icon" onClick={() => setOpen(!open)} />
             {open && (
               <div className="rightMenu">
                 {sort === "laburos" ? (
                   <span onClick={() => reSort("createdAt")}>
-                    Más cercanos
+                    Más contratados
                   </span>
                 ) : (
-                  <span onClick={() => reSort("laburos")}>Más valorados</span>
+                  <span onClick={() => reSort("laburos")}>Más baratos</span>
                 )}
               </div>
             )}
           </div>
         </div>
         <div className="cards">
-          {ofertas.map(oferta=>(
-            <LaburoCard key={oferta.id} item={oferta} />
+          {laburos.map(laburo=>(
+            <TrabajadoresCard key={laburo.id} item={laburo} />
           ))}
         </div>
       </div>
@@ -60,4 +59,4 @@ const Laburos = () => {
   );
 };
 
-export default Laburos;
+export default Trabajadores;
