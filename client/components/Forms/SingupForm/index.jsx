@@ -195,44 +195,48 @@ const SingupForm = () => {
                   />
                 </div>
               </div>
+              {userType === 'profesional' && (
+                <div className={styles.campo}>
+                  <Label for="userOccupations">Ocupación</Label>
+                  <Input
+                    type="hidden"
+                    name="userOccupations"
+                    value={userOccupations}
+                  />
+                  <div className={styles.campo__row}>
+                    {occupations.map((occupation) => (
+                      <button
+                        key={occupation.id}
+                        type="button"
+                        className={`${localStyles.optionOccupation} ${
+                          userOccupations.includes(occupation.id)
+                            ? localStyles.activeOccupation
+                            : ''
+                        }`}
+                        onClick={() => {
+                          if (userOccupations.includes(occupation.id)) {
+                            setUserOccupations(
+                              userOccupations.filter(
+                                (id) => id !== occupation.id
+                              )
+                            );
+                          } else {
+                            setUserOccupations([
+                              ...userOccupations,
+                              occupation.id,
+                            ]);
+                          }
+                        }}
+                      >
+                        {occupation.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <ButtonForm type="submit">Crear Cuenta</ButtonForm>
             </>
           )}
-          {userType === 'profesional' && (
-            <div className={styles.campo}>
-              <Label for="userOccupations">Ocupación</Label>
-              <Input
-                type="hidden"
-                name="userOccupations"
-                value={userOccupations}
-              />
-              <div className={styles.campo__row}>
-                {occupations.map((occupation) => (
-                  <button
-                    key={occupation.id}
-                    type="button"
-                    className={`${localStyles.optionOccupation} ${
-                      userOccupations.includes(occupation.id)
-                        ? localStyles.activeOccupation
-                        : ''
-                    }`}
-                    onClick={() => {
-                      if (userOccupations.includes(occupation.id)) {
-                        setUserOccupations(
-                          userOccupations.filter((id) => id !== occupation.id)
-                        );
-                      } else {
-                        setUserOccupations([...userOccupations, occupation.id]);
-                      }
-                    }}
-                  >
-                    {occupation.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <ButtonForm type="submit">Crear Cuenta</ButtonForm>
         </div>
       </div>
     </form>
