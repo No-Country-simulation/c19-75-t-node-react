@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import estilo from '../perfilUsuario.module.scss';
+import estilo from '@/app/usuarios/perfilUsuario.module.scss';
 
 const perfilUsuario = () => {
     // Simulación de datos del usuario obtenidos desde una API o contexto
