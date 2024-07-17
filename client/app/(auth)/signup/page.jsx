@@ -1,5 +1,7 @@
+import SingupPage from '@/containers/auth-page/singup-page';
+
 const SingupRoute = () => {
-  return <h1>SingUp</h1>;
+  return <SingupPage />;
 };
 
 export default SingupRoute;
