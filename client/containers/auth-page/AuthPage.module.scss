@@ -1,0 +1,51 @@
+.section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  max-width: 420px;
+  min-height: 350px;
+  border-radius: 8px;
+  border: 1px solid #d6d6d6;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  > * {
+    padding: 0 48px;
+  }
+}
+
+.header,
+.body,
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 12px;
+}
+
+.divider {
+  width: 40%;
+  height: 1.25px;
+  background-color: lightsalmon;
+  border-radius: 9999px;
+}
+
+.text {
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+
+  &:hover {
+    color: lightsalmon;
+  }
+}
