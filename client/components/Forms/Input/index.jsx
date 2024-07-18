@@ -19,8 +19,8 @@ export default function Input({
     return (
       <input
         className={`${styles.input} ${otherStyles ? styles[otherStyles] : ''} ${
-          type === 'hidden' ? styles.input__hidden : ''
-        }`}
+          error ? styles.input__error : ''
+        } } ${type === 'hidden' ? styles.input__hidden : ''}`}
         type={type}
         id={name}
         name={name}

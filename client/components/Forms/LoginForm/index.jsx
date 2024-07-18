@@ -23,18 +23,22 @@ const LoginForm = () => {
   );
   return (
     <form action={formAction} className={styles.form} name="loginForm">
-      <Input
-        type="Email"
-        name="email"
-        placeholder="Email"
-        error={formState?.zodErrors?.email}
-      />
-      <Input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        error={formState?.zodErrors?.password}
-      />
+      <div className={styles.campo}>
+        <Input
+          type="Email"
+          name="email"
+          placeholder="Email"
+          error={formState?.zodErrors?.email}
+        />
+      </div>
+      <div className={styles.campo}>
+        <Input
+          type="password"
+          name="password"
+          placeholder="Contraseña"
+          error={formState?.zodErrors?.password}
+        />
+      </div>
       <p className={`${styles.text} ${styles.text__right}`}>
         <Link href="/reset-password" className={styles.link}>
           ¿Olvidaste tu contraseña?

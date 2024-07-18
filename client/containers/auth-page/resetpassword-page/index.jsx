@@ -6,7 +6,7 @@ import localStyles from './ResetPasswordPage.module.scss';
 import { useRouter } from 'next/navigation';
 
 import ResetPasswordForm from '@/components/Forms/ResetPasswordForm';
-import { ArrowLeft } from '@/components/Icons/icons';
+import { ArrowLeft } from '@/components/Icons';
 const ResetPasswordPage = () => {
   const router = useRouter();
   return (
