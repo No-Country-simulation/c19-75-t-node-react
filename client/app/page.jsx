@@ -1,6 +1,6 @@
 "use client";
 
-import "./globals.scss";
+import "../styles/globals.scss";
 import Slide from "@/components/slide/Slide.jsx";
 import SlideTrabajos from "@/components/slideTrabajos/SlideTrabajos.jsx";
 import Featured from "@/components/featured/Featured.jsx";
