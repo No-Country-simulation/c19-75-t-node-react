@@ -14,13 +14,37 @@ export default function Input({
   useEffect(() => {
     setIsEditing(false);
   }, [error]);
-  return (
-    <div className={styles.container}>
+
+  const renderInput = () => {
+    return (
       <input
-        className={`${styles.input}
-        ${otherStyles ? styles[otherStyles] : ''}
-        ${!isEditing && error ? styles.input__error : ''}
-      `}
+        className={`${styles.input} ${otherStyles ? styles[otherStyles] : ''} ${
+          type === 'hidden' ? styles.input__hidden : ''
+        }`}
+        type={type}
+        id={name}
+        name={name}
+        placeholder={placeholder}
+        onChange={() => !isEditing && setIsEditing(true)}
+        {...props}
+      />
+    );
+  };
+
+  return (
+    <>
+      {renderInput()}
+      {!isEditing && error ? <ZodErrors error={error} /> : null}
+    </>
+  );
+}
+
+{
+  /* <div className={styles.container}>
+      <input
+        className={`${styles.input} ${otherStyles ? styles[otherStyles] : ''} ${
+          !isEditing && error ? styles.input__error : ''
+        }`}
         type={type}
         id={name}
         name={name}
@@ -29,6 +53,5 @@ export default function Input({
         {...props}
       />
       {!isEditing && error ? <ZodErrors error={error} /> : null}
-    </div>
-  );
+    </div> */
 }

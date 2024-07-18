@@ -4,9 +4,13 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 12px;
+  gap: 5px;
   // border: 1px dotted red;
   border-radius: 5px;
+
+  & > button {
+    margin-top: 10px;
+  }
 }
 
 .group {
@@ -15,8 +19,9 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 0 8px;
   &__column {
-    grid-template-columns: auto 1fr;
-    &:nth-child(3) {
+    grid-template-columns: fit-content(50px) 1fr;
+
+    & > *:nth-child(3) {
       grid-area: 2 / 1 / 3 / 3;
     }
   }
@@ -26,6 +31,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 2px 0;
   &__row {
     width: 100%;
     display: flex;

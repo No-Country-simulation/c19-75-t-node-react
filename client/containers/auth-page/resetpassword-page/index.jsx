@@ -3,7 +3,6 @@
 import styles from '../AuthPage.module.scss';
 import localStyles from './ResetPasswordPage.module.scss';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import ResetPasswordForm from '@/components/Forms/ResetPasswordForm';
