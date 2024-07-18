@@ -24,12 +24,14 @@ const ResetPasswordForm = () => {
         Ingresa tu dirección de correo electrónico y recibirás instrucciones
         para restablecer tu contraseña.
       </p>
-      <Input
-        type="text"
-        name="email"
-        placeholder="Email"
-        error={formState?.zodErrors?.email}
-      />
+      <div className={styles.campo}>
+        <Input
+          type="text"
+          name="email"
+          placeholder="Email"
+          error={formState?.zodErrors?.email}
+        />
+      </div>
       <ButtonForm type="submit">Restablecer Contraseña</ButtonForm>
     </form>
   );

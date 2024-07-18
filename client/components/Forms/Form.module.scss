@@ -3,8 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   width: 100%;
-  gap: 5px;
+  gap: 10px;
+
   // border: 1px dotted red;
   border-radius: 5px;
 
@@ -31,7 +33,6 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2px 0;
   &__row {
     width: 100%;
     display: flex;
