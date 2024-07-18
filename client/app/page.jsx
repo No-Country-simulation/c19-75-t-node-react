@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 
 import React, { useEffect, useState } from 'react';
@@ -77,3 +78,14 @@ function App() {
 export default App;
 
 
+=======
+
+
+export default function Home() {
+  return (
+    <main>
+      HomePage 
+    </main>
+  );
+}
+>>>>>>> 413a58aab03e36ef7c65f631d969b87bb53184b8

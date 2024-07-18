@@ -1,8 +1,18 @@
 import { Inter } from "next/font/google";
+<<<<<<< HEAD
 import "./globals.css";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
+=======
+import Header from "@/components/header/Header.jsx";
+import Footer from "@/components/footer/Footer.jsx";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+>>>>>>> 413a58aab03e36ef7c65f631d969b87bb53184b8
 
 export const metadata = {
   title: "Create Next App",
@@ -13,8 +23,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+<<<<<<< HEAD
         <Link href="/usuarios">Perfil</Link>
         {children}
+=======
+        <Header />
+        {children}
+        <Footer />
+>>>>>>> 413a58aab03e36ef7c65f631d969b87bb53184b8
       </body>
     </html>
   );
