@@ -1,12 +1,11 @@
-.seccion {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.form {
+  gap: 10px;
 }
 
 .optionsUsers {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 }

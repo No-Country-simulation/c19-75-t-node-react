@@ -30,7 +30,6 @@ const ResetPasswordForm = () => {
         placeholder="Email"
         error={formState?.zodErrors?.email}
       />
-
       <ButtonForm type="submit">Restablecer Contraseña</ButtonForm>
     </form>
   );
