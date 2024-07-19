@@ -1,7 +1,11 @@
 import SingupPage from '@/containers/auth-page/singup-page';
 
 const SingupRoute = () => {
-  return <SingupPage />;
+  return (
+    <main>
+      <SingupPage />;
+    </main>
+  );
 };
 
 export default SingupRoute;

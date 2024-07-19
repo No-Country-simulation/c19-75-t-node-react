@@ -1,7 +1,11 @@
 import ResetPasswordPage from '@/containers/auth-page/resetpassword-page';
 
 const ResetPasswordRoute = () => {
-  return <ResetPasswordPage />;
+  return (
+    <main>
+      <ResetPasswordPage />;
+    </main>
+  );
 };
 
 export default ResetPasswordRoute;
