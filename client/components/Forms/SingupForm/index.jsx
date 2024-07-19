@@ -12,7 +12,7 @@ import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
 import Label from '@/components/Forms/Label';
 
-import { registerUserAction } from '@/lib/auth';
+import { registerUserAction } from '@/libs/validations';
 import { useFormState } from 'react-dom';
 const INITIAL_STATE_FORM = {
   zodErrors: {},
