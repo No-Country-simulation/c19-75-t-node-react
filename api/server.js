@@ -1,44 +1,15 @@
 const express = require('express'); //para crear el servidor web
 const cors = require('cors'); //manejo de políticas de CORS
 const sql = require('mssql'); //para conectarse a SQL Server
-const dotenv = require('dotenv'); //para cargar variables de entorno desde un archivo .env.
 const userRoutes = require('./routes/user.route'); // Importa las rutas de usuario
+const config = require('./config/db')
 
-dotenv.config(); //cargar las variables de entorno
 
-
-//Se crea una instancia de la aplicación Express y se configura para usar CORS, lo que permite solicitudes de diferentes orígenes.
-const app = express();
+const app = express(); //instancia de la aplicación Express y configuracion CORS, permite solicitudes de diferentes orígenes.
 app.use(cors());
 
+let pool; //Para almacenar el pool de conexiones a la base de datos.
 
-//Se define un objeto config que contiene la configuración necesaria para conectarse a SQL Server,
-const config = {
-    user: process.env.SQL_USER,
-    password: process.env.SQL_PASSWORD,
-    server: process.env.SQL_SERVER,
-    database: process.env.SQL_DATABASE,
-    options: {
-        encrypt: process.env.SQL_ENCRYPT === 'true'
-    }
-};
-
-//Se declara una variable pool que almacenará el pool de conexiones a la base de datos.
-let pool;
-
-//Función para conectar a la base de datos
-//Se define una función asíncrona connectDB que intenta conectarse a SQL Server usando la configuración definida.
-//si la conexion es exitosa, el pool de conexiones se almacena en pool.
-//Si ocurre un error durante la conexión, pool se establece en null.
-const connectDB = async () => {
-    try {
-        pool = await sql.connect(config);
-        console.log('Conexión establecida con SQL Server');
-    } catch (err) {
-        console.error('Error de conexión:', err.message);
-        pool = null;
-    }
-};
 
 // Middleware para parsear JSON
 app.use(express.json());

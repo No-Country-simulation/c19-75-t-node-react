@@ -10,7 +10,7 @@ const perfilUsuario = () => {
         ciudad: 'Bahia Blanca',//
         provincia: 'Buenos Aires',//
         //email: 'pedrogomez@hotmail.com'
-        esProfesional: false, // Esto determina si el usuario es profesional//
+        esProfesional: true, // Esto determina si el usuario es profesional//
         categorias: 'Plomeria/Gasista', // CATEGORIAS
         putuacionPromedio: 5, // promedio de puntuaciones
         totalValoraciones: 5,

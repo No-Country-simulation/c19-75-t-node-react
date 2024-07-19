@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 'use client'
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function App() {
+function Home() {
   const [connectionStatus, setConnectionStatus] = useState('Conectando...');
   const [users, setUsers] = useState([]);
 
@@ -75,17 +74,4 @@ function App() {
   );
 }
 
-export default App;
-
-
-=======
-
-
-export default function Home() {
-  return (
-    <main>
-      HomePage 
-    </main>
-  );
-}
->>>>>>> 413a58aab03e36ef7c65f631d969b87bb53184b8
+export default Home;
