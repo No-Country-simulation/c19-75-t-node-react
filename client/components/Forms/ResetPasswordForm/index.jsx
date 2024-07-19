@@ -3,7 +3,7 @@ import styles from '../Form.module.scss';
 import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
 
-import { resetPasswordAction } from '@/lib/auth';
+import { resetPasswordAction } from '@/libs/validations';
 import { useFormState } from 'react-dom';
 const INITIAL_STATE_FORM = {
   zodErrors: {},

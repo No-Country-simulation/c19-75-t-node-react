@@ -2,7 +2,7 @@
 import styles from '../Form.module.scss';
 import Link from 'next/link';
 
-import { loginUserAction } from '@/lib/auth';
+import { loginUserAction } from '@/libs/validations';
 import { useFormState } from 'react-dom';
 const INITIAL_STATE_FORM = {
   zodErrors: {},
