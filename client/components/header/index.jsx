@@ -32,8 +32,8 @@ const Header = () => {
   return (
     <header
       className={`${styles.navbar} ${
-        (active || pathname) !== '/' && `${styles.active}`
-      } `}
+        active || pathname !== '/' ? styles.active : ''
+      }`}
     >
       <div className={styles.container}>
         <div className={styles.logo}>
