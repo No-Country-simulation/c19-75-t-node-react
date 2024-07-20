@@ -1,7 +1,5 @@
-import Header from '@/components/header/Header.jsx';
+import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-import '@/styles/globals.scss';
 
 import '@/styles/globals.scss';
 
