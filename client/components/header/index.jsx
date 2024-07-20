@@ -62,22 +62,30 @@ const Header = () => {
                 <div className={styles.options}>
                   {user?.isTrabajador && (
                     <>
-                      <Link href="/mislaburos" legacyBehavior>
-                        <a className={styles.link}>Laburos</a>
+                      <Link
+                        href="/mislaburos"
+                        className={styles.link}
+                        legacyBehavior
+                      >
+                        Laburos
                       </Link>
-                      <Link href="/add" legacyBehavior>
-                        <a className={styles.link}>Agregar nuevo laburo</a>
+                      <Link href="/add" className={styles.link} legacyBehavior>
+                        Agregar nuevo laburo
                       </Link>
-                      <Link href="/orders" legacyBehavior>
-                        <a className={styles.link}>Encargos</a>
+                      <Link
+                        href="/orders"
+                        className={styles.link}
+                        legacyBehavior
+                      >
+                        Encargos
                       </Link>
                     </>
                   )}
-                  <Link href="/messages" legacyBehavior>
-                    <a className={styles.link}>Mensajes</a>
+                  <Link href="/messages" className={styles.link} legacyBehavior>
+                    Mensajes
                   </Link>
-                  <Link href="/" legacyBehavior>
-                    <a className={styles.link}>Cerrar sesión</a>
+                  <Link href="/" className={styles.link} legacyBehavior>
+                    Cerrar sesión
                   </Link>
                 </div>
               )}
@@ -89,33 +97,33 @@ const Header = () => {
         <>
           <hr />
           <div className={styles.menu}>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Mantenimiento</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Mantenimiento
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Albañiería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Albañiería
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Plomería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Plomería
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Gasistas</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Gasistas
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Electricistas</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Electricistas
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Jardinería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Jardinería
             </Link>
 
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Pinturería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Pinturería
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Carpintería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Carpintería
             </Link>
-            <Link href="/" legacyBehavior>
-              <a className={styles.link}>Herrería</a>
+            <Link href="/" className={styles.link} legacyBehavior>
+              Herrería
             </Link>
           </div>
         </>
