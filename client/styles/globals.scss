@@ -13,6 +13,10 @@
   padding: 0;
 }
 
+.home {
+  font-size: 200px;
+}
+
 body,
 html {
   height: 100%;
@@ -27,7 +31,9 @@ body {
   color: $black-color;
 }
 
-h1,
+h1 {
+  color: white;
+}
 h2,
 h3,
 h4,

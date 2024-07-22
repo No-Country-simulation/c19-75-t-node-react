@@ -1,0 +1,66 @@
+.homemarketplace{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 80px;
+    .container{
+        width: 1400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        h1{
+            font-size: 40px;
+            text-align: center;
+            color: black;
+        }
+        h2{
+            font-size: 25px;
+            font-weight: 200;
+            text-align: center;
+            margin-bottom: 30px;
+            color: black;
+        }
+        .categories{
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); // 3 columnas por defecto
+            gap: 20px;
+            width: 100%;
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .button{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                text-align: center;
+                transition: background-color 0.3s, transform 0.3s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #e0e0e0;
+                    transform: scale(1.05);
+                  }
+                .title{
+                    font-size: 20px;
+                    font-weight: 400;
+                    margin: 10px 0;
+                    color: #333;
+                }
+                .icon{
+                    font-size: 2rem; // Tamaño del ícono
+                    color: #555;
+                }
+            }
+        }
+    }
+}
