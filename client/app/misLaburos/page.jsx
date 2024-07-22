@@ -1,9 +1,9 @@
 import React from 'react'
-import "./MisLaburos.scss"
+import styles from "./MisLaburos.module.scss"
 
 const MisLaburos = () => {
   return (
-    <div className='mislaburos'>MisLaburos</div>
+    <div className={styles.mislaburos}>MisLaburos</div>
   )
 }
 

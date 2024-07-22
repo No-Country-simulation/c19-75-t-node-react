@@ -1,9 +1,9 @@
 import React from 'react'
-import "./Laburo.scss"
+import styles from "./Laburo.module.scss"
 
 const Laburo = () => {
   return (
-    <div className='laburo'>Laburo</div>
+    <div className={styles.laburo}>Laburo</div>
   )
 }
 

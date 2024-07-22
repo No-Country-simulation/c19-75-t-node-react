@@ -1,9 +1,9 @@
 import React from 'react'
-import "./Add.scss"
+import styles from "./Add.module.scss"
 
 const Add = () => {
   return (
-    <div className='add'>Agregar laburo</div>
+    <div className={styles.add}>Agregar laburo</div>
   )
 }
 

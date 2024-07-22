@@ -1,16 +1,16 @@
 import React from "react";
-import "./Slide.scss";
 import { Slider } from "infinite-react-carousel";
 import Link from "next/link";
+import styles from "./Slide.module.scss";
 
 const Slide = ({ children, slidesToShow, arrowsScroll }) => {
   return (
-    <div className="slide">
-      <div className="container">
-        <div className="title">
+    <div className={styles.slide}>
+      <div className={styles.container}>
+        <div className={styles.title}>
           <h1>
-            Cual es tu <span>urgencia?</span>
-            <div className="subtitle">
+            Cual es tu <span className={styles.urgency}>urgencia?</span>
+            <div className={styles.subtitle}>
               Explora los distintos profesionales que pueden darle una solución
               a tus problemas.
               <Link href="/" legacyBehavior>

@@ -1,9 +1,9 @@
 import React from 'react'
-import "./Orders.scss"
+import styles from "./Orders.module.scss"
 
 const Orders = () => {
   return (
-    <div className='orders'>Orders</div>
+    <div className={styles.orders}>Orders</div>
   )
 }
 

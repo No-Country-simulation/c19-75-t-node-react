@@ -1,32 +1,32 @@
 import React from "react";
-import "./Featured.scss";
+import styles from "./Featured.module.scss";
 import { IoSearch } from "react-icons/io5";
 
 
 const Featured = () => {
   return (
-    <div className="featured">
-      <div className="container">
-        <div className="left">
-          <div className="slogan">
+    <div className={styles.featured}>
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <div className={styles.slogan}>
             <h1>Soluciones al alcance</h1>
-            <h1>de un <span className="click">Click.</span></h1>
+            <h1>de un <span className={styles.click}>Click.</span></h1>
           </div>
-          <div className="search">
-            <div className="searchInput">
-              <IoSearch className="icon" />
+          <div className={styles.search}>
+            <div className={styles.searchInput}>
+              <IoSearch className={styles.icon} />
               <input type="text" placeholder='"Reparación de heladeras..."' />
             </div>
             <button>Buscar</button>
           </div>
-          <div className="popular">
+          <div className={styles.popular}>
             <span>Popular:</span>
             <button>Reparar mi celular</button>
             <button>Tengo una fuga de gas</button>
             <button>Servicio de jardinería</button>
           </div>
         </div>
-        <div className="right">
+        <div className={styles.right}>
           <img src="" alt="" className="" />
         </div>
       </div>
