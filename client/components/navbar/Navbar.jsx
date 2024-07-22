@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import "./Navbar.scss";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const [active, setActive] = useState(true);
@@ -30,48 +30,56 @@ const Navbar = () => {
   };
 
   return (
-    <div className={active || pathname !=="/" ? "navbar active" : "navbar"}> 
-      <div className="container">
-        <div className="logo">
-          <Link href="/" className="link">
+    <div
+      className={
+        active || pathname !== "/"
+          ? `${styles.navbar} ${styles.active}`
+          : styles.navbar
+      }
+    >
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Link href="/" className={styles.link}>
             <img src="" />
-            <span className="text"><span className="labur">Labur</span>app.</span>
+            <span className={styles.text}>
+              <span className={styles.labur}>Labur</span>app.
+            </span>
           </Link>
         </div>
-        <div className="links">
+        <div className={styles.links}>
           <Link href="/register" legacyBehavior>
-            <h4 className="link">Quiero trabajar</h4>
+            <h4 className={styles.link}>Quiero trabajar</h4>
           </Link>
           <Link href="/register" legacyBehavior>
-            <h4 className="link">Quiero contratar</h4>
+            <h4 className={styles.link}>Quiero contratar</h4>
           </Link>
           {!user && <span>Iniciar Sesión</span>}
           {!user?.isTrabajador && <span>Ofrecer mis changas</span>}
           {!user && <button>Registrarse</button>}
           {user && (
-            <div className="user" onClick={() => setOpen(!open)}>
+            <div className={styles.user} onClick={() => setOpen(!open)}>
               <img src="" alt="" />
               <span>{user.username}</span>
               {open && (
-                <div className="options">
+                <div className={styles.options}>
                   {user?.isTrabajador && (
                     <>
                       <Link href="/mislaburos" legacyBehavior>
-                        <a className="link">Laburos</a>
+                        <a className={styles.link}>Laburos</a>
                       </Link>
                       <Link href="/add" legacyBehavior>
-                        <a className="link">Agregar nuevo laburo</a>
+                        <a className={styles.link}>Agregar nuevo laburo</a>
                       </Link>
                       <Link href="/orders" legacyBehavior>
-                        <a className="link">Encargos</a>
+                        <a className={styles.link}>Encargos</a>
                       </Link>
                     </>
                   )}
                   <Link href="/messages" legacyBehavior>
-                    <a className="link">Mensajes</a>
+                    <a className={styles.link}>Mensajes</a>
                   </Link>
                   <Link href="/" legacyBehavior>
-                    <a className="link">Cerrar sesión</a>
+                    <a className={styles.link}>Cerrar sesión</a>
                   </Link>
                 </div>
               )}
@@ -82,34 +90,33 @@ const Navbar = () => {
       {(active || pathname !== "/") && (
         <>
           <hr />
-          <div className="menu">
+          <div className={styles.menu}>
             <Link href="/" legacyBehavior>
-              <a className="link">Mantenimiento</a>
+              <a className={styles.link}>Mantenimiento</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Albañiería</a>
+              <a className={styles.link}>Albañiería</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Plomería</a>
+              <a className={styles.link}>Plomería</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Gasistas</a>
+              <a className={styles.link}>Gasistas</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Electricistas</a>
+              <a className={styles.link}>Electricistas</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Jardinería</a>
-            </Link>
-
-            <Link href="/" legacyBehavior>
-              <a className="link">Pinturería</a>
+              <a className={styles.link}>Jardinería</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Carpintería</a>
+              <a className={styles.link}>Pinturería</a>
             </Link>
             <Link href="/" legacyBehavior>
-              <a className="link">Herrería</a>
+              <a className={styles.link}>Carpintería</a>
+            </Link>
+            <Link href="/" legacyBehavior>
+              <a className={styles.link}>Herrería</a>
             </Link>
           </div>
         </>

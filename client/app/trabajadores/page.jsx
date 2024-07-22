@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import "./Trabajadores.scss";
+import styles from "./Trabajadores.module.scss";
 import { FaSort } from "react-icons/fa";
 import TrabajadoresCard from "@/components/trabajadoresCard/TrabajadoresCard";
 import { laburos } from "@/data";
@@ -16,28 +16,28 @@ const Trabajadores = () => {
   };
 
   return (
-    <div className="trabajadores">
-      <div className="container">
-        <span className="breadcrumbs">LABURAPP / TRABAJADORES / ALBAÑILERIA /</span>
+    <div className={styles.trabajadores}>
+      <div className={styles.container}>
+        <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / ALBAÑILERIA /</span>
         <h1>Albañiles</h1>
         <p>
           Explora los distintos profesionales en albañileria que podrían darte una solución.
         </p>
-        <div className="menu">
-          <div className="left">
+        <div className={styles.menu}>
+          <div className={styles.left}>
             <span>Presupuesto</span>
             <input type="text" placeholder="min" />
             <input type="text" placeholder="max" />
             <button>Aplicar</button>
           </div>
-          <div className="right">
-            <span className="sortBy">Ordenar por:</span>
-            <span className="sortType">
+          <div className={styles.right}>
+            <span className={styles.sortBy}>Ordenar por:</span>
+            <span className={styles.sortType}>
               {sort === "laburos" ? "Más baratos" : "Más contratados"}
             </span>
-            <FaSort className="icon" onClick={() => setOpen(!open)} />
+            <FaSort className={styles.icon} onClick={() => setOpen(!open)} />
             {open && (
-              <div className="rightMenu">
+              <div className={styles.rightMenu}>
                 {sort === "laburos" ? (
                   <span onClick={() => reSort("createdAt")}>
                     Más contratados
@@ -49,7 +49,7 @@ const Trabajadores = () => {
             )}
           </div>
         </div>
-        <div className="cards">
+        <div className={styles.cards}>
           {laburos.map(laburo=>(
             <TrabajadoresCard key={laburo.id} item={laburo} />
           ))}

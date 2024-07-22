@@ -1,18 +1,17 @@
 import React from "react";
-import "./SlideTrabajos.scss";
 import { Slider } from "infinite-react-carousel";
 import Link from "next/link";
+import styles from "./SlideTrabajos.module.scss";
 
-const Slide = ({ children, slidesToShow, arrowsScroll }) => {
+const SlideTrabajos = ({ children, slidesToShow, arrowsScroll }) => {
   return (
-    <div className="slide">
-      <div className="container">
-        <div className="title">
+    <div className={styles.slide}>
+      <div className={styles.container}>
+        <div className={styles.title}>
           <h1>
-            Explorá los <span>laburos</span> ya realizados.
-            <div className="subtitle">
-              Estos son algunos de los laburos ya terminados por profesionales
-              de Laburapp.
+            Explorá los <span className={styles.highlight}>laburos</span> ya realizados.
+            <div className={styles.subtitle}>
+              Estos son algunos de los laburos ya terminados por profesionales de Laburapp.
             </div>
           </h1>
         </div>
@@ -24,4 +23,5 @@ const Slide = ({ children, slidesToShow, arrowsScroll }) => {
   );
 };
 
-export default Slide;
+export default SlideTrabajos;
+
