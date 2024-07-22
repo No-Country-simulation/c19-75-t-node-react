@@ -4,8 +4,10 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import estilo from './perfilUsuario.module.scss';
 
-const PerfilUsuario = ({ userId = '6' }) => {  // Valor por defecto para pruebas
+const PerfilUsuario = ({ userId = '2' }) => {  // Valor por defecto para pruebas
+
     const [user, setUser] = useState(null);
+
     useEffect(() => {
         // Función para obtener los datos del usuario desde la API
         const fetchUser = async () => {
@@ -25,6 +27,12 @@ const PerfilUsuario = ({ userId = '6' }) => {  // Valor por defecto para pruebas
         return <p>Cargando...</p>;
     }
 
+    // Construir el enlace de WhatsApp
+    const mensaje = "Hola, estoy interesado en tus servicios. ¿Podemos hablar más al respecto?";
+    const mensajeCodificado = encodeURIComponent(mensaje);
+    const numeroTelefono = user.tel;
+    const enlaceWhatsApp = numeroTelefono ? `https://wa.me/${numeroTelefono}?text=${mensajeCodificado}` : '#';
+
     return (
         <div className={estilo.contenedorGeneral}>
             <div className={estilo.contenedorPrincipal}>
@@ -42,7 +50,7 @@ const PerfilUsuario = ({ userId = '6' }) => {  // Valor por defecto para pruebas
                         {user.esprofesional && (
                             <>
                                 <p className={estilo.textoCategoria}>{user.profesionalData.categorias.join(', ')}</p>
-                                <p className={estilo.textoValoracion}>Calificación: {user.profesionalData.puntuacion_promedio ? user.profesionalData.puntuacion_promedio : 'N/A'}★</p>
+                                <p className={estilo.textoValoracion}>Calificación: {user.profesionalData.puntuacion_promedio ? user.profesionalData.puntuacion_promedio : 'Este usuario aún no tiene calificaciones'}★</p>
                             </>
                         )}
                         <p className={estilo.textoLocalidad}>{user.ciudad} / {user.provincia}</p>
@@ -51,7 +59,9 @@ const PerfilUsuario = ({ userId = '6' }) => {  // Valor por defecto para pruebas
 
                         <div className={estilo.contenedorContactar}>
                             {user.esprofesional && (
-                                <button>Contactar</button>
+                                <a href={enlaceWhatsApp} target="_blank" rel="noopener noreferrer">
+                                    <button>Contactar</button>
+                                </a>
                             )}
                             <button>Denunciar perfil</button>
                         </div>
