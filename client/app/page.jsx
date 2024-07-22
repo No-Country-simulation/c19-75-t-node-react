@@ -9,6 +9,7 @@ import CatCard from "@/components/catCard/CatCard.jsx";
 import ServicesComponent from "@/components/servicesComponent/servicesComponent";
 import OficioComp from "@/components/oficioComp/OficioComp";
 import ProjectCard from "@/components/projectCard/ProjectCard";
+import HomeMarketplace from "@/components/homeMarketplace/HomeMarketplace.jsx";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         ))}
       </Slide>
       <ServicesComponent />
+      <HomeMarketplace />
       <OficioComp />
       <SlideTrabajos slidesToShow={4} arrowsScroll={4}>
         {projects.map((project) => (
