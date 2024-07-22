@@ -1,9 +1,11 @@
+'use client'
 
+import React, { useEffect, useState } from 'react';
 
-export default function Home() {
+function Home() {
   return (
-    <main>
-      HomePage 
-    </main>
+    <p>home</p>
   );
 }
+
+export default Home;
