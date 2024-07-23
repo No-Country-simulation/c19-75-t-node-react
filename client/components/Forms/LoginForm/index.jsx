@@ -2,7 +2,7 @@
 import styles from '../Form.module.scss';
 import Link from 'next/link';
 
-import { loginUserAction } from '@/libs/validations';
+import { login } from '@/actions/auth';
 import { useFormState } from 'react-dom';
 const INITIAL_STATE_FORM = {
   zodErrors: {},
@@ -15,20 +15,31 @@ const INITIAL_STATE_FORM = {
 
 import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
+import ZodErrors from '../Custom';
 
 const LoginForm = () => {
-  const [formState, formAction] = useFormState(
-    loginUserAction,
+  const [formState, formAction, pending] = useFormState(
+    login,
     INITIAL_STATE_FORM
   );
+  console.log('formState', formState);
+
   return (
     <form action={formAction} className={styles.form} name="loginForm">
+      {!formState?.success && (
+        <ZodErrors
+          error={formState?.errors?.principal}
+          type="principal"
+          success={formState?.success}
+        />
+      )}
       <div className={styles.campo}>
         <Input
           type="Email"
           name="email"
           placeholder="Email"
-          error={formState?.zodErrors?.email}
+          error={formState?.errors?.email}
+          defaultValue={'user1@gmail.com'} // FIXME: Delete this line
         />
       </div>
       <div className={styles.campo}>
@@ -36,7 +47,7 @@ const LoginForm = () => {
           type="password"
           name="password"
           placeholder="Contraseña"
-          error={formState?.zodErrors?.password}
+          error={formState?.errors?.password}
         />
       </div>
       <p className={`${styles.text} ${styles.text__right}`}>
@@ -44,7 +55,10 @@ const LoginForm = () => {
           ¿Olvidaste tu contraseña?
         </Link>
       </p>
-      <ButtonForm type="submit">Iniciar Sesion</ButtonForm>
+
+      <ButtonForm type="submit" pending={pending} textPending={'Iniciando...'}>
+        Iniciar Sesion
+      </ButtonForm>
     </form>
   );
 };
