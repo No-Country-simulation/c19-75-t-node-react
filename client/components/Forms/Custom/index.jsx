@@ -1,6 +1,6 @@
 import styles from './ZodErrors.module.scss';
 
-export default function ZodErrors({ error }) {
+export default function ZodErrors({ error, type, success }) {
   if (!error) return null;
 
   const RenderErrors = () => {
@@ -27,8 +27,20 @@ export default function ZodErrors({ error }) {
   };
 
   return (
-    <div className={styles.error} name="error">
-      <RenderErrors />
-    </div>
+    <>
+      {type === 'principal' ? (
+        <div
+          className={`${styles.principal} ${
+            success ? styles.principal__success : styles.principal__error
+          }`}
+        >
+          <p className={styles.principal__message}>{error}</p>
+        </div>
+      ) : (
+        <div className={styles.error} name="error">
+          <RenderErrors />
+        </div>
+      )}
+    </>
   );
 }
