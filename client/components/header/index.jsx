@@ -29,6 +29,23 @@ const Header = () => {
     username: 'Nacho',
   };
 
+  const SignupRender = () => {
+    // if (!user) {
+    if (pathname !== '/signup') {
+      return (
+        <>
+          <Link href="/signup?role=profesional">
+            <h4 className={styles.link}>Quiero trabajar</h4>
+          </Link>
+          <Link href="/signup?role=cliente">
+            <h4 className={styles.link}>Quiero contratar</h4>
+          </Link>
+        </>
+      );
+    }
+    // }
+  };
+
   return (
     <header
       className={`${styles.navbar} ${
@@ -45,12 +62,15 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.links}>
-          <Link href="/register" legacyBehavior>
+          <SignupRender />
+          {/* <Link
+            href={{ pathname: '/signup', query: { usuario: 'profesional' } }}
+          >
             <h4 className={styles.link}>Quiero trabajar</h4>
           </Link>
-          <Link href="/register" legacyBehavior>
+          <Link href={{ pathname: '/signup', query: { usuario: 'cliente' } }}>
             <h4 className={styles.link}>Quiero contratar</h4>
-          </Link>
+          </Link> */}
           {!user && <span>Iniciar Sesión</span>}
           {!user?.isTrabajador && <span>Ofrecer mis changas</span>}
           {!user && <button>Registrarse</button>}
@@ -62,29 +82,21 @@ const Header = () => {
                 <div className={styles.options}>
                   {user?.isTrabajador && (
                     <>
-                      <Link
-                        href="/mislaburos"
-                        className={styles.link}
-                        legacyBehavior
-                      >
+                      <Link href="/mislaburos" className={styles.link}>
                         Laburos
                       </Link>
-                      <Link href="/add" className={styles.link} legacyBehavior>
+                      <Link href="/add" className={styles.link}>
                         Agregar nuevo laburo
                       </Link>
-                      <Link
-                        href="/orders"
-                        className={styles.link}
-                        legacyBehavior
-                      >
+                      <Link href="/orders" className={styles.link}>
                         Encargos
                       </Link>
                     </>
                   )}
-                  <Link href="/messages" className={styles.link} legacyBehavior>
+                  <Link href="/messages" className={styles.link}>
                     Mensajes
                   </Link>
-                  <Link href="/" className={styles.link} legacyBehavior>
+                  <Link href="/" className={styles.link}>
                     Cerrar sesión
                   </Link>
                 </div>
@@ -97,32 +109,32 @@ const Header = () => {
         <>
           <hr />
           <div className={styles.menu}>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Mantenimiento
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Albañiería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Plomería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Gasistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Electricistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Jardinería
             </Link>
 
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Pinturería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Carpintería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/" className={styles.link}>
               Herrería
             </Link>
           </div>
