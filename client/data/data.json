@@ -1,0 +1,14 @@
+{
+  "occupations": [
+    { "id": 1, "name": "Carpintero" },
+    { "id": 2, "name": "Electricista" },
+    { "id": 3, "name": "Plomero" },
+    { "id": 4, "name": "Albañil" },
+    { "id": 5, "name": "Pintor" },
+    { "id": 6, "name": "Gasista" },
+    { "id": 7, "name": "Jardinero" },
+    { "id": 8, "name": "Techista" },
+    { "id": 9, "name": "Cerrajero" }
+  ],
+  "moreData": []
+}
