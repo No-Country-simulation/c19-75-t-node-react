@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./Trabajadores.module.scss";
+import styles from "./TrabajadoresPorOficio.module.scss";
 import { FaSort } from "react-icons/fa";
-import AllTrabajadoresCard from "@/components/allTrabajadoresCard/AllTrabajadoresCard";
-import { laburos } from "@/data";
+import { useParams } from "next/navigation";
+import TrabajadoresPorOficioList from "@/components/TrabajadoresPorOficioList/TrabajadoresPorOficioList";
 
-
-
-const Trabajadores = () => {
+const TrabajadoresPorOficio = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("laburos");
+  const params = useParams()
+  const oficio = params["nombre-oficio"]
 
+  
   const reSort = (type) => {
     setSort(type);
     setOpen(false);
@@ -20,10 +21,10 @@ const Trabajadores = () => {
   return (
     <div className={styles.trabajadores}>
       <div className={styles.container}>
-        <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / </span>
-        <h1>Trabajadores</h1>
+        <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / {oficio === "albanileria" ? "ALBAÑILERIA" : oficio.toUpperCase()}</span>
+        <h1>{oficio === "albanileria" ? "Albañilería" : oficio.charAt(0).toUpperCase() + oficio.slice(1).toLowerCase()}</h1>
         <p>
-          Explora los distintos profesionales de distintos rubros que podrían darte una solución.
+          Explora los distintos profesionales en {oficio} que podrían darte una solución.
         </p>
         <div className={styles.menu}>
           <div className={styles.left}>
@@ -52,13 +53,11 @@ const Trabajadores = () => {
           </div>
         </div>
         <div className={styles.cards}>
-          {laburos.map(laburo=>(
-            <AllTrabajadoresCard key={laburo.id} item={laburo} />
-          ))}
+            <TrabajadoresPorOficioList oficio={oficio}/>
         </div>
       </div>
     </div>
   );
 };
 
-export default Trabajadores;
+export default TrabajadoresPorOficio;

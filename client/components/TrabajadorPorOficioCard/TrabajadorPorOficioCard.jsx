@@ -1,25 +1,27 @@
+import Link from 'next/link';
+import styles from "./TrabajadorPorOficioCard.module.scss"
 import React, { useState } from "react";
-import Link from "next/link";
 import { FaHeart, FaStar, FaRegHeart } from "react-icons/fa";
 import { TbPlayerTrackNext } from "react-icons/tb";
-import styles from "./TrabajadoresCard.module.scss";
 
-const TrabajadoresCard = ({ item }) => {
+const TrabajadorPorOficioCard = ({ trabajador, oficio }) => {
   const [fav, setFav] = useState(false);
 
+
   return (
-    <div className={styles.link}>
+    <Link href={`/trabajadores/${oficio}/${trabajador.id}`}>
+      <div className={styles.link}>
       <div className={styles.trabajadoresCard}>
-        <img src={item.img} alt="" className={styles.image} />
+        <img src={trabajador.img} alt="" className={styles.image} />
         <div className={styles.info}>
           <div className={styles.user}>
-            <img src={item.pp} alt="" className={styles.profilePic} />
-            <span className={styles.username}>{item.username}</span>
+            <img src={trabajador.pp} alt="" className={styles.profilePic} />
+            <span className={styles.username}>{trabajador.username}</span>
           </div>
-          <p className={styles.description}>{item.desc}</p>
+          <p className={styles.description}>{trabajador.desc}</p>
           <div className={styles.star}>
             <FaStar className={styles.starIcon} />
-            <span className={styles.rating}>{item.star}</span>
+            <span className={styles.rating}>{trabajador.star}</span>
           </div>
         </div>
         <hr className={styles.separator} />
@@ -39,8 +41,9 @@ const TrabajadoresCard = ({ item }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
-};
+}
 
-export default TrabajadoresCard;
+export default TrabajadorPorOficioCard
 
