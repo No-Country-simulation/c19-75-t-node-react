@@ -9,11 +9,18 @@
   margin-top: 7rem;
   margin-bottom: 7rem;
   display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 32px 42px;
-  gap: 30px;
   width: 475px;
   min-height: 350px;
   border-radius: 8px;
@@ -29,6 +36,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.body {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .header {
