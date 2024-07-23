@@ -1,3 +1,8 @@
+$clr-error: rgb(236, 71, 71);
+$clr-error-light: #ffa5a93a;
+$clr-success: rgb(71, 236, 71);
+$clr-success-light: #a5ff9a3a;
+
 .error {
   width: 100%;
   margin-top: 5px;
@@ -10,8 +15,28 @@
   }
   &__message {
     margin-left: 10px;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1;
     color: rgb(236, 71, 71);
+  }
+}
+
+.principal {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 4px;
+
+  &__message {
+    font-size: 14px;
+  }
+  &__success {
+    background-color: $clr-success-light;
+    border-left: 5px solid $clr-success;
+    border-right: 5px solid $clr-success;
+  }
+  &__error {
+    background-color: $clr-error-light;
+    border-left: 5px solid $clr-error;
+    border-right: 5px solid $clr-error;
   }
 }
