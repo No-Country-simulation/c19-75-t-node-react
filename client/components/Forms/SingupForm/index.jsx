@@ -35,8 +35,9 @@ const INITIAL_STATE_FORM = {
   },
 };
 
-const SingupForm = () => {
-  const [userType, setUserType] = useState(''); // tUserType: cliente | profesional | ''
+const SingupForm = ({ userTypeSelected }) => {
+  console.log(userTypeSelected);
+  const [userType, setUserType] = useState(userTypeSelected); // tUserType: cliente | profesional | ''
   const [userOccupations, setUserOccupations] = useState([]);
   const [formState, formAction] = useFormState(
     registerUserAction,
