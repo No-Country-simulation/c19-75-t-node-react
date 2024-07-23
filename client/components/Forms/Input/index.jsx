@@ -38,20 +38,3 @@ export default function Input({
     </>
   );
 }
-
-{
-  /* <div className={styles.container}>
-      <input
-        className={`${styles.input} ${otherStyles ? styles[otherStyles] : ''} ${
-          !isEditing && error ? styles.input__error : ''
-        }`}
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        onChange={() => !isEditing && setIsEditing(true)}
-        {...props}
-      />
-      {!isEditing && error ? <ZodErrors error={error} /> : null}
-    </div> */
-}
