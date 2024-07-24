@@ -14,16 +14,21 @@ const config = {
     }
 };
 
-// Función de Conexión a la Base de Datos
+let poolPromise;
+
 const connectDB = async () => {
-    try {
-        const pool = await sql.connect(config);
-        console.log('SQL Server connected...');
-        return pool; // Retorna el pool de conexiones
-    } catch (err) {
-        console.error('Database connection failed: ', err);
-        process.exit(1);
+    if (!poolPromise) {
+        poolPromise = sql.connect(config)
+            .then(pool => {
+                console.log('SQL Server connected...');
+                return pool;
+            })
+            .catch(err => {
+                console.error('Database connection failed: ', err);
+                process.exit(1);
+            });
     }
+    return poolPromise;
 };
 
 module.exports = connectDB;

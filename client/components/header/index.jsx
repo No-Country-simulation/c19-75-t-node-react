@@ -31,9 +31,8 @@ const Header = () => {
 
   return (
     <header
-      className={`${styles.navbar} ${
-        active || pathname !== '/' ? styles.active : ''
-      }`}
+      className={`${styles.navbar} ${active || pathname !== '/' ? styles.active : ''
+        }`}
     >
       <div className={styles.container}>
         <div className={styles.logo}>
@@ -97,32 +96,31 @@ const Header = () => {
         <>
           <hr />
           <div className={styles.menu}>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/6" className={styles.link} legacyBehavior>
               Mantenimiento
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/7" className={styles.link} legacyBehavior>
               Albañiería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/3" className={styles.link} legacyBehavior>
               Plomería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/3" className={styles.link} legacyBehavior>
               Gasistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/4" className={styles.link} legacyBehavior>
               Electricistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/5" className={styles.link} legacyBehavior>
               Jardinería
             </Link>
-
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/1" className={styles.link} legacyBehavior>
               Pinturería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/8" className={styles.link} legacyBehavior>
               Carpintería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/categorias/2" className={styles.link} legacyBehavior>
               Herrería
             </Link>
           </div>

@@ -1,57 +1,90 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Trabajadores.module.scss";
 import { FaSort } from "react-icons/fa";
 import TrabajadoresCard from "@/components/trabajadoresCard/TrabajadoresCard";
-import { laburos } from "@/data";
 
 const Trabajadores = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("laburos");
+  const [trabajadores, setTrabajadores] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const reSort = (type) => {
     setSort(type);
     setOpen(false);
   };
 
+  useEffect(() => {
+    const fetchTrabajadores = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/users/trabajadores");
+        const data = await response.json();
+        setTrabajadores(data);
+      } catch (error) {
+        console.error("Error fetching trabajadores:", error);
+        setError("Error al obtener los trabajadores");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTrabajadores();
+  }, []);
+
+  if (loading) {
+    return <div className={styles.loading}>Cargando...</div>;
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
   return (
     <div className={styles.trabajadores}>
       <div className={styles.container}>
-        <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / ALBAÑILERIA /</span>
-        <h1>Albañiles</h1>
+        <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / </span>
+        <h1>Todos los trabajadores</h1>
         <p>
-          Explora los distintos profesionales en albañileria que podrían darte una solución.
+          Explora los distintos profesionales que podrían darte una solución.
         </p>
         <div className={styles.menu}>
           <div className={styles.left}>
-            <span>Presupuesto</span>
-            <input type="text" placeholder="min" />
-            <input type="text" placeholder="max" />
-            <button>Aplicar</button>
           </div>
           <div className={styles.right}>
             <span className={styles.sortBy}>Ordenar por:</span>
             <span className={styles.sortType}>
-              {sort === "laburos" ? "Más baratos" : "Más contratados"}
+              {sort === "laburos" ? "Predeterminado" : "Mejor puntuación"}
             </span>
             <FaSort className={styles.icon} onClick={() => setOpen(!open)} />
             {open && (
               <div className={styles.rightMenu}>
                 {sort === "laburos" ? (
                   <span onClick={() => reSort("createdAt")}>
-                    Más contratados
+                    Mejor puntuación
                   </span>
                 ) : (
-                  <span onClick={() => reSort("laburos")}>Más baratos</span>
+                  <span onClick={() => reSort("laburos")}>Predeterminado</span>
                 )}
               </div>
             )}
           </div>
         </div>
         <div className={styles.cards}>
-          {laburos.map(laburo=>(
-            <TrabajadoresCard key={laburo.id} item={laburo} />
+          {trabajadores.map((trabajador) => (
+            <TrabajadoresCard
+              key={trabajador.profesional_id}
+              nombre={trabajador.nombre}
+              apellido={trabajador.apellido}
+              foto={trabajador.foto}
+              puntuacion={trabajador.puntuacion}
+              categoria={trabajador.categoria}
+              provincia={trabajador.provincia}
+              ciudad={trabajador.ciudad}
+              usuario_id={trabajador.usuario_id}
+            />
           ))}
         </div>
       </div>
