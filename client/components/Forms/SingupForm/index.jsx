@@ -37,7 +37,7 @@ const INITIAL_STATE_FORM = {
 
 const SingupForm = ({ userTypeSelected }) => {
   console.log(userTypeSelected);
-  const [userType, setUserType] = useState(userTypeSelected); // tUserType: cliente | profesional | ''
+  const [userType, setUserType] = useState(userTypeSelected); // tUserType: cliente | trabajador | ''
   const [userOccupations, setUserOccupations] = useState([]);
   const [formState, formAction] = useFormState(
     registerUserAction,
@@ -63,7 +63,7 @@ const SingupForm = ({ userTypeSelected }) => {
             className={`${localStyles.optionUser} ${
               userType == 'cliente'
                 ? localStyles.active
-                : userType == 'profesional'
+                : userType == 'trabajador'
                 ? localStyles.inactive
                 : ''
             }`}
@@ -74,15 +74,15 @@ const SingupForm = ({ userTypeSelected }) => {
           <button
             type="button"
             className={`${localStyles.optionUser} ${
-              userType == 'profesional'
+              userType == 'trabajador'
                 ? localStyles.active
                 : userType == 'cliente'
                 ? localStyles.inactive
                 : ''
             }`}
-            onClick={() => setUserType('profesional')}
+            onClick={() => setUserType('trabajador')}
           >
-            Profesional
+            trabajador
           </button>
         </div>
       </div>
@@ -201,7 +201,7 @@ const SingupForm = ({ userTypeSelected }) => {
               />
             </div>
           </div>
-          {userType === 'profesional' && (
+          {userType === 'trabajador' && (
             <div className={styles.campo}>
               <Label for="userOccupations">Ocupación</Label>
               <Input
