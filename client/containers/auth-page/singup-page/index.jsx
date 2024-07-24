@@ -3,7 +3,7 @@ import styles from '../AuthPage.module.scss';
 
 import Link from 'next/link';
 
-const SingupPage = () => {
+const SingupPage = ({ userTypeSelected }) => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -12,7 +12,7 @@ const SingupPage = () => {
           <div className={`${styles.divider}`}></div>
         </div>
         <div className={styles.body}>
-          <SingupForm />
+          <SingupForm userTypeSelected={userTypeSelected} />
         </div>
         <div className={styles.footer}>
           {/* <div className={`${styles.divider} ${styles.divider__small}`}></div> */}
