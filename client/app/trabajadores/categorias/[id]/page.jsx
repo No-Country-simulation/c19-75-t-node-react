@@ -29,26 +29,36 @@ const Trabajadores = () => {
         setOpen(false);
     };
 
+    const fetchProfesionales = async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/users/trabajadores/categorias/${id}`);
+            if (!response.ok) {
+                throw new Error('Error');
+            }
+            const data = await response.json();
+            setProfesionales(data);
+        } catch (err) {
+            console.error('Error:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
         if (id) {
-            const fetchProfesionales = async () => {
-                try {
-                    const response = await fetch(`http://localhost:5000/api/users/trabajadores/categorias/${id}`);
-                    if (!response.ok) {
-                        throw new Error('Error');
-                    }
-                    const data = await response.json();
-                    setProfesionales(data);
-                } catch (err) {
-                    console.error('Error:', err);
-                } finally {
-                    setLoading(false);
-                }
-            };
-
             fetchProfesionales();
         }
     }, [id]);
+
+    useEffect(() => {
+        if (sort === "puntuacion") {
+            setProfesionales((prevProfesionales) =>
+                [...prevProfesionales].sort((a, b) => b.puntuacion - a.puntuacion)
+            );
+        } else if (sort === "laburos") {
+            fetchProfesionales();
+        }
+    }, [sort]);
 
     if (loading) {
         return <p>Cargando...</p>;
@@ -77,7 +87,7 @@ const Trabajadores = () => {
                         {open && (
                             <div className={styles.rightMenu}>
                                 {sort === "laburos" ? (
-                                    <span onClick={() => reSort("createdAt")}>
+                                    <span onClick={() => reSort("puntuacion")}>
                                         Mejor puntuación
                                     </span>
                                 ) : (

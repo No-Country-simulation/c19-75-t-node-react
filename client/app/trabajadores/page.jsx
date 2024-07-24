@@ -17,22 +17,32 @@ const Trabajadores = () => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    const fetchTrabajadores = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/users/trabajadores");
-        const data = await response.json();
-        setTrabajadores(data);
-      } catch (error) {
-        console.error("Error fetching trabajadores:", error);
-        setError("Error al obtener los trabajadores");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchTrabajadores = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/users/trabajadores");
+      const data = await response.json();
+      setTrabajadores(data);
+    } catch (error) {
+      console.error("Error fetching trabajadores:", error);
+      setError("Error al obtener los trabajadores");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchTrabajadores();
   }, []);
+
+  useEffect(() => {
+    if (sort === "puntuacion") {
+      setTrabajadores((prevTrabajadores) =>
+        [...prevTrabajadores].sort((a, b) => b.puntuacion - a.puntuacion)
+      );
+    } else if (sort === "laburos") {
+      fetchTrabajadores();
+    }
+  }, [sort]);
 
   if (loading) {
     return <div className={styles.loading}>Cargando...</div>;
@@ -62,7 +72,7 @@ const Trabajadores = () => {
             {open && (
               <div className={styles.rightMenu}>
                 {sort === "laburos" ? (
-                  <span onClick={() => reSort("createdAt")}>
+                  <span onClick={() => reSort("puntuacion")}>
                     Mejor puntuación
                   </span>
                 ) : (

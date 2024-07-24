@@ -47,7 +47,7 @@ const Header = () => {
           <Link href="/register" legacyBehavior>
             <h4 className={styles.link}>Quiero trabajar</h4>
           </Link>
-          <Link href="/register" legacyBehavior>
+          <Link href="/trabajadores" legacyBehavior>
             <h4 className={styles.link}>Quiero contratar</h4>
           </Link>
           {!user && <span>Iniciar Sesión</span>}

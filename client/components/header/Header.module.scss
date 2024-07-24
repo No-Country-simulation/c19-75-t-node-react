@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+
 .navbar {
   display: flex;
   flex-direction: column;
@@ -41,12 +42,14 @@
         color: #1dbf73;
       }
     }
+
     .links {
       display: flex;
       align-items: center;
       gap: 24px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
+      cursor: pointer;
 
       span {
         white-space: nowrap;
@@ -82,6 +85,7 @@
           font-weight: 300;
           color: gray;
         }
+
         h4 {
           cursor: pointer;
         }
