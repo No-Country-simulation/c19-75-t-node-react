@@ -3,7 +3,7 @@ import styles from "./TrabajadorPorOficioPage.module.scss";
 // import { Slider } from "infinite-react-carousel/lib";
 import { FaStar } from "react-icons/fa";
 import { FaClockRotateLeft } from "react-icons/fa6";
-import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
+import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { GrDocumentVerified } from "react-icons/gr";
 import { MdVerified } from "react-icons/md";
 import Link from "next/link";
@@ -120,8 +120,10 @@ const TrabajadorPorOficioPage = ({ oficio }) => {
                 sequi eius?
               </p>
               <div className={styles.helpful}>
-                <BiSolidLike className={styles.likes} />
-                <BiSolidDislike className={styles.likes} />
+                <BiLike className={styles.likes} />
+                <span>1</span>
+                <BiDislike className={styles.likes} />
+                <span>0</span>
               </div>
             </div>
             <hr />
