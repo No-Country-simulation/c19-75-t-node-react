@@ -23,27 +23,65 @@ const Header = () => {
     };
   }, []);
 
-  const user = {
-    id: 1,
-    isTrabajador: true,
-    username: 'Nacho',
-  };
+  // const user = {
+  //   id: 1,
+  //   userType: 'cliente',
+  //   name: 'Nacho',
+  // };
+  const user = null;
 
   const SignupRender = () => {
-    // if (!user) {
-    if (pathname !== '/signup') {
-      return (
-        <>
-          <Link href="/signup?role=profesional">
-            <h4 className={styles.link}>Quiero trabajar</h4>
-          </Link>
-          <Link href="/signup?role=cliente">
-            <h4 className={styles.link}>Quiero contratar</h4>
-          </Link>
-        </>
-      );
-    }
-    // }
+    return (
+      <>
+        {pathname !== '/signup' && (
+          <>
+            <div className={styles.link}>
+              <Link href="/signup?role=trabajador">
+                <h4>Quiero trabajar</h4>
+              </Link>
+            </div>
+            <div className={styles.link}>
+              <Link href="/signup?role=cliente">
+                <h4>Quiero contratar</h4>
+              </Link>
+            </div>
+          </>
+        )}
+        {pathname !== '/login' && (
+          <div className={styles.link}>
+            <Link href="/login">
+              <h4>Iniciar Sesión</h4>
+            </Link>
+          </div>
+        )}
+      </>
+    );
+  };
+
+  const OptionsRender = (isTrabajador) => {
+    return (
+      <div className={styles.options}>
+        {isTrabajador && (
+          <>
+            <Link href="/mislaburos" className={styles.link}>
+              Laburos
+            </Link>
+            <Link href="/add" className={styles.link}>
+              Agregar nuevo laburo
+            </Link>
+            <Link href="/orders" className={styles.link}>
+              Encargos
+            </Link>
+          </>
+        )}
+        <Link href="/messages" className={styles.link}>
+          Mensajes
+        </Link>
+        <Link href="/" className={styles.link}>
+          Cerrar sesión
+        </Link>
+      </div>
+    );
   };
 
   return (
@@ -62,50 +100,25 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.links}>
-          <SignupRender />
-          {/* <Link
-            href={{ pathname: '/signup', query: { usuario: 'profesional' } }}
-          >
-            <h4 className={styles.link}>Quiero trabajar</h4>
-          </Link>
-          <Link href={{ pathname: '/signup', query: { usuario: 'cliente' } }}>
-            <h4 className={styles.link}>Quiero contratar</h4>
-          </Link> */}
-          {!user && <span>Iniciar Sesión</span>}
-          {!user?.isTrabajador && <span>Ofrecer mis changas</span>}
-          {!user && <button>Registrarse</button>}
-          {user && (
-            <div className={styles.user} onClick={() => setOpen(!open)}>
-              <img src="" alt="" />
-              <span>{user.username}</span>
-              {open && (
-                <div className={styles.options}>
-                  {user?.isTrabajador && (
-                    <>
-                      <Link href="/mislaburos" className={styles.link}>
-                        Laburos
-                      </Link>
-                      <Link href="/add" className={styles.link}>
-                        Agregar nuevo laburo
-                      </Link>
-                      <Link href="/orders" className={styles.link}>
-                        Encargos
-                      </Link>
-                    </>
-                  )}
-                  <Link href="/messages" className={styles.link}>
-                    Mensajes
-                  </Link>
-                  <Link href="/" className={styles.link}>
-                    Cerrar sesión
-                  </Link>
-                </div>
-              )}
-            </div>
+          {!user ? (
+            <SignupRender />
+          ) : (
+            <>
+              {user?.userType === 'cliente' && <span>Ofrecer mis changas</span>}
+              <div className={styles.user} onClick={() => setOpen(!open)}>
+                <img src="" alt="" />
+                <span>{user?.name}</span>
+                {open && (
+                  <OptionsRender
+                    isTrabajador={user?.userType === 'trabajador'}
+                  />
+                )}
+              </div>
+            </>
           )}
         </div>
       </div>
-      {(active || pathname !== '/') && (
+      {active && pathname === '/' && (
         <>
           <hr />
           <div className={styles.menu}>
