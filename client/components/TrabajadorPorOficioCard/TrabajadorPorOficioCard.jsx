@@ -34,7 +34,7 @@ const TrabajadorPorOficioCard = ({ trabajador, oficio }) => {
           >
             {fav ? <FaHeart className={styles.heart} /> : <FaRegHeart className={styles.heart} />}
           </div>
-          <Link href="/" className={styles.button}>
+          <Link href={`/trabajadores/${oficio}/${trabajador.id}`} className={styles.button}>
             Contratar
             <TbPlayerTrackNext className={styles.nextIcon} />
           </Link>

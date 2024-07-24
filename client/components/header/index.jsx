@@ -97,32 +97,32 @@ const Header = () => {
         <>
           <hr />
           <div className={styles.menu}>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/mantenimiento" className={styles.link} legacyBehavior>
               Mantenimiento
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/albanileria" className={styles.link} legacyBehavior>
               Albañiería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/plomeria" className={styles.link} legacyBehavior>
               Plomería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/gasistas" className={styles.link} legacyBehavior>
               Gasistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/electricistas" className={styles.link} legacyBehavior>
               Electricistas
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/jardineria" className={styles.link} legacyBehavior>
               Jardinería
             </Link>
 
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/pintureria" className={styles.link} legacyBehavior>
               Pinturería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/carpinteria" className={styles.link} legacyBehavior>
               Carpintería
             </Link>
-            <Link href="/" className={styles.link} legacyBehavior>
+            <Link href="/trabajadores/herreria" className={styles.link} legacyBehavior>
               Herrería
             </Link>
           </div>
