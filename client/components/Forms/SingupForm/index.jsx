@@ -15,153 +15,106 @@ import { singup } from '@/actions/auth';
 
 import { useFormState } from 'react-dom';
 const INITIAL_STATE_FORM = {
-    zodErrors: {},
-    message: '',
-    data: {
-        userType: '',
-        email: '',
-        password: '',
-        name: '',
-        lastname: '',
-        province: '',
-        city: '',
-        address: '',
-        number: null,
-        floor: '',
-        postalCode: null,
-        areaCode: '+54',
-        phone: null,
-        occupations: '',
-    },
+  zodErrors: {},
+  message: '',
+  data: {
+    userType: '',
+    email: '',
+    password: '',
+    name: '',
+    lastname: '',
+    province: '',
+    city: '',
+    address: '',
+    number: null,
+    floor: '',
+    postalCode: null,
+    areaCode: '+54',
+    phone: null,
+    occupations: '',
+  },
 };
 
-const SingupForm = () => {
-    const { occupations } = data;
-    const [userType, setUserType] = useState('cliente'); // tUserType: cliente | profesional | '' //FIXME: Change value
-    const [userOccupations, setUserOccupations] = useState([]);
-    const [formState, formAction, pending] = useFormState(singup, INITIAL_STATE_FORM);
+const SingupForm = ({ userTypeSelected }) => {
+  const [userType, setUserType] = useState(userTypeSelected); // tUserType: cliente | trabajador | ''
+  const { occupations } = data;
+  const [formState, formAction, pending] = useFormState(singup, INITIAL_STATE_FORM);
 
-    return (
-        <>
-            <form action={formAction} className={`${styles.form} ${localStyles.form}`} name="singupForm">
-                <div className={styles.campo}>
-                    <div className={localStyles.optionsUsers}>
-                        <Input type="hidden" name="userType" value={userType} error={formState?.zodErrors?.userType} />
-                        <button
-                            type="button"
-                            className={`${localStyles.optionUser} ${
-                                userType == 'cliente'
-                                    ? localStyles.active
-                                    : userType == 'profesional'
-                                    ? localStyles.inactive
-                                    : ''
-                            }`}
-                            onClick={() => setUserType('cliente')}
-                        >
-                            Cliente
-                        </button>
-                        <button
-                            type="button"
-                            className={`${localStyles.optionUser} ${
-                                userType == 'profesional'
-                                    ? localStyles.active
-                                    : userType == 'cliente'
-                                    ? localStyles.inactive
-                                    : ''
-                            }`}
-                            onClick={() => setUserType('profesional')}
-                        >
-                            Profesional
-                        </button>
-                    </div>
-                </div>
-                {/*  */}
-                {userType && (
-                    <>
-                        <div className={styles.campo}>
-                            <Label for="email">Email</Label>
-                            <Input type="email" name="email" placeholder="Email" error={formState?.zodErrors?.email} />
-                        </div>
-                        <div className={styles.campo}>
-                            <Label for="password">Contraseña</Label>
-                            <Input
-                                type="password"
-                                name="password"
-                                placeholder="Contraseña"
-                                error={formState?.zodErrors?.password}
-                            />
-                        </div>
-                        <div className={styles.group}>
-                            <div className={styles.campo}>
-                                <Label for="name">Nombre</Label>
-                                <Input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Nombre"
-                                    error={formState?.zodErrors?.name}
-                                />
-                            </div>
-                            {/*<div className={styles.campo}>
-              <Label for="lastname">Apellido</Label>
-              <Input
-                type="text"
-                name="lastname"
-                placeholder="Apellido"
-                error={formState?.zodErrors?.lastname}
-              />
-            </div>*/}
-                        </div>
-                        {/*
+  return (
+    <>
+      <form action={formAction} className={`${styles.form} ${localStyles.form}`} name="singupForm">
+        <div className={styles.campo}>
+          <div className={localStyles.optionsUsers}>
+            <Input type="hidden" name="userType" value={userType} error={formState?.zodErrors?.userType} />
+            <button
+              type="button"
+              className={`${localStyles.optionUser} ${
+                userType == 'cliente' ? localStyles.active : userType == 'trabajador' ? localStyles.inactive : ''
+              }`}
+              onClick={() => setUserType('cliente')}
+            >
+              Cliente
+            </button>
+            <button
+              type="button"
+              className={`${localStyles.optionUser} ${
+                userType == 'trabajador' ? localStyles.active : userType == 'cliente' ? localStyles.inactive : ''
+              }`}
+              onClick={() => setUserType('trabajador')}
+            >
+              trabajador
+            </button>
+          </div>
+        </div>
+        {/*  */}
+        {userType && (
+          <>
+            <div className={styles.campo}>
+              <Label for="email">Email</Label>
+              <Input type="email" name="email" placeholder="Email" error={formState?.zodErrors?.email} />
+            </div>
+            <div className={styles.campo}>
+              <Label for="password">Contraseña</Label>
+              <Input type="password" name="password" placeholder="Contraseña" error={formState?.zodErrors?.password} />
+            </div>
+            <div className={styles.group}>
+              <div className={styles.campo}>
+                <Label for="name">Nombre</Label>
+                <Input type="text" name="name" placeholder="Nombre" error={formState?.zodErrors?.name} />
+              </div>
+              <div className={styles.campo}>
+                <Label for="lastname">Apellido</Label>
+                <Input type="text" name="lastname" placeholder="Apellido" error={formState?.zodErrors?.lastname} />
+              </div>
+            </div>
             <div className={styles.group}>
               <div className={styles.campo}>
                 <Label for="province">Provincia</Label>
-                <Input type="text" name="province" placeholder="Provincia" />
+                <Input type="text" name="province" placeholder="Provincia" error={formState?.zodErrors?.province} />
               </div>
               <div className={styles.campo}>
                 <Label for="city">Ciudad</Label>
-                <Input type="text" name="city" placeholder="Ciudad" />
+                <Input type="text" name="city" placeholder="Ciudad" error={formState?.zodErrors?.city} />
               </div>
             </div>
             <div className={styles.group}>
               <div className={styles.campo}>
                 <Label for="address">Calle</Label>
-                <Input
-                  type="text"
-                  name="address"
-                  placeholder="Direccion"
-                  error={formState?.zodErrors?.address}
-                />
+                <Input type="text" name="address" placeholder="Direccion" error={formState?.zodErrors?.address} />
               </div>
               <div className={styles.campo}>
                 <Label for="number">Numero</Label>
-                <Input
-                  type="number"
-                  name="number"
-                  placeholder="Numero"
-                  min={0}
-                  error={formState?.zodErrors?.number}
-                />
+                <Input type="number" name="number" placeholder="Numero" min={0} error={formState?.zodErrors?.number} />
               </div>
             </div>
             <div className={styles.group}>
               <div className={styles.campo}>
                 <Label for="floor">Piso (opcional)</Label>
-                <Input
-                  type="text"
-                  name="floor"
-                  placeholder="Piso"
-                  error={formState?.zodErrors?.floor}
-                />
+                <Input type="text" name="floor" placeholder="Piso" error={formState?.zodErrors?.floor} />
               </div>
               <div className={styles.campo}>
                 <Label for="postalCode">Codigo Postal</Label>
-                <Input
-                  type="number"
-                  name="postalCode"
-                  placeholder="Codigo Postal"
-                  min={0}
-                  max={8}
-                />
+                <Input type="number" name="postalCode" placeholder="Codigo Postal" min={0} max={8} />
               </div>
             </div>
             <div className={styles.campo}>
@@ -176,43 +129,26 @@ const SingupForm = () => {
                   readOnly
                   disabled
                 />
-                <Input
-                  type="number"
-                  name="phone"
-                  placeholder="Telefono"
-                  error={formState?.zodErrors?.phone}
-                  min={0}
-                />
+                <Input type="number" name="phone" placeholder="Telefono" error={formState?.zodErrors?.phone} min={0} />
               </div>
             </div>
-            {userType === 'profesional' && (
+            {userType === 'trabajador' && (
               <div className={styles.campo}>
-                <Label for="userOccupations">Ocupación</Label>
-                <Input
-                  type="hidden"
-                  name="userOccupations"
-                  value={userOccupations}
-                />
+                <Label for="occupations">Ocupación</Label>
+                <Input type="hidden" name="occupations" value={occupations} />
                 <div className={styles.campo__row}>
                   {occupations.map((occupation) => (
                     <button
                       key={occupation.id}
                       type="button"
                       className={`${localStyles.optionOccupation} ${
-                        userOccupations.includes(occupation.id)
-                          ? localStyles.activeOccupation
-                          : ''
+                        occupations.includes(occupation.id) ? localStyles.activeOccupation : ''
                       }`}
                       onClick={() => {
-                        if (userOccupations.includes(occupation.id)) {
-                          setUserOccupations(
-                            userOccupations.filter((id) => id !== occupation.id)
-                          );
+                        if (occupations.includes(occupation.id)) {
+                          setUserOccupations(occupations.filter((id) => id !== occupation.id));
                         } else {
-                          setUserOccupations([
-                            ...userOccupations,
-                            occupation.id,
-                          ]);
+                          setUserOccupations([...occupations, occupation.id]);
                         }
                       }}
                     >
@@ -222,15 +158,14 @@ const SingupForm = () => {
                 </div>
               </div>
             )}{' '}
-            */}
-                        <ButtonForm type="submit" pending={pending} textPending={'Creando Cuenta...'}>
-                            Crear Cuenta
-                        </ButtonForm>
-                    </>
-                )}
-            </form>
-        </>
-    );
+            <ButtonForm type="submit" pending={pending} textPending={'Creando Cuenta...'}>
+              Crear Cuenta
+            </ButtonForm>
+          </>
+        )}
+      </form>
+    </>
+  );
 };
 
 export default SingupForm;

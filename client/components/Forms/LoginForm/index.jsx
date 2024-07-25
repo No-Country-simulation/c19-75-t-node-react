@@ -16,13 +16,21 @@ const INITIAL_STATE_FORM = {
 import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
 import ZodErrors from '../Custom';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useHeaderContext } from '@/context/HeaderContext';
 
 const LoginForm = () => {
-  const [formState, formAction, pending] = useFormState(
-    login,
-    INITIAL_STATE_FORM
-  );
-  console.log('formState', formState);
+  const router = useRouter();
+  const { setSessionActive } = useHeaderContext();
+  const [formState, formAction, pending] = useFormState(login, INITIAL_STATE_FORM);
+
+  useEffect(() => {
+    if (formState?.success) {
+      setSessionActive(true);
+      router.push('/');
+    }
+  }, [formState?.success]);
 
   return (
     <form action={formAction} className={styles.form} name="loginForm">
