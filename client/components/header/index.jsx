@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(true)
 
   const pathname = usePathname();
 
@@ -23,11 +24,11 @@ const Header = () => {
     };
   }, []);
 
-  const user = {
+  /*const user = {
     id: 1,
     isTrabajador: true,
     username: "Nacho",
-  };
+  };*/
 
   return (
     <header
@@ -46,13 +47,13 @@ const Header = () => {
         </div>
         <div className={styles.links}>
           <Link href="/register" legacyBehavior>
-            <h4 className={styles.link}>Quiero trabajar</h4>
+            <div className={styles.link}>Quiero trabajar</div>
           </Link>
           <Link href="/register" legacyBehavior>
-            <h4 className={styles.link}>Quiero contratar</h4>
+            <div className={styles.link}>Quiero contratar</div>
           </Link>
-          {!user && <span>Iniciar Sesión</span>}
-          {!user?.isTrabajador && <span>Ofrecer mis changas</span>}
+          {!user && <Link href="/login" className={styles.login}>Iniciar sesión</Link>}
+          {/*!user?.isTrabajador && <span>Ofrecer mis changas</span>*/}
           {!user && <button>Registrarse</button>}
           {user && (
             <div className={styles.user} onClick={() => setOpen(!open)}>
