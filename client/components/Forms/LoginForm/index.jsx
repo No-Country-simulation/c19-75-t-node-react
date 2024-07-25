@@ -47,7 +47,7 @@ const LoginForm = () => {
           name="email"
           placeholder="Email"
           error={formState?.errors?.email}
-          defaultValue={'user1@gmail.com'} // FIXME: Delete this line
+          defaultValue={'profesional@gmail.com'} // FIXME: Delete this line
         />
       </div>
       <div className={styles.campo}>

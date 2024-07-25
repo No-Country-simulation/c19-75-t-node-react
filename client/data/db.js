@@ -4,14 +4,14 @@ import bcrypt from 'bcrypt';
 const users = [
   {
     id: 1,
-    email: 'user1@gmail.com',
+    email: 'profesional@gmail.com',
     password: '$2b$10$k6d8YPjfElLM6To9K.r3W.jCi2YH22nGFTU57jhcotAPAwD/h0H4a', // 123
     name: 'Juan',
     isWorker: true,
   },
   {
     id: 2,
-    email: 'user2@gmail.com',
+    email: 'cliente@gmail.com',
     name: 'Pedro',
     password: '$2b$10$yUTswJN/nSp0oM8iicUcUOjUDb/jbrKehNaJ/CU0US/.o8RsokQf.', // asd
     isWorker: false,
