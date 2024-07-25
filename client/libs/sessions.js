@@ -49,13 +49,11 @@ export async function decrypt(input) {
 }
 
 // * THIS WORK * //
-export async function createSession(userId) {
+export async function createSession(userId, name, isWorker) {
   console.log('==creando session==');
   const expires = new Date(Date.now() + cookie.duration); // set la fecha de expiracion de la sesion
-  const session = await encrypt({ userId, expires }); // encripta la sesion
-
+  const session = await encrypt({ userId, name, isWorker, expires }); // encripta la sesion
   cookies().set(cookie.name, session, { ...cookie.options, expires }); // set la cookie en el cliente
-  redirect('/'); // redirige al usuario a la pagina principal
 }
 
 // * THIS WORK * //

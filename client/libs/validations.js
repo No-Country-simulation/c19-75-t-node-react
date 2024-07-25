@@ -40,26 +40,26 @@ export const RegisterSchema = z.object({
           'La contraseña debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial',
       }
     ),
-  // name: z.string().min(1, { message: messages.required }),
-  // lastname: z.string().min(1, { message: messages.required }),
-  // province: z.string(),
-  // city: z.string(),
-  // address: z.string().min(1, { message: messages.required }),
-  // number: z
-  //   .string()
-  //   .min(1, { message: messages.required })
-  //   .regex(/^\d+.{1,}$/, { message: 'Debe contener solo numeros' })
-  //   .max(99999, { message: 'El numero es invalido' }),
-  // floor: z.string().optional(),
-  // postalCode: z.string().optional(),
-  // areaCode: z.string(),
-  // phone: z
-  //   .string()
-  //   .min(1, { message: messages.required })
-  //   .regex(/^\d+$/, { message: 'Debe contener solo numeros' })
-  //   .min(8, { message: 'El telefono es invalido, minimo 8 numeros' })
-  //   .max(12, { message: 'El telefono es invalido, maximo 12 numeros' }),
-  // occupations: z.array(z.string()).optional(),
+  name: z.string().min(1, { message: messages.required }),
+  lastname: z.string().min(1, { message: messages.required }),
+  province: z.string().min(1, { message: messages.required }),
+  city: z.string().min(1, { message: messages.required }),
+  address: z.string().min(1, { message: messages.required }),
+  number: z
+    .string()
+    .min(1, { message: messages.required })
+    .regex(/^\d+.{1,}$/, { message: 'Debe contener solo numeros' })
+    .max(99999, { message: 'El numero es invalido' }),
+  floor: z.string().optional(),
+  postalCode: z.string().optional(),
+  areaCode: z.string(),
+  phone: z
+    .string()
+    .min(1, { message: messages.required })
+    .regex(/^\d+$/, { message: 'Debe contener solo numeros' })
+    .min(8, { message: 'El telefono es invalido, minimo 8 numeros' })
+    .max(12, { message: 'El telefono es invalido, maximo 12 numeros' }),
+  occupations: z.array(z.string()).optional(),
 });
 
 /*** RECUPERAR CONTRASEÑA ***/

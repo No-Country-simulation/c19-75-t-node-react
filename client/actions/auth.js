@@ -1,9 +1,5 @@
 'use server';
-import {
-  LoginSchema,
-  RegisterSchema,
-  ResetPasswordSchema,
-} from '@/libs/validations';
+import { LoginSchema, RegisterSchema, ResetPasswordSchema } from '@/libs/validations';
 import { createSession, destroySession } from '@/libs/sessions';
 import { loginUser, getUserIdByEmail, createUser } from '@/data/db';
 
@@ -37,9 +33,9 @@ export async function login(prevState, formData) {
   }
 
   // 4. Crear la sesion
-  const userId = user.id.toString();
+  const { id, name, isWorker } = user;
 
-  await createSession(userId); // userId
+  await createSession(id, name, isWorker);
   return {
     ...prevState,
     errors: { principal: ['Credenciales correctas'] },
@@ -59,16 +55,16 @@ export async function singup(prevState, formData) {
     email: formData.get('email'),
     password: formData.get('password'),
     name: formData.get('name'),
-    // lastname: formData.get('lastname'),
-    // province: formData.get('province'),
-    // city: formData.get('city'),
-    // address: formData.get('address'),
-    // number: formData.get('number'),
-    // floor: formData.get('floor'),
-    // postalCode: formData.get('postalCode'),
-    // areaCode: '+54',
-    // phone: formData.get('phone'),
-    // occupations: formData.getAll('occupations'),
+    lastname: formData.get('lastname'),
+    province: formData.get('province'),
+    city: formData.get('city'),
+    address: formData.get('address'),
+    number: formData.get('number'),
+    floor: formData.get('floor'),
+    postalCode: formData.get('postalCode'),
+    areaCode: '+54',
+    phone: formData.get('phone'),
+    occupations: formData.getAll('occupations'),
   });
   if (!validateFields.success) {
     console.log('not succes');
@@ -83,21 +79,25 @@ export async function singup(prevState, formData) {
   const { email } = validateFields.data; // FIXME: tomar todos los datos
 
   // 2. Comprobar si el usuario ya existe
-  const existingUser = await getUserIdByEmail(email);
+  const existingUser = false;
 
   if (existingUser) {
     return {
-      message:
-        'El email ya esta registrado, porfavor intente con otro o inicie sesion',
+      ...prevState,
+      zodErrors: { email: ['El email ya esta registrado'] },
+      message: 'El email ya esta registrado',
     };
   }
-  // 4. Crear el usuario en la base de datos
-  const user = await createUser(validateFields.data);
+
+  // 3. Crear el usuario en la base de datos
+  // const user = await createUser(validateFields.data);
+
+  const user = {};
   if (!user) {
     return { message: 'Error al registrar el usuario' };
   }
 
-  // 5. Crear la sesion
+  // 4. Crear la sesion
   const userId = user.id.toString();
   await createSession(userId);
 }
