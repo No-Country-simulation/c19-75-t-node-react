@@ -18,55 +18,55 @@ const homeMarketplace = () => {
           Explorar todos el laburos disponibles
         </Link>
         <div className={styles.categories}>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/mantenimiento" legacyBehavior>
             <a className={styles.button}>
               <GrVmMaintenance className={styles.icon} />
               <h3 className={styles.title}>Mantenimiento</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/electricista" legacyBehavior>
             <a className={styles.button}>
               <MdElectricBolt  className={styles.icon} />
               <h3 className={styles.title}>Electricista</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/plomeria" legacyBehavior>
             <a className={styles.button}>
               <MdOutlinePlumbing className={styles.icon} />
               <h3 className={styles.title}>Plomería</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/gasista" legacyBehavior>
             <a className={styles.button}>
               <FaFire className={styles.icon} />
               <h3 className={styles.title}>Gasista</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/albañileria" legacyBehavior>
             <a className={styles.button}>
               <MdConstruction className={styles.icon} />
               <h3 className={styles.title}>Albañilería</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/jardineria" legacyBehavior>
             <a className={styles.button}>
               <GiGardeningShears className={styles.icon} />
               <h3 className={styles.title}>Jardinería</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/laburos/pintureria" legacyBehavior>
             <a className={styles.button}>
               <FaPaintRoller className={styles.icon} />
               <h3 className={styles.title}>Pinturería</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/carpinteria" legacyBehavior>
             <a className={styles.button}>
               <MdCarpenter className={styles.icon} />
               <h3 className={styles.title}>Carpintería</h3>
             </a>
           </Link>
-          <Link href="/" legacyBehavior>
+          <Link href="/herreria" legacyBehavior>
             <a className={styles.button}>
               <GiBlacksmith className={styles.icon} />
               <h3 className={styles.title}>Herrería</h3>

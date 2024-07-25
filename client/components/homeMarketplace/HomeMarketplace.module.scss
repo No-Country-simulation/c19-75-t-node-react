@@ -62,15 +62,8 @@
                 cursor: pointer;
 
                 &:hover {
-                    background-color: #9BD002;
+                    background-color: #e6e6e6;
                     transform: scale(1.05);
-                    border: white;
-                    .title{
-                        color: white;
-                    }
-                    .icon {
-                        color: white;
-                    }
                 }
                     .title{
                         font-size: 20px;

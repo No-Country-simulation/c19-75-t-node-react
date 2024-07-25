@@ -133,7 +133,7 @@ const Header = () => {
             <Link
               href={
                 pathname.startsWith("/laburos")
-                  ? "/laburos/gasistas"
+                  ? "/laburos/gasista"
                   : "/trabajadores/gasistas"
               }
               className={styles.link}
@@ -144,7 +144,7 @@ const Header = () => {
             <Link
               href={
                 pathname.startsWith("/laburos")
-                  ? "/laburos/electricistas"
+                  ? "/laburos/electricista"
                   : "/trabajadores/electricistas"
               }
               className={styles.link}
