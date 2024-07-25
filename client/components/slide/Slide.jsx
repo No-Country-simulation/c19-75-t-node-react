@@ -12,11 +12,11 @@ const Slide = ({ children, slidesToShow, arrowsScroll }) => {
             Cual es tu <span className={styles.urgency}>urgencia?</span>
             <div className={styles.subtitle}>
               Explora los distintos profesionales que pueden darle una solución
-              a tus problemas.
-              <Link href="/" legacyBehavior>
-                <a>Ver todas</a>
-              </Link>
+              a tu problema.
             </div>
+              <Link href="/trabajadores" legacyBehavior>
+                <a>Ver todos los trabajadores</a>
+              </Link>
           </h1>
         </div>
         <Slider slidesToShow={slidesToShow} arrowsScroll={arrowsScroll}>

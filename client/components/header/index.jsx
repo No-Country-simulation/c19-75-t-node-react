@@ -82,6 +82,9 @@ const Header = () => {
                       </Link>
                     </>
                   )}
+                  <Link href="/add" className={styles.link} legacyBehavior>
+                    Ofrecer un laburo
+                  </Link>
                   <Link href="/messages" className={styles.link} legacyBehavior>
                     Mensajes
                   </Link>
