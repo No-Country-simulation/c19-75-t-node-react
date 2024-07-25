@@ -9,6 +9,7 @@ const Header = () => {
   const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState(true)
+  const [isTrabajador, setIsTrabajador] = useState(false)
 
   const pathname = usePathname();
 
@@ -58,38 +59,38 @@ const Header = () => {
           {user && (
             <div className={styles.user} onClick={() => setOpen(!open)}>
               <img src="" alt="" />
-              <span>{user.username}</span>
+              <span>{user.username || "Nombre usuario"}</span>
               {open && (
                 <div className={styles.options}>
-                  {user?.isTrabajador && (
+                  {isTrabajador && (
                     <>
                       <Link
                         href="/mislaburos"
                         className={styles.link}
                         legacyBehavior
                       >
-                        Laburos
+                        MIS LABUROS Y SOLICITUDES
                       </Link>
                       <Link href="/add" className={styles.link} legacyBehavior>
-                        Agregar nuevo laburo
+                        AGREGAR NUEVO LABURO
                       </Link>
                       <Link
                         href="/orders"
                         className={styles.link}
                         legacyBehavior
                       >
-                        Encargos
+                        SOLICITUDES
                       </Link>
                     </>
                   )}
                   <Link href="/add" className={styles.link} legacyBehavior>
-                    Ofrecer un laburo
+                    PUBLICAR OFERTA DE LABURO
                   </Link>
                   <Link href="/messages" className={styles.link} legacyBehavior>
-                    Mensajes
+                    MENSAJES
                   </Link>
                   <Link href="/" className={styles.link} legacyBehavior>
-                    Cerrar sesión
+                    CERRAR SESION
                   </Link>
                 </div>
               )}

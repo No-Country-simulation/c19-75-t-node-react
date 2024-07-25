@@ -15,7 +15,7 @@ const homeMarketplace = () => {
           Explorá las distintas categorías y encontrá el laburo ideal para vos.
         </h2>
         <Link href="/laburos" className={styles.button}>
-          Explorar todos el laburos disponibles
+          Explorar todos los laburos disponibles
         </Link>
         <div className={styles.categories}>
           <Link href="/laburos/mantenimiento" legacyBehavior>
@@ -42,7 +42,7 @@ const homeMarketplace = () => {
               <h3 className={styles.title}>Gasista</h3>
             </a>
           </Link>
-          <Link href="/laburos/albañileria" legacyBehavior>
+          <Link href="/laburos/albanileria" legacyBehavior>
             <a className={styles.button}>
               <MdConstruction className={styles.icon} />
               <h3 className={styles.title}>Albañilería</h3>

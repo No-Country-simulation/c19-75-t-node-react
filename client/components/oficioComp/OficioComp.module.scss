@@ -41,7 +41,7 @@
             .button {
                 display: flex;
                 justify-content: center;
-                width: 170px;
+                width: 270px;
                 background-color: #9bd002;
                 color: white;
                 padding: 10px 20px;
@@ -50,6 +50,7 @@
                 font-weight: 500;
                 cursor: pointer;
                 margin-bottom: 20px;
+                margin-top: 10px;
                 :hover{
                     background-color: #6f9401;
                 }
