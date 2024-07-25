@@ -1,4 +1,4 @@
-.trabajo{
+.laburo{
     display: flex;
     justify-content: center;
     .container{
@@ -246,7 +246,8 @@
 
 
         }
-        .right{
+
+        .right {
             flex: 1;
             border: 1px solid lightgray;
             padding: 20px;
@@ -258,33 +259,34 @@
             top: 150px;
             max-height: 470px;
             height: auto;
-            overflow-y: auto;
-
+            overflow-y: auto; 
+            
+            
             > * {
-                flex-shrink: 0;
-              }
-              
-            p{
-                color: rgb(110, 110, 110);
+              flex-shrink: 0;
             }
-
+          
+            p {
+              color: rgb(110, 110, 110);
+            }
+            
             .details{
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 font-size: 14px;
-
+                
                 .item{
                     display: flex;
                     align-items: center;
                     gap: 10px;
-
+                    
                     .icon{
                         width: 20px;
                     }
                 }
             }
-
+            
             .features{
                 display: flex;
                 flex-direction: column;
@@ -301,19 +303,22 @@
                     }
                 }
             }
-
+            
             .button{
                 margin-top: 10px;
                 display: flex;
                 justify-content: center;
                 background-color: #9BD002;
                 padding: 10px;
-                color: white;
+                color: rgb(255, 255, 255);
                 border: none;
                 font-weight: 500;
                 font-size: 19px;
                 border-radius: 5px;
             }
+
+            
         }
     }
 }
+    

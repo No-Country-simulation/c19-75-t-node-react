@@ -1,15 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import styles from "./Laburos.module.scss";
+import styles from "./LaburosPorOficio.module.scss";
 import { FaSort } from "react-icons/fa";
-import AllLaburosCard from "@/components/allLaburosCard/AllLaburosCard";
-import { ofertas } from "@/data";
+import { useParams } from "next/navigation";
+import LaburosPorOficioList from "@/components/laburosPorOficioList/LaburosPorOficioList";
 
-const Laburos = () => {
+
+const LaburosPorOficio = () => {
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("laburos");
-
+  const params = useParams()
+  const oficio = params["laburosPorOficio"]
+  
   const reSort = (type) => {
     setSort(type);
     setOpen(false);
@@ -18,47 +21,43 @@ const Laburos = () => {
   return (
     <div className={styles.laburos}>
       <div className={styles.container}>
-        <span className={styles.breadcrumbs}>LABURAPP / LABUROS /</span>
-        <h1>Laburos </h1>
+        <span className={styles.breadcrumbs}>LABURAPP / LABUROS / {oficio === "albanileria" ? "ALBAÑILERIA" : oficio.toUpperCase()}</span>
+        <h1>{oficio === "albanileria" ? "Albañilería" : oficio.charAt(0).toUpperCase() + oficio.slice(1).toLowerCase()}</h1>
         <p>
-          Explora todos los laburos disponibles a los que puedes
-          postularte.
+          Explora los distintos laburos de {oficio} a los que podrías postularte.
         </p>
         <div className={styles.menu}>
-          {/*<div className={styles.left}>
+          <div className={styles.left}>
             <span>Presupuesto</span>
             <input type="text" placeholder="min" />
             <input type="text" placeholder="max" />
             <button>Aplicar</button>
-          </div>*/}
+          </div>
           <div className={styles.right}>
             <span className={styles.sortBy}>Ordenar por:</span>
             <span className={styles.sortType}>
-              {sort === "laburos" ? "Más valorados" : "Más cercanos"}
+              {sort === "laburos" ? "Más baratos" : "Más contratados"}
             </span>
             <FaSort className={styles.icon} onClick={() => setOpen(!open)} />
             {open && (
               <div className={styles.rightMenu}>
                 {sort === "laburos" ? (
                   <span onClick={() => reSort("createdAt")}>
-                    Más cercanos
+                    Más contratados
                   </span>
                 ) : (
-                  <span onClick={() => reSort("laburos")}>Más valorados</span>
+                  <span onClick={() => reSort("laburos")}>Más baratos</span>
                 )}
               </div>
             )}
           </div>
         </div>
         <div className={styles.cards}>
-          {ofertas.map(oferta=>(
-            <AllLaburosCard key={oferta.id} item={oferta} />
-          ))}
+            <LaburosPorOficioList oficio={oficio}/>
         </div>
       </div>
     </div>
   );
 };
 
-export default Laburos;
-
+export default LaburosPorOficio;
