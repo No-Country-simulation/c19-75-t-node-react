@@ -36,6 +36,7 @@ const Header = () => {
   const handleLogout = async () => {
     await logout();
     setSessionActive(false);
+    setOpen(false);
   };
 
   const SignupRender = () => {
@@ -68,24 +69,44 @@ const Header = () => {
   const OptionsRender = ({ isWorker }) => {
     return (
       <div className={styles.options}>
-        <Link href={`/${userSessionData.name}`} className={styles.link}>
+        <Link
+          href={`/${userSessionData.name}`}
+          className={styles.link}
+          onClick={() => setOpen(false)}
+        >
           Perfil
         </Link>
         {isWorker && (
           <>
-            <Link href={`/${userSessionData.name}?opcion=laburos`} className={styles.link}>
+            <Link
+              href={`/${userSessionData.name}?opcion=laburos`}
+              className={styles.link}
+              onClick={() => setOpen(false)}
+            >
               Laburos
             </Link>
-            <Link href={`/${userSessionData.name}?opcion=ordenes`} className={styles.link}>
+            <Link
+              href={`/${userSessionData.name}?opcion=ordenes`}
+              className={styles.link}
+              onClick={() => setOpen(false)}
+            >
               Ordenes
             </Link>
-            <Link href={`/${userSessionData.name}?opcion=postulaciones`} className={styles.link}>
+            <Link
+              href={`/${userSessionData.name}?opcion=postulaciones`}
+              className={styles.link}
+              onClick={() => setOpen(false)}
+            >
               Postulaciones
             </Link>
           </>
         )}
         {!isWorker && (
-          <Link href={`/${userSessionData.name}?opcion=changas`} className={styles.link}>
+          <Link
+            href={`/${userSessionData.name}?opcion=changas`}
+            className={styles.link}
+            onClick={() => setOpen(false)}
+          >
             Changas
           </Link>
         )}
