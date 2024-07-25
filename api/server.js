@@ -3,6 +3,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/user.route');
 const trabajosRouter = require('./routes/trabajos.route');
+const loginRouter = require('./routes/login.route');
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,7 @@ connectDB().then(() => {
     // Definir rutas y endpoints
     app.use('/api/users', userRoutes);
     app.use('/api/trabajos', trabajosRouter);
+    app.use('/api/login', loginRouter);
 
     // Iniciar el servidor
     const PORT = process.env.PORT || 5000;
