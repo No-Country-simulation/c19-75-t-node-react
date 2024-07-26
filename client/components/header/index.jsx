@@ -1,30 +1,30 @@
-'use client';
-import Link from 'next/link';
-import styles from './Header.module.scss';
+'use client'
+import Link from 'next/link'
+import styles from './Header.module.scss'
 
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import { logout } from '@/actions/auth';
-import { useHeaderContext } from '@/context/HeaderContext';
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+import { logout } from '@/actions/auth'
+import { useHeaderContext } from '@/context/HeaderContext'
 
 const Header = () => {
-    const { userSessionData, setUserSessionData, setSessionActive } = useHeaderContext();
-    const [active, setActive] = useState(true);
-    const [open, setOpen] = useState(false);
+    const { userSessionData, setUserSessionData, setSessionActive } = useHeaderContext()
+    const [active, setActive] = useState(true)
+    const [open, setOpen] = useState(false)
 
-    const pathname = usePathname();
+    const pathname = usePathname()
 
     const isActive = () => {
-        window.scrollY > 0 ? setActive(true) : setActive(false);
-    };
+        window.scrollY > 0 ? setActive(true) : setActive(false)
+    }
 
     useEffect(() => {
-        window.addEventListener('scroll', isActive);
+        window.addEventListener('scroll', isActive)
 
         return () => {
-            window.removeEventListener('scroll', isActive);
-        };
-    }, []);
+            window.removeEventListener('scroll', isActive)
+        }
+    }, [])
 
     // const userSessionData = {
     //     id: 1,
@@ -34,10 +34,10 @@ const Header = () => {
     // const userSessionData = null;
 
     const handleLogout = async () => {
-        await logout();
-        setSessionActive(false);
-        setOpen(false);
-    };
+        await logout()
+        setSessionActive(false)
+        setOpen(false)
+    }
 
     const SignupRender = () => {
         return (
@@ -64,8 +64,8 @@ const Header = () => {
                     </div>
                 )}
             </>
-        );
-    };
+        )
+    }
     const OptionsRender = ({ isWorker }) => {
         return (
             <div className={styles.options}>
@@ -77,45 +77,35 @@ const Header = () => {
                     Perfil
                 </Link>
                 {isWorker && (
-                    <>
-                        <Link
-                            href={`/${userSessionData.name}?opcion=laburos`}
-                            className={styles.link}
-                            onClick={() => setOpen(false)}
-                        >
-                            Laburos
-                        </Link>
-                        <Link
-                            href={`/${userSessionData.name}?opcion=ordenes`}
-                            className={styles.link}
-                            onClick={() => setOpen(false)}
-                        >
-                            Ordenes
-                        </Link>
-                        <Link
-                            href={`/${userSessionData.name}?opcion=postulaciones`}
-                            className={styles.link}
-                            onClick={() => setOpen(false)}
-                        >
-                            Postulaciones
-                        </Link>
-                    </>
-                )}
-                {!isWorker && (
                     <Link
-                        href={`/${userSessionData.name}?opcion=changas`}
+                        href={`/${userSessionData.name}?opcion=solicitudes`}
                         className={styles.link}
                         onClick={() => setOpen(false)}
                     >
-                        Changas
+                        Solicitudes
                     </Link>
                 )}
+                <Link
+                    href={`/${userSessionData.name}?opcion=trabajos`}
+                    className={styles.link}
+                    onClick={() => setOpen(false)}
+                >
+                    {/* FIXME: Decidir el texto */}
+                    {isWorker ? 'Trabajos' : 'Ofertas de trabajo'}
+                </Link>
+                <Link
+                    href={`/${userSessionData.name}?opcion=postulaciones`}
+                    className={styles.link}
+                    onClick={() => setOpen(false)}
+                >
+                    Postulaciones
+                </Link>
                 <button href="/" className={`${styles.link} ${styles.linkMenu}`} onClick={handleLogout}>
                     Cerrar sesión
                 </button>
             </div>
-        );
-    };
+        )
+    }
     return (
         <header className={`${styles.navbar} ${active || pathname !== '/' ? styles.active : ''}`}>
             <div className={styles.container}>
@@ -132,7 +122,18 @@ const Header = () => {
                         <SignupRender />
                     ) : (
                         <>
-                            {!userSessionData?.isWorker && <span>Ofrecer mis changas</span>}
+                            {!userSessionData?.isWorker && (
+                                <button className={styles.buttonCliente}>
+                                    <Link
+                                        className={styles.buttonLink}
+                                        onClick={() => setOpen(false)}
+                                        href={`/`}
+                                        // href={`/add`}
+                                    >
+                                        Publicar oferta de Trabajo
+                                    </Link>
+                                </button>
+                            )}
                             <div className={styles.user}>
                                 <div onClick={() => setOpen(!open)}>
                                     <img src="" alt="" />
@@ -256,7 +257,7 @@ const Header = () => {
                 </>
             )}
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header
