@@ -1,6 +1,6 @@
-"use client";
-import Link from "next/link";
-import styles from "./Header.module.scss";
+'use client';
+import Link from 'next/link';
+import styles from './Header.module.scss';
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -36,6 +36,7 @@ const Header = () => {
     const handleLogout = async () => {
         await logout();
         setSessionActive(false);
+        setOpen(false);
     };
 
     const SignupRender = () => {
@@ -68,24 +69,44 @@ const Header = () => {
     const OptionsRender = ({ isWorker }) => {
         return (
             <div className={styles.options}>
-                <Link href={`/${userSessionData.name}`} className={styles.link}>
+                <Link
+                    href={`/${userSessionData.name}`}
+                    className={styles.link}
+                    onClick={() => setOpen(false)}
+                >
                     Perfil
                 </Link>
                 {isWorker && (
                     <>
-                        <Link href={`/${userSessionData.name}?opcion=laburos`} className={styles.link}>
+                        <Link
+                            href={`/${userSessionData.name}?opcion=laburos`}
+                            className={styles.link}
+                            onClick={() => setOpen(false)}
+                        >
                             Laburos
                         </Link>
-                        <Link href={`/${userSessionData.name}?opcion=ordenes`} className={styles.link}>
+                        <Link
+                            href={`/${userSessionData.name}?opcion=ordenes`}
+                            className={styles.link}
+                            onClick={() => setOpen(false)}
+                        >
                             Ordenes
                         </Link>
-                        <Link href={`/${userSessionData.name}?opcion=postulaciones`} className={styles.link}>
+                        <Link
+                            href={`/${userSessionData.name}?opcion=postulaciones`}
+                            className={styles.link}
+                            onClick={() => setOpen(false)}
+                        >
                             Postulaciones
                         </Link>
                     </>
                 )}
                 {!isWorker && (
-                    <Link href={`/${userSessionData.name}?opcion=changas`} className={styles.link}>
+                    <Link
+                        href={`/${userSessionData.name}?opcion=changas`}
+                        className={styles.link}
+                        onClick={() => setOpen(false)}
+                    >
                         Changas
                     </Link>
                 )}
@@ -125,119 +146,117 @@ const Header = () => {
                     )}
                 </div>
             </div>
-          )}
-        </div>
-      </div>
-      {(active || pathname !== "/") && (
-        <>
-          <hr />
-          <div className={styles.menu}>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/mantenimiento"
-                  : "/trabajadores/mantenimiento"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Mantenimiento
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/albanileria"
-                  : "/trabajadores/albanileria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Albañiería
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/plomeria"
-                  : "/trabajadores/plomeria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Plomería
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/gasista"
-                  : "/trabajadores/gasistas"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Gasistas
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/electricista"
-                  : "/trabajadores/electricistas"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Electricistas
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/jardineria"
-                  : "/trabajadores/jardineria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Jardinería
-            </Link>
 
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/pintureria"
-                  : "/trabajadores/pintureria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Pinturería
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/carpinteria"
-                  : "/trabajadores/carpinteria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Carpintería
-            </Link>
-            <Link
-              href={
-                pathname.startsWith("/laburos")
-                  ? "/laburos/herreria"
-                  : "/trabajadores/herreria"
-              }
-              className={styles.link}
-              legacyBehavior
-            >
-              Herrería
-            </Link>
-          </div>
-          <hr />
-        </>
-      )}
-    </header>
-  );
+            {(active || pathname !== '/') && (
+                <>
+                    <hr />
+                    <div className={styles.menu}>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/mantenimiento'
+                                    : '/trabajadores/mantenimiento'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Mantenimiento
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/albanileria'
+                                    : '/trabajadores/albanileria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Albañiería
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/plomeria'
+                                    : '/trabajadores/plomeria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Plomería
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/gasista'
+                                    : '/trabajadores/gasistas'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Gasistas
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/electricista'
+                                    : '/trabajadores/electricistas'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Electricistas
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/jardineria'
+                                    : '/trabajadores/jardineria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Jardinería
+                        </Link>
+
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/pintureria'
+                                    : '/trabajadores/pintureria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Pinturería
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/carpinteria'
+                                    : '/trabajadores/carpinteria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Carpintería
+                        </Link>
+                        <Link
+                            href={
+                                pathname.startsWith('/laburos')
+                                    ? '/laburos/herreria'
+                                    : '/trabajadores/herreria'
+                            }
+                            className={styles.link}
+                            legacyBehavior
+                        >
+                            Herrería
+                        </Link>
+                    </div>
+                    <hr />
+                </>
+            )}
+        </header>
+    );
 };
 
 export default Header;
