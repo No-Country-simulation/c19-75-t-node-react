@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import estilo from '../perfilUsuario.module.scss';
+import estilo from './perfilUsuario.module.scss';
 
 const PerfilUsuario = ({ params, searchParams }) => {
     const { username } = params;
