@@ -2,28 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/user.route');
+const trabajosRouter = require('./routes/trabajos.route');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Variable para almacenar el pool de conexiones
-let pool;
-
-connectDB().then((dbPool) => {
-    pool = dbPool;
-
+connectDB().then(() => {
     // Definir rutas y endpoints
     app.use('/api/users', userRoutes);
-
-    // Ruta de prueba
-    // app.get('/api/status', (req, res) => {
-    //     if (pool) {
-    //         res.send('Conexión establecida con SQL Server');
-    //     } else {
-    //         res.status(500).send('No se pudo establecer la conexión con SQL Server');
-    //     }
-    // });
+    app.use('/api/trabajos', trabajosRouter);
 
     // Iniciar el servidor
     const PORT = process.env.PORT || 5000;

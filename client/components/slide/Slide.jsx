@@ -13,7 +13,7 @@ const Slide = ({ children, slidesToShow, arrowsScroll }) => {
             <div className={styles.subtitle}>
               Explora los distintos profesionales que pueden darle una solución
               a tus problemas.
-              <Link href="/" legacyBehavior>
+              <Link href="/trabajadores" legacyBehavior>
                 <a>Ver todas</a>
               </Link>
             </div>

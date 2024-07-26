@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import estilo from './perfilUsuario.module.scss';
+import estilo from '../perfilUsuario.module.scss';
 
 const PerfilUsuario = ({ params, searchParams }) => {
     const { username } = params;
@@ -20,21 +21,24 @@ const PerfilUsuario = ({ params, searchParams }) => {
     console.log('Opción:', opcion);
 
     const userId = '2'; // Valor por defecto para pruebas
+
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Función para obtener los datos del usuario desde la API
-        const fetchUser = async () => {
-            try {
-                const response = await fetch(`http://localhost:5000/api/users/${userId}`);
-                const data = await response.json();
-                setUser(data);
-            } catch (err) {
-                console.error('Error fetching user data:', err);
-            }
-        };
+        if (userId) {
+            // Función para obtener los datos del usuario desde la API
+            const fetchUser = async () => {
+                try {
+                    const response = await fetch(`http://localhost:5000/api/users/usuarios/${userId}`);
+                    const data = await response.json();
+                    setUser(data);
+                } catch (err) {
+                    console.error('Error fetching user data:', err);
+                }
+            };
 
-        fetchUser();
+            fetchUser();
+        }
     }, [userId]);
 
     if (!user) {
@@ -65,7 +69,9 @@ const PerfilUsuario = ({ params, searchParams }) => {
                         </h1>
                         {user.esprofesional && (
                             <>
-                                <p className={estilo.textoCategoria}>{user.profesionalData.categorias.join(', ')}</p>
+                                <p className={estilo.textoCategoria}>
+                                    {user.profesionalData.categorias.join(', ')}
+                                </p>
                                 <p className={estilo.textoValoracion}>
                                     Calificación:{' '}
                                     {user.profesionalData.puntuacion_promedio
