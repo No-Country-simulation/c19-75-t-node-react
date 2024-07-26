@@ -4,27 +4,27 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import estilo from './perfilUsuario.module.scss';
+import { useSessionContext } from '@/context/SessionContext';
 
 const PerfilUsuario = ({ params, searchParams }) => {
-    const { username } = params;
-    /*
-     * username: Represeta la url dinamica, no es la id
-     * La utilizamos visualmente, debido a que la id del usuario es la que esta en la cookie
-     */
+    const { userSessionData, sessionActive } = useSessionContext();
+    const { userId } = params;
     const { opcion } = searchParams;
-    /*
-     * Opcion: Representa la opción seleccionada del menu de navegación
-     * Puede ser 'laburos', 'ordenes', 'postulaciones', 'changas'
-     * La utilizamos para redenderizar componentes segun la opcion.
-     */
-    console.log('Username:', username);
-    console.log('Opción:', opcion);
-
-    const userId = '2'; // Valor por defecto para pruebas
-
     const [user, setUser] = useState(null);
+    const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
 
     useEffect(() => {
+        console.log('userId:', userId);
+        console.log('userSessionData', userSessionData);
+        console.log('sessionActive:', sessionActive);
+        // Comprobar si hay un usuario logueado
+        if (sessionActive) {
+            // Comprobar si el usuario logueado es el mismo que el perfil que se está viendo
+            if (userSessionData.id === userId) {
+                setIsViewingOwnProfile(true);
+            }
+        }
+
         if (userId) {
             // Función para obtener los datos del usuario desde la API
             const fetchUser = async () => {
@@ -103,7 +103,7 @@ const PerfilUsuario = ({ params, searchParams }) => {
                         <h2 className={estilo.tituloTrabajos}>Trabajos Realizados</h2>
                         <hr className={estilo.separador} />
                         <ul>
-                            {user.trabajosData.map((trabajo, index) => {
+                            {user?.trabajosData.map((trabajo, index) => {
                                 const fecha = new Date(trabajo.fecha_creacion);
                                 const fechaFormateada = fecha.toLocaleDateString();
 
