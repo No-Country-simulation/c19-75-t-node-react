@@ -1,30 +1,30 @@
-'use client'
-import Link from 'next/link'
-import styles from './Header.module.scss'
+'use client';
+import Link from 'next/link';
+import styles from './Header.module.scss';
 
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
-import { logout } from '@/actions/auth'
-import { useHeaderContext } from '@/context/HeaderContext'
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { logout } from '@/actions/auth';
+import { useSessionContext } from '@/context/SessionContext';
 
 const Header = () => {
-    const { userSessionData, setUserSessionData, setSessionActive } = useHeaderContext()
-    const [active, setActive] = useState(true)
-    const [open, setOpen] = useState(false)
+    const { userSessionData, setSessionActive } = useSessionContext();
+    const [active, setActive] = useState(true);
+    const [open, setOpen] = useState(false);
 
-    const pathname = usePathname()
+    const pathname = usePathname();
 
     const isActive = () => {
-        window.scrollY > 0 ? setActive(true) : setActive(false)
-    }
+        window.scrollY > 0 ? setActive(true) : setActive(false);
+    };
 
     useEffect(() => {
-        window.addEventListener('scroll', isActive)
+        window.addEventListener('scroll', isActive);
 
         return () => {
-            window.removeEventListener('scroll', isActive)
-        }
-    }, [])
+            window.removeEventListener('scroll', isActive);
+        };
+    }, []);
 
     // const userSessionData = {
     //     id: 1,
@@ -34,10 +34,10 @@ const Header = () => {
     // const userSessionData = null;
 
     const handleLogout = async () => {
-        await logout()
-        setSessionActive(false)
-        setOpen(false)
-    }
+        await logout();
+        setSessionActive(false);
+        setOpen(false);
+    };
 
     const SignupRender = () => {
         return (
@@ -64,13 +64,13 @@ const Header = () => {
                     </div>
                 )}
             </>
-        )
-    }
+        );
+    };
     const OptionsRender = ({ isWorker }) => {
         return (
             <div className={styles.options}>
                 <Link
-                    href={`/${userSessionData.name}`}
+                    href={`/usuario/${userSessionData?.userId}`}
                     className={styles.link}
                     onClick={() => setOpen(false)}
                 >
@@ -78,7 +78,7 @@ const Header = () => {
                 </Link>
                 {isWorker && (
                     <Link
-                        href={`/${userSessionData.name}?opcion=solicitudes`}
+                        href={`/usuario/${userSessionData?.userId}?opcion=solicitudes`}
                         className={styles.link}
                         onClick={() => setOpen(false)}
                     >
@@ -86,7 +86,7 @@ const Header = () => {
                     </Link>
                 )}
                 <Link
-                    href={`/${userSessionData.name}?opcion=trabajos`}
+                    href={`/usuario/${userSessionData?.userId}?opcion=trabajos`}
                     className={styles.link}
                     onClick={() => setOpen(false)}
                 >
@@ -94,7 +94,7 @@ const Header = () => {
                     {isWorker ? 'Trabajos' : 'Ofertas de trabajo'}
                 </Link>
                 <Link
-                    href={`/${userSessionData.name}?opcion=postulaciones`}
+                    href={`/usuario/${userSessionData?.userId}?opcion=postulaciones`}
                     className={styles.link}
                     onClick={() => setOpen(false)}
                 >
@@ -104,8 +104,8 @@ const Header = () => {
                     Cerrar sesión
                 </button>
             </div>
-        )
-    }
+        );
+    };
     return (
         <header className={`${styles.navbar} ${active || pathname !== '/' ? styles.active : ''}`}>
             <div className={styles.container}>
@@ -138,7 +138,7 @@ const Header = () => {
                                 <div onClick={() => setOpen(!open)}>
                                     <img src="" alt="" />
                                     <span className={styles.link}>
-                                        {userSessionData ? userSessionData.name : 'Menu'}
+                                        {userSessionData ? userSessionData?.name : 'Menu'}
                                     </span>
                                 </div>
                                 {open && <OptionsRender isWorker={userSessionData?.isWorker} />}
@@ -154,7 +154,7 @@ const Header = () => {
                     <div className={styles.menu}>
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
+                                userSessionData?.isWorker
                                     ? '/laburos/mantenimiento'
                                     : '/trabajadores/mantenimiento'
                             }
@@ -165,7 +165,7 @@ const Header = () => {
                         </Link>
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
+                                userSessionData?.isWorker
                                     ? '/laburos/albanileria'
                                     : '/trabajadores/albanileria'
                             }
@@ -175,22 +175,14 @@ const Header = () => {
                             Albañiería
                         </Link>
                         <Link
-                            href={
-                                pathname.startsWith('/laburos')
-                                    ? '/laburos/plomeria'
-                                    : '/trabajadores/plomeria'
-                            }
+                            href={userSessionData?.isWorker ? '/laburos/plomeria' : '/trabajadores/plomeria'}
                             className={styles.link}
                             legacyBehavior
                         >
                             Plomería
                         </Link>
                         <Link
-                            href={
-                                pathname.startsWith('/laburos')
-                                    ? '/laburos/gasista'
-                                    : '/trabajadores/gasistas'
-                            }
+                            href={userSessionData?.isWorker ? '/laburos/gasista' : '/trabajadores/gasistas'}
                             className={styles.link}
                             legacyBehavior
                         >
@@ -198,7 +190,7 @@ const Header = () => {
                         </Link>
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
+                                userSessionData?.isWorker
                                     ? '/laburos/electricista'
                                     : '/trabajadores/electricistas'
                             }
@@ -209,9 +201,7 @@ const Header = () => {
                         </Link>
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
-                                    ? '/laburos/jardineria'
-                                    : '/trabajadores/jardineria'
+                                userSessionData?.isWorker ? '/laburos/jardineria' : '/trabajadores/jardineria'
                             }
                             className={styles.link}
                             legacyBehavior
@@ -221,9 +211,7 @@ const Header = () => {
 
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
-                                    ? '/laburos/pintureria'
-                                    : '/trabajadores/pintureria'
+                                userSessionData?.isWorker ? '/laburos/pintureria' : '/trabajadores/pintureria'
                             }
                             className={styles.link}
                             legacyBehavior
@@ -232,7 +220,7 @@ const Header = () => {
                         </Link>
                         <Link
                             href={
-                                pathname.startsWith('/laburos')
+                                userSessionData?.isWorker
                                     ? '/laburos/carpinteria'
                                     : '/trabajadores/carpinteria'
                             }
@@ -242,11 +230,7 @@ const Header = () => {
                             Carpintería
                         </Link>
                         <Link
-                            href={
-                                pathname.startsWith('/laburos')
-                                    ? '/laburos/herreria'
-                                    : '/trabajadores/herreria'
-                            }
+                            href={userSessionData?.isWorker ? '/laburos/herreria' : '/trabajadores/herreria'}
                             className={styles.link}
                             legacyBehavior
                         >
@@ -257,7 +241,7 @@ const Header = () => {
                 </>
             )}
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
