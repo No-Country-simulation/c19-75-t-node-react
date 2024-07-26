@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
-import { FaSort } from "react-icons/fa";
-import TrabajadoresCard from "@/components/trabajadoresCard/TrabajadoresCard";
-import styles from "@/app/trabajadores/Trabajadores.module.scss";
+import { FaSort } from 'react-icons/fa';
+// import TrabajadoresCard from "@/components/trabajadoresCard/TrabajadoresCard";
+import AllTrabajadoresCard from '@/components/allTrabajadoresCard/AllTrabajadoresCard';
+import styles from '@/app/trabajadores/Trabajadores.module.scss';
 
 const categorias = {
     1: 'Pinturería',
@@ -19,7 +20,7 @@ const categorias = {
 
 const Trabajadores = () => {
     const [open, setOpen] = useState(false);
-    const [sort, setSort] = useState("laburos");
+    const [sort, setSort] = useState('laburos');
     const { id } = useParams();
     const [profesionales, setProfesionales] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,11 +52,11 @@ const Trabajadores = () => {
     }, [id]);
 
     useEffect(() => {
-        if (sort === "puntuacion") {
+        if (sort === 'puntuacion') {
             setProfesionales((prevProfesionales) =>
                 [...prevProfesionales].sort((a, b) => b.puntuacion - a.puntuacion)
             );
-        } else if (sort === "laburos") {
+        } else if (sort === 'laburos') {
             fetchProfesionales();
         }
     }, [sort]);
@@ -67,31 +68,27 @@ const Trabajadores = () => {
     const categoriaNombre = categorias[id];
 
     return (
-
         <div className={styles.trabajadores}>
             <div className={styles.container}>
-                <span className={styles.breadcrumbs}>LABURAPP / TRABAJADORES / CATEGORIA / {categoriaNombre} </span>
+                <span className={styles.breadcrumbs}>
+                    LABURAPP / TRABAJADORES / CATEGORIA / {categoriaNombre}{' '}
+                </span>
                 <h1>Todos los trabajadores</h1>
-                <p>
-                    Explora los distintos profesionales que podrían darte una solución.
-                </p>
+                <p>Explora los distintos profesionales que podrían darte una solución.</p>
                 <div className={styles.menu}>
-                    <div className={styles.left}>
-                    </div>
+                    <div className={styles.left}></div>
                     <div className={styles.right}>
                         <span className={styles.sortBy}>Ordenar por:</span>
                         <span className={styles.sortType}>
-                            {sort === "laburos" ? "Predeterminado" : "Mejor puntuación"}
+                            {sort === 'laburos' ? 'Predeterminado' : 'Mejor puntuación'}
                         </span>
                         <FaSort className={styles.icon} onClick={() => setOpen(!open)} />
                         {open && (
                             <div className={styles.rightMenu}>
-                                {sort === "laburos" ? (
-                                    <span onClick={() => reSort("puntuacion")}>
-                                        Mejor puntuación
-                                    </span>
+                                {sort === 'laburos' ? (
+                                    <span onClick={() => reSort('puntuacion')}>Mejor puntuación</span>
                                 ) : (
-                                    <span onClick={() => reSort("laburos")}>Predeterminado</span>
+                                    <span onClick={() => reSort('laburos')}>Predeterminado</span>
                                 )}
                             </div>
                         )}
