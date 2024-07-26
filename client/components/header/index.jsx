@@ -1,6 +1,6 @@
-'use client';
-import Link from 'next/link';
-import styles from './Header.module.scss';
+"use client";
+import Link from "next/link";
+import styles from "./Header.module.scss";
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -125,42 +125,119 @@ const Header = () => {
                     )}
                 </div>
             </div>
-            {active && pathname === '/' && (
-                <>
-                    <hr />
-                    <div className={styles.menu}>
-                        <Link href="/trabajadores/categorias/6" className={styles.link} legacyBehavior>
-                            Mantenimiento
-                        </Link>
-                        <Link href="/trabajadores/categorias/7" className={styles.link} legacyBehavior>
-                            Albañiería
-                        </Link>
-                        <Link href="/trabajadores/categorias/3" className={styles.link} legacyBehavior>
-                            Plomería
-                        </Link>
-                        <Link href="/trabajadores/categorias/3" className={styles.link} legacyBehavior>
-                            Gasistas
-                        </Link>
-                        <Link href="/trabajadores/categorias/4" className={styles.link} legacyBehavior>
-                            Electricistas
-                        </Link>
-                        <Link href="/trabajadores/categorias/5" className={styles.link} legacyBehavior>
-                            Jardinería
-                        </Link>
-                        <Link href="/trabajadores/categorias/1" className={styles.link} legacyBehavior>
-                            Pinturería
-                        </Link>
-                        <Link href="/trabajadores/categorias/8" className={styles.link} legacyBehavior>
-                            Carpintería
-                        </Link>
-                        <Link href="/trabajadores/categorias/2" className={styles.link} legacyBehavior>
-                            Herrería
-                        </Link>
-                    </div>
-                </>
-            )}
-        </header>
-    );
+          )}
+        </div>
+      </div>
+      {(active || pathname !== "/") && (
+        <>
+          <hr />
+          <div className={styles.menu}>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/mantenimiento"
+                  : "/trabajadores/mantenimiento"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Mantenimiento
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/albanileria"
+                  : "/trabajadores/albanileria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Albañiería
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/plomeria"
+                  : "/trabajadores/plomeria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Plomería
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/gasista"
+                  : "/trabajadores/gasistas"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Gasistas
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/electricista"
+                  : "/trabajadores/electricistas"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Electricistas
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/jardineria"
+                  : "/trabajadores/jardineria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Jardinería
+            </Link>
+
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/pintureria"
+                  : "/trabajadores/pintureria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Pinturería
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/carpinteria"
+                  : "/trabajadores/carpinteria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Carpintería
+            </Link>
+            <Link
+              href={
+                pathname.startsWith("/laburos")
+                  ? "/laburos/herreria"
+                  : "/trabajadores/herreria"
+              }
+              className={styles.link}
+              legacyBehavior
+            >
+              Herrería
+            </Link>
+          </div>
+          <hr />
+        </>
+      )}
+    </header>
+  );
 };
 
 export default Header;

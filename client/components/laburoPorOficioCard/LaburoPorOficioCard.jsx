@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import styles from "./LaburoCard.module.scss";
+import styles from "./LaburoPorOficioCard.module.scss";
 import Link from "next/link";
 import { FaHeart, FaStar, FaRegHeart } from "react-icons/fa";
 import { TbPlayerTrackNext } from "react-icons/tb";
 
-const LaburoCard = ({ item }) => {
+const LaburoPorOficioCard = ({ oferta, oficio, item }) => {
   const [fav, setFav] = useState(false);
 
   return (
-    <div className={styles.link}>
+    <Link href={`/laburos/${oficio}/${oferta.id}`} className={styles.link}>
       <div className={styles.laburoCard}>
         <img src={item.img} alt="" />
         <div className={styles.info}>
@@ -45,9 +45,8 @@ const LaburoCard = ({ item }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
-export default LaburoCard;
-
+export default LaburoPorOficioCard;

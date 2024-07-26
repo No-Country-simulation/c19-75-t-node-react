@@ -413,3 +413,135 @@ export const ofertas = [
     },
 
 ]
+
+
+export const trabajadores = [
+    {
+        id: 1,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 2,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 3,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 4,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 5,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 6,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 7,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 8,
+        img:'/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+    {
+        id: 9,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 10,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 11,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 12,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 13,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 14,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+    {
+        id: 15,
+        img: '/img/asador.jpg',
+        pp: '/img/pp.png',
+        desc: "Profesional en albañileria",
+        star: 5,
+        username: "Walter Ferreyra",
+    },
+
+]
