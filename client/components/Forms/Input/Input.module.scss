@@ -1,37 +1,38 @@
+@import '@/styles/variables.scss';
 .input {
-  border-radius: 8px;
-  border-width: 1.25px;
-  padding: 12px;
-  width: 100%;
-  line-height: 22.5px;
-  background-color: #f8f8f8;
-  border-color: #e8e8e8;
-  font-size: 1rem;
+    border-radius: 8px;
+    border-width: 1.25px;
+    padding: 12px;
+    width: 100%;
+    line-height: 22.5px;
+    background-color: #f8f8f8;
+    border-color: #e8e8e8;
+    font-size: 1rem;
 
-  &:focus {
-    background-color: #f0f0f0;
-    border-color: lightsalmon;
-  }
+    &:focus {
+        background-color: #f0f0f0;
+        border-color: $primary-color;
+    }
 
-  &::placeholder {
-    color: #bebebe;
-    font-size: 0.8rem;
-  }
-  &__error {
-    border-color: red;
-  }
+    &::placeholder {
+        color: #bebebe;
+        font-size: 0.8rem;
+    }
+    &__error {
+        border-color: red;
+    }
 
-  &__success {
-    border-color: green;
-  }
+    &__success {
+        border-color: green;
+    }
 
-  &__hidden {
-    display: block;
-  }
+    &__hidden {
+        display: block;
+    }
 }
 
 .areaCode {
-  text-align: center;
-  padding-inline: 0;
-  height: 100%;
+    text-align: center;
+    padding-inline: 0;
+    height: 100%;
 }
