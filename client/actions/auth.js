@@ -77,10 +77,9 @@ export async function singup(prevState, formData) {
         postalCode: formData.get('postalCode'),
         areaCode: '+54',
         phone: formData.get('phone'),
-        occupations: formData.getAll('occupations'),
+        userOccupations: formData.get('userOccupations'),
     });
     if (!validateFields.success) {
-        console.log('not succes');
         return {
             ...prevState,
             zodErrors: validateFields.error // -> el objeto con los errores
@@ -89,7 +88,25 @@ export async function singup(prevState, formData) {
         };
     }
 
-    const { email } = validateFields.data; // FIXME: tomar todos los datos
+    // Obtener los campos
+    const {
+        userType,
+        email,
+        password,
+        name,
+        lastname,
+        province,
+        city,
+        address,
+        number,
+        floor,
+        postalCode,
+        phone,
+        userOccupations,
+    } = validateFields.data;
+    const userOccupationsArray = userOccupations.split(',').map((occupation) => parseInt(occupation, 10));
+
+    return null;
 
     // 2. Comprobar si el usuario ya existe
     const existingUser = false;
