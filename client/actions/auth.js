@@ -47,7 +47,8 @@ export async function login(prevState, formData) {
     }
 
     // 5. Crear la sesion
-    await createSession(res.id, res.name, res.isWorker);
+    const isWorker = res.esprofesional;
+    await createSession(res.id, res.name, isWorker);
     return {
         ...prevState,
         errors: { principal: ['Credenciales correctas'] },
