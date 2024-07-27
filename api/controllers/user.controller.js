@@ -3,7 +3,7 @@ const connectDB = require('../config/db');
 const getUserById = async (req, res) => {
     try {
         const pool = await connectDB();
-        const userId = req.params.id;
+        const userId = req.params.userId;
 
         // Consulta principal del usuario
         const userResult = await pool.request().query(`SELECT * FROM Usuarios WHERE id = ${userId}`);
@@ -55,4 +55,79 @@ const getUserById = async (req, res) => {
     }
 };
 
-module.exports = { getUserById };
+const getAllProfessionals = async (req, res) => {
+    try {
+        const pool = await connectDB();
+        const result = await pool.request().query(`
+           SELECT 
+                p.id AS profesional_id,
+                u.id AS usuario_id,
+                u.nombre AS nombre,
+                u.apellido AS apellido,
+                u.foto AS foto,
+                u.provincia AS provincia,
+                u.ciudad AS ciudad,
+                ISNULL(punt.puntuacion_promedio, 0) as puntuacion,
+                c.nombre AS categoria
+            FROM Profesionales p
+            INNER JOIN Usuarios u ON p.usuario_id = u.id
+            LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id
+            LEFT JOIN ProfesionalCategorias pc ON p.id = pc.ProfesionalID
+            LEFT JOIN Categorias c ON pc.CategoriaID = c.id;
+        `);
+
+        const trabajadores = result.recordset;
+
+        console.log(trabajadores); // Para depuración
+
+        res.status(200).json(trabajadores);
+
+    } catch (err) {
+        console.error('Error fetching professionals:', err);
+        res.status(500).json({ error: 'Error al obtener los profesionales' });
+    }
+};
+
+const getProfessionalsByCategory = async (req, res) => {
+    try {
+        const pool = await connectDB();
+        const id = req.params.id;
+
+
+        const categoriaResult = await pool.request().query(`
+                SELECT 
+                p.id AS profesional_id, 
+                u.id AS usuario_id,
+                u.nombre AS nombre,
+                u.apellido AS apellido,
+                u.foto AS foto,
+                u.provincia AS provincia,
+                u.ciudad AS ciudad,
+                ISNULL(punt.puntuacion_promedio, 0) as puntuacion,
+                c.nombre AS categoria
+                FROM Profesionales p
+                INNER JOIN Usuarios u ON p.usuario_id = u.id
+                LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id
+                LEFT JOIN ProfesionalCategorias pc ON p.id = pc.ProfesionalID
+                LEFT JOIN Categorias c ON pc.CategoriaID = c.id
+                WHERE c.id = ${id}`);
+
+        if (categoriaResult.recordset.length === 0) {
+            return res.status(404).json({ error: 'No hay usuarios encontrados para esta categoria' });
+        }
+
+        const categoriaResultados = categoriaResult.recordset;
+        console.log(categoriaResultados); // Para depuración
+        res.status(200).json(categoriaResultados);
+
+    } catch (err) {
+        console.error('Error fetching professionals by category:', err);
+        res.status(500).json({ error: 'Error al obtener los profesionales' });
+    }
+};
+
+module.exports = {
+    getUserById,
+    getAllProfessionals,
+    getProfessionalsByCategory
+};

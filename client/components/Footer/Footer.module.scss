@@ -1,72 +1,83 @@
 @import '@/styles/variables.scss';
+
 .footer {
-  display: flex;
-  justify-content: center;
-  background-color: #f3f3f3;
-  color: #999;
+    display: flex;
+    justify-content: center;
+    background-color: #F3F3F3;
+    color: #999;
 
-  .icon {
-    fill: #999;
-    width: 24px;
-    height: 24px;
-    &:hover {
-      fill: $black-color;
-    }
-  }
-  .container {
-    width: 1400px;
-    margin: 50px;
-    .top {
-      display: flex;
-      justify-content: space-between;
-      .item {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    .icon {
+        fill: #999;
+        width: 24px;
+        height: 24px;
 
-        h2 {
-          font-size: $font-size-base;
-          font-weight: $font-weight-bold;
-          color: $gray-dark-color;
+        &:hover {
+            fill: $black-color;
         }
-        span {
-          font-weight: 300;
-        }
-      }
     }
 
-    hr {
-      margin: 50px 0px;
-      height: 0;
-      border: 1px solid $gray-light-color;
-    }
-    .bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      .left {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        h2 {
-          line-height: 1;
-        }
-        span {
-          display: block;
-          font-size: 13px;
-        }
-      }
-      .right {
-        display: flex;
-        align-items: center;
-        gap: 30px;
+    .container {
+        width: 1400px;
+        margin: 50px;
 
-        .social {
-          display: flex;
-          align-items: center;
-          gap: 20px;
+        .top {
+            display: flex;
+            justify-content: space-between;
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                h2 {
+                    font-size: $font-size-base;
+                    font-weight: $font-weight-bold;
+                    color: $gray-dark-color;
+                }
+
+                span {
+                    font-weight: 300;
+                }
+            }
         }
-      }
+
+        hr {
+            margin: 50px 0px;
+            height: 0;
+            border: 1px solid $gray-light-color;
+        }
+
+        .bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .left {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                h2 {
+                    line-height: 1;
+                }
+
+                span {
+                    display: block;
+                    font-size: 13px;
+                }
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+
+                .social {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+            }
+        }
     }
-  }
 }

@@ -1,0 +1,131 @@
+.contenedorGeneral {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.contenedorPrincipal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    margin-right: 10px;
+}
+
+.contenedorPerfil {
+    display: flex;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.perfilImagen {
+    border-radius: 50%;
+    border: 2px solid #333;
+}
+
+.contenedorPerfilTexto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 15%;
+}
+
+.textoNombre {
+    font-size: 3em;
+    color: #333;
+    margin: 0;
+}
+
+.textoCategoria {
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.textoValoracion {
+    margin: 0;
+    margin-top: 0.5em;
+    font-size: 1em;
+    color: #ff9900;
+}
+
+.textoLocalidad {
+    font-size: 1em;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.separador {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 1em 0;
+}
+
+.contenedorContactar {
+    margin-top: 1em;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.contenedorContactar button {
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contenedorContactar button:hover {
+    background-color: #005bb5;
+}
+
+.contenedorBio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    height: auto;
+    margin: 10px 0 10px 10px;
+}
+
+.textoBio {
+    text-align: justify;
+    padding: 15px;
+}
+
+.contenedorTrabajos {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.contenedorTrabajos ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contenedorTrabajos li {
+    margin: 5px 0;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}

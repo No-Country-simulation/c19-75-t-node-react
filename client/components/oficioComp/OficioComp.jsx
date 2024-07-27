@@ -8,7 +8,7 @@ const OficioComp = () => {
     <div className={styles.feature}>
       <div className={styles.container}>
         <div className={styles.item}>
-          <h1>Ofrecé tus laburos en Laburapp!</h1>
+          <h1>Ofrecé tus habilidades en Laburapp!</h1>
           <h2>Maximizá tu alcance y simplificá la búsqueda de clientes</h2>
           <div className={styles.title}>
             <CiCircleCheck className={styles.icon} />
@@ -38,7 +38,7 @@ const OficioComp = () => {
           </p>
 
           <Link href="/" legacyBehavior>
-            <div className={styles.button}>Ofrecer mis Laburos</div>
+            <div className={styles.button}>Quiero ofrecer mis oficios</div>
           </Link>
         </div>
         <div className={styles.item}>

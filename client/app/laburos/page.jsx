@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./Laburos.module.scss";
 import { FaSort } from "react-icons/fa";
-import LaburoCard from "@/components/laburoCard/LaburoCard";
+import AllLaburosCard from "@/components/allLaburosCard/AllLaburosCard";
 import { ofertas } from "@/data";
 
 const Laburos = () => {
@@ -18,10 +18,10 @@ const Laburos = () => {
   return (
     <div className={styles.laburos}>
       <div className={styles.container}>
-        <span className={styles.breadcrumbs}>LABURAPP / OFERTAS / ALBAÑILERIA /</span>
-        <h1>Laburos de Albañilería</h1>
+        <span className={styles.breadcrumbs}>LABURAPP / LABUROS /</span>
+        <h1>Laburos </h1>
         <p>
-          Explora los distintos laburos de albañileria a los que puedes
+          Explora todos los laburos disponibles a los que puedes
           postularte.
         </p>
         <div className={styles.menu}>
@@ -52,7 +52,7 @@ const Laburos = () => {
         </div>
         <div className={styles.cards}>
           {ofertas.map(oferta=>(
-            <LaburoCard key={oferta.id} item={oferta} />
+            <AllLaburosCard key={oferta.id} item={oferta} />
           ))}
         </div>
       </div>

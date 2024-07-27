@@ -2,6 +2,14 @@
 import { getSession } from '@/libs/sessions';
 import { getUserById } from '@/data/db';
 
+/*
+ * session: {
+ *  userId: number,
+ *  name: string,
+ *  isWorker: boolean,
+ * }
+ */
+
 export async function userSession() {
   const session = await getSession();
   if (!session) return null;
