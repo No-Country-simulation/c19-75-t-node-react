@@ -1,0 +1,10 @@
+@import '@/styles/variables.scss';
+.hero_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .breadcrumbs {
+        font-size: 12px;
+        color: $gray-medium-color;
+    }
+}

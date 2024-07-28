@@ -1,26 +1,27 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import styles from "./LaburosPorOficio.module.scss";
-import { FaSort } from "react-icons/fa";
-import { useParams } from "next/navigation";
-import LaburosPorOficioList from "@/components/laburosPorOficioList/LaburosPorOficioList";
-
+import React, { useState } from 'react';
+import styles from './LaburosPorOficio.module.scss';
+import { FaSort } from 'react-icons/fa';
+import { useParams, usePathname } from 'next/navigation';
+import LaburosPorOficioList from '@/components/laburosPorOficioList/LaburosPorOficioList';
 
 const LaburosPorOficio = () => {
-  const [open, setOpen] = useState(false);
-  const [sort, setSort] = useState("laburos");
-  const params = useParams()
-  const oficio = params["laburosPorOficio"]
-  
-  const reSort = (type) => {
-    setSort(type);
-    setOpen(false);
-  };
+    const pathname = usePathname();
+    const categoryPath = pathname.split('/')[2];
+    const [open, setOpen] = useState(false);
+    const [sort, setSort] = useState('laburos');
+    const params = useParams();
+    const oficio = params['laburosPorOficio'];
 
-  return (
-    <div className={styles.laburos}>
-      <div className={styles.container}>
+    const reSort = (type) => {
+        setSort(type);
+        setOpen(false);
+    };
+
+    return (
+        <div className={styles.laburos}>
+            {/* <div className={styles.container}>
         <span className={styles.breadcrumbs}>LABURAPP / LABUROS / {oficio === "albanileria" ? "ALBAÑILERIA" : oficio.toUpperCase()}</span>
         <h1>{oficio === "albanileria" ? "Albañilería" : oficio.charAt(0).toUpperCase() + oficio.slice(1).toLowerCase()}</h1>
         <p>
@@ -55,9 +56,9 @@ const LaburosPorOficio = () => {
         <div className={styles.cards}>
             <LaburosPorOficioList oficio={oficio}/>
         </div>
-      </div>
-    </div>
-  );
+      </div> */}
+        </div>
+    );
 };
 
 export default LaburosPorOficio;

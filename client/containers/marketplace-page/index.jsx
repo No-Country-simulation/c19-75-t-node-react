@@ -1,15 +1,14 @@
 'use client';
 // import styles from './HeaderSection.module.scss'
-import styles from '@/app/trabajadores/Trabajadores.module.scss';
+import styles from '@/app/(marketplace)/trabajadores/Trabajadores.module.scss';
 import { FaSort } from 'react-icons/fa';
 
 import { useState, useEffect } from 'react';
-import TrabajadorCard from '@/components/TrabajadorCard';
 
-export default function TrabajadoresPage({ inicialTrabajadores, categoria }) {
-    console.log(inicialTrabajadores);
-    const [trabajadores, setTrabajadores] = useState(inicialTrabajadores || []);
-    const [originalTrabajadores, _] = useState(inicialTrabajadores || []);
+export default function MarketPlacePage({ pathname, initialData, categoria }) {
+    console.log(pathname, initialData?.length, categoria);
+    const [data, setData] = useState(initialData || []);
+    const [originalData, _] = useState(initialData || []);
     const [open, setOpen] = useState(false);
     const [sort, setSort] = useState('default');
 
@@ -20,28 +19,35 @@ export default function TrabajadoresPage({ inicialTrabajadores, categoria }) {
 
     useEffect(() => {
         if (sort === 'puntuacion') {
-            setTrabajadores((prevTrabajadores) =>
-                [...prevTrabajadores].sort((a, b) => b.puntuacion - a.puntuacion)
-            );
+            setData((prevData) => [...prevData].sort((a, b) => b.puntuacion - a.puntuacion));
         } else if (sort === 'default') {
-            setTrabajadores(originalTrabajadores);
+            setData(originalData);
         }
-    }, [sort, originalTrabajadores]);
+    }, [sort, originalData]);
+
+    const getDescriptionText = () => {
+        if (pathname === 'trabajadores') {
+            if (categoria) {
+                return `profesionales en ${categoria} que podrían darte una solución.`;
+            } else {
+                return 'profesionales que podrían darte una solución.';
+            }
+        } else {
+            return `${pathname} en ${categoria}`;
+        }
+    };
 
     return (
         <div className={styles.container}>
             <span className={styles.breadcrumbs}>
-                LABURAPP / TRABAJADORES / CATEGORIA / {categoria?.toUpperCase()}
+                LABURAPP / {pathname.toUpperCase} / {categoria && `/ CATEGORIA / ${categoria?.toUpperCase()}`}
             </span>
             <h1>
                 {categoria === null
-                    ? 'Todos los trabajadores'
+                    ? `Todos los ${pathname}`
                     : categoria.charAt(0).toUpperCase() + categoria.slice(1).toLowerCase()}
             </h1>
-            <p>
-                Explora los distintos profesionales {categoria && `en ${categoria}`} que podrían darte una
-                solución.
-            </p>
+            <p>Explora los distintos {getDescriptionText()}</p>
             <div className={styles.menu}>
                 <div className={styles.left}></div>
                 <div className={styles.right}>
@@ -62,14 +68,12 @@ export default function TrabajadoresPage({ inicialTrabajadores, categoria }) {
                 </div>
             </div>
             <div className={styles.cards}>
-                {trabajadores === undefined ? (
+                {data === undefined ? (
                     <p>Cargando...</p>
-                ) : trabajadores.length > 0 ? (
-                    trabajadores.map((trabajador) => (
-                        <TrabajadorCard key={trabajador.id} trabajador={trabajador} />
-                    ))
+                ) : data.length > 0 ? (
+                    <p>data</p>
                 ) : (
-                    <p>No hay trabajadores en esta categoría</p>
+                    <p>No hay {pathname} en esta categoría</p>
                 )}
             </div>
         </div>

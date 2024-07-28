@@ -1,11 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-import styles from '@/app/trabajadores/Trabajadores.module.scss';
-import TrabajadoresPage from '@/containers/trabajadores-page';
+import styles from '../Trabajadores.module.scss';
+
+import { usePathname } from 'next/navigation';
+import MarketPlaceHeroSection from '@/containers/marketplace-page/hero-section';
+import MarketPlaceCardsSection from '@/containers/marketplace-page/cards-section';
 
 const CATEGORIAS = {
-    // FIXME: Complementar con las categorías de la base de datos
+    0: 'Todas las categorias',
     1: 'pintureria',
     2: 'herreria',
     3: 'plomeria',
@@ -25,8 +28,11 @@ const getIdFromCategory = (categoryName) => {
     return null; // Devuelve null si la categoría no se encuentra
 };
 
-const TrabajadoresPorOficio = ({ params }) => {
-    const { categoria } = params;
+const TrabajadoresPorCategoria = () => {
+    const pathname = usePathname();
+    const firstPath = pathname.split('/')[1];
+    const secondPath = pathname.split('/')[2];
+    const categoria = secondPath;
     const [trabajadores, setTrabajadores] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -48,18 +54,28 @@ const TrabajadoresPorOficio = ({ params }) => {
     };
 
     useEffect(() => {
-        if (categoria) fetchProfesionales();
-    }, [categoria]);
-
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
+        console.log('-> ', secondPath);
+        if (secondPath) fetchProfesionales();
+    }, [secondPath]);
 
     if (error) {
         return <div className={styles.error}>{error}</div>;
     }
 
-    return <TrabajadoresPage inicialTrabajadores={trabajadores} categoria={categoria} />;
+    return (
+        <>
+            <MarketPlaceHeroSection pathname={firstPath} categoria={secondPath} />
+            {loading ? (
+                <div className={styles.loading}>Cargando...</div>
+            ) : (
+                <MarketPlaceCardsSection
+                    pathname={firstPath}
+                    initialData={trabajadores}
+                    categoria={secondPath}
+                />
+            )}
+        </>
+    );
 };
 
-export default TrabajadoresPorOficio;
+export default TrabajadoresPorCategoria;

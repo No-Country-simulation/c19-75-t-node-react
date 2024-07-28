@@ -1,0 +1,165 @@
+@import '@/styles/variables.scss';
+.card {
+    width: 100%;
+    min-height: 125px;
+    height: fit-content;
+    max-height: fit-content;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 'image info';
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    .image {
+        grid-area: image;
+        width: 100%;
+        height: 100%;
+
+        background-color: $gray-lighter-color;
+        border: 0px solid transparent;
+        border-right: 1px solid $gray-light-color;
+        border-radius: 6px;
+        object-fit: cover;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        grid-area: info;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            'title rating'
+            'ubi a'
+            'profession btn';
+        padding: 10px 20px;
+        gap: 0 35px;
+
+        .title {
+            grid-area: title;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .starContainer {
+            grid-area: rating;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+            color: #ffc108;
+
+            .icon {
+                margin-bottom: 1px;
+                width: 14px;
+                height: 14px;
+                fill: $gray-light-color;
+                &.fill {
+                    fill: #ffc108;
+                }
+            }
+            .rating {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .works {
+                font-size: 14px;
+                color: $gray-medium-color;
+            }
+        }
+        .professionContainer {
+            margin-top: 10px;
+            grid-area: profession;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+
+            .profession {
+                height: fit-content;
+                border: 1px solid $primary-color;
+                border-radius: 6px;
+                padding: 2px 6px;
+                display: flex;
+                align-items: center;
+
+                span {
+                    font-size: 12px;
+                }
+                svg {
+                    margin-bottom: 1px;
+                    fill: #ffc108;
+                }
+                span:nth-child(2) {
+                    margin-left: 5px;
+                    margin-right: 2px;
+                    color: #ffc108;
+                }
+            }
+        }
+        .addressContainer {
+            grid-area: ubi;
+            align-self: flex-start;
+            color: #555;
+            font-size: 12px;
+            font-weight: 300;
+        }
+        .button {
+            justify-self: flex-end;
+            align-self: flex-end;
+            max-height: 38px;
+            max-width: 125px;
+            grid-area: btn;
+            padding: 4px 12px;
+            border: 2px solid $primary-color;
+            border-radius: 6px;
+            background-color: $primary-color;
+            box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px,
+                rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px,
+                rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+
+            .buttonLink {
+                color: $white-color;
+            }
+        }
+    }
+
+    // hr {
+    //     height: 0;
+    //     border: 0.5px solid lightgray;
+    // }
+
+    // .details {
+    //     padding: 10px 20px;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+
+    //     .heart {
+    //         width: 25px;
+    //         height: 25px;
+    //         cursor: pointer;
+    //         color: rgb(214, 50, 50);
+    //     }
+
+    //     .price {
+    //         span {
+    //             color: #444444;
+    //             font-size: 12px;
+    //         }
+    //         h2 {
+    //             color: #555;
+    //             font-size: 18px;
+    //             font-weight: 400;
+    //             margin: 0px;
+    //         }
+    //     }
+    // }
+}
