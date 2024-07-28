@@ -11,6 +11,7 @@ const INITIAL_STATE_FORM = {
         email: '',
         password: '',
     },
+    success: null,
 };
 
 import Input from '@/components/Forms/Input';
@@ -25,16 +26,18 @@ const LoginForm = () => {
     const { setSessionActive } = useSessionContext();
     const [formState, formAction, pending] = useFormState(login, INITIAL_STATE_FORM);
 
+    console.log('LOGIN', formState?.success);
+
     useEffect(() => {
         if (formState?.success) {
-            setSessionActive(true);
             router.push('/');
+            setSessionActive(true);
         }
     }, [formState?.success]);
 
     return (
         <form action={formAction} className={styles.form} name="loginForm">
-            {!formState?.success && (
+            {formState?.success !== null && (
                 <ZodErrors
                     error={formState?.errors?.principal}
                     type="principal"
@@ -47,7 +50,7 @@ const LoginForm = () => {
                     name="email"
                     placeholder="Email"
                     error={formState?.errors?.email}
-                    defaultValue={'profesional@gmail.com'} // FIXME: Delete this line
+                    defaultValue={'trabajador@gmail.com'} // FIXME: Delete this line
                 />
             </div>
             <div className={styles.campo}>
