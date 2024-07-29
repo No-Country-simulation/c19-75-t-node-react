@@ -1,0 +1,706 @@
+[33mcommit feb77e67427d3960062759c68f16bcf0361682f4[m[33m ([m[1;36mHEAD -> [m[1;32mbackend[m[33m, [m[1;31morigin/backend[m[33m)[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Thu Jul 25 21:28:18 2024 -0300
+
+    Feat: backend para comprobar si las contraseñas son validas
+
+[33mcommit c5be282a22fa7cc303b2e14d411183c27378a20f[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Thu Jul 25 20:58:38 2024 -0300
+
+    Feat: backend de checkear mail registrado
+
+[33mcommit 7fc5ba7f24f7ae9c1618956f0eacb70c90895203[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Wed Jul 24 19:28:43 2024 -0300
+
+    Feat: agregue funcionalidad a boton ordenar por
+
+[33mcommit 1f8ff8628f63a61d6e6003cbbcf8315d4c74d98f[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Wed Jul 24 18:34:00 2024 -0300
+
+    Conexion a base de datos
+
+[33mcommit 93bce7412cbb41733cb996faf9501462f2db3687[m[33m ([m[1;31morigin/footer[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:47:37 2024 -0300
+
+    delete unused file
+
+[33mcommit b717a2bf7634d88509ef7e1da86f54eb84e9ac17[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:46:56 2024 -0300
+
+    update npm dependencies and remove unused packages
+
+[33mcommit 38298531cf5550cc5c1cfaaf47821d7a7ca7183f[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:45:21 2024 -0300
+
+    chore: update npm dependency to latest stable version
+
+[33mcommit 496e782675771d332da7b9a0f709bfd5db60bb7d[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:45:11 2024 -0300
+
+    update global styles for heading elements
+
+[33mcommit 80172d04fbce76588bfe3df779865fd83871a023[m
+Merge: a9df65e aad9e47
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:41:48 2024 -0300
+
+    Merge branch 'login' of https://github.com/No-Country-simulation/c19-75-t-node-react into develop
+
+[33mcommit aad9e47aaaeb46d160ea6ddf6c3c7c61ab2b4ec0[m[33m ([m[1;31morigin/login[m[33m)[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:19:53 2024 -0300
+
+    remove commented code from Input component
+
+[33mcommit 9d72ec46b8a7cb5ee65dfb634af46b14f896c3b2[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:19:42 2024 -0300
+
+    update ButtonForm component to handle pending state and display textPending when pending is true
+
+[33mcommit 84e8c29325968cc2377293c727fb35f20f316f41[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:19:27 2024 -0300
+
+    update AuthPage module styles and container layout
+
+[33mcommit 95b2783ff2fe17d47da077653dd34ae8b853b13a[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 22:19:11 2024 -0300
+
+    update ZodErrors module styles and add principal logic to the component
+
+[33mcommit a9df65e5f4f132202cc7ee93eecc38cff2259807[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 20:37:54 2024 -0300
+
+    Update footer styles and variables
+
+[33mcommit b9e8c4a5dc74d820aa709ae204f7dbc2aac50102[m
+Merge: 34c0a74 2e58c37
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 20:28:52 2024 -0300
+
+    Merge branch 'migrate-to-module-scss' of https://github.com/No-Country-simulation/c19-75-t-node-react into develop
+
+[33mcommit 34c0a749f0bbc4eec6f7abf2286c818aab2dafe8[m
+Merge: b23cea7 4a55ab9
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Mon Jul 22 20:20:17 2024 -0300
+
+    Merge branch 'perfiles' of into develop
+
+[33mcommit 2e58c37812fad2f5159d3e52d66c1d25e733354a[m[33m ([m[1;31morigin/migrate-to-module-scss[m[33m)[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 22 16:10:29 2024 -0300
+
+    solucion error marketplace
+
+[33mcommit 19f4097d1eb44c8a0bfb74d944e8b799e3297b33[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 22 15:55:21 2024 -0300
+
+    arreglos estilos y componentes home
+
+[33mcommit 4a55ab97f7ce687bf17b17d245b71fa5901e8516[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Mon Jul 22 15:46:18 2024 -0300
+
+    Feat: back boton contactar (wsp)
+
+[33mcommit 5ee0706f17b9094ee6a97932b2f69d3f388c737a[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Mon Jul 22 14:43:36 2024 -0300
+
+    Feat: Conexion de perfiles  a base de datos
+
+[33mcommit d8d121a8350db5a97e2aeff762e5d4fe80c206b8[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 22 14:30:28 2024 -0300
+
+    solucion de error en estilos
+
+[33mcommit 69094cf6fd35785fcc84eced0724721cf7c4af41[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 22 13:27:30 2024 -0300
+
+    migracion realizada
+
+[33mcommit c835b48842db1e658949b72565ba11cae28f8cf1[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 23:13:10 2024 -0300
+
+    update shadow style for authentication pages
+
+[33mcommit 346adae061b9a0241ef6c288141af5694e4a1494[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 18:58:57 2024 -0300
+
+    update styles for authentication pages
+
+[33mcommit 1e9c34ae1bf7d232aa00c3d4e655c7340c330d29[m
+Merge: 576ddf1 b23cea7
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 00:58:36 2024 -0300
+
+    Merge branch 'develop' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit b23cea71ec4b0343ef78d756f09c5f052bd059c5[m
+Merge: dd7a1d2 8e57ace
+Author: Gianfranco <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 00:57:08 2024 -0300
+
+    Merge pull request #5 from No-Country-simulation/header-component
+    
+    Header component
+
+[33mcommit 8e57acee01ba0576743ecfa3e07ffd887758e8aa[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 00:45:28 2024 -0300
+
+    fix conditional class application for navbar
+
+[33mcommit 678421dfa2dbfe454a6c1e848bf7a7b637097032[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Sat Jul 20 00:19:31 2024 -0300
+
+    Actualizar enlaces a la nueva versión de Next.js
+    
+    - Reemplazar el patrón antiguo <Link><a> con el nuevo <Link> en los componentes.
+    - Eliminar el uso innecesario de <a> dentro de <Link> para simplificar el código y mejorar la compatibilidad con versiones recientes de Next.js.
+
+[33mcommit 44545e7db2fdd1ac397ac11083d32663013d16e5[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 23:25:19 2024 -0300
+
+    Add header component with styles and functionality
+
+[33mcommit be14ed702c334d7bb888bb0bcf7345e52fd25569[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Fri Jul 19 17:00:59 2024 -0300
+
+    Elimine redundancia conexion BD
+
+[33mcommit 5fe425057af9ffdd3706176417dd1fea6bec4b67[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Fri Jul 19 16:46:22 2024 -0300
+
+    Feat: Cambios base de datos
+
+[33mcommit d3834f203b67aff41cc1bf9fe919a93def122451[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Fri Jul 19 16:31:22 2024 -0300
+
+    feat: Pull global y variables
+
+[33mcommit 576ddf1522054ade80f6920916feaf15fc7b4c12[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 03:06:48 2024 -0300
+
+    wrap login, reset password, and signup pages in a main element
+
+[33mcommit f461835699263e8330d045f28511b138148a74ae[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 03:01:59 2024 -0300
+
+    remove duplicate import statement for global styles
+
+[33mcommit 51f094e6189bb1eca59407759a33531921e2f504[m
+Merge: 211d2bc dd7a1d2
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 03:01:13 2024 -0300
+
+    Merge branch 'develop' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit dd7a1d2d79cd8827fea328e321ca8ef5db6eac9d[m
+Merge: e1a9f80 2ebd8f3
+Author: Gianfranco <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 03:00:26 2024 -0300
+
+    Merge pull request #4 from No-Country-simulation/footer
+    
+    Merge Footer
+
+[33mcommit 2ebd8f39ebf5c83026dd81e7313b7948e72053a1[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 02:30:38 2024 -0300
+
+    add import global styles
+
+[33mcommit e1a9f8079bed2ab3ccbaa60f20542216707fe882[m
+Merge: 7986966 a7a2410
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 02:26:07 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-node-react into develop
+
+[33mcommit a7a24103f0553c5ad536a51caae0813cc858cff6[m[33m ([m[1;31morigin/global-styles-and-variables[m[33m)[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 02:24:46 2024 -0300
+
+    import global styles for basic elements and reset styles
+
+[33mcommit 58f806f34601edf454a9602bd5cee4b2bcf1ec4d[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 02:21:35 2024 -0300
+
+    footer component created
+
+[33mcommit 211d2bc23e96dd987734f4428089e08c867abedb[m
+Merge: 0d44ba0 51bf80d
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 00:59:17 2024 -0300
+
+    Merge branch 'login' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit 0d44ba073675965b5321ac217fafc3d38bba7327[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 00:50:17 2024 -0300
+
+    chore: Update import paths for validation functions in login, reset password, and signup forms
+
+[33mcommit f8876cc2d9ba2846d219d5a88a7f4c985ea08df1[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 23:35:52 2024 -0300
+
+    Update global styles with variables
+
+[33mcommit 8ff1f470963bfaa6d848086f3fa35a196841b894[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 23:35:27 2024 -0300
+
+    add: algunas variables por defecto
+
+[33mcommit 798696695cd469349364601a7d51c51fd7cb7d2b[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 00:37:57 2024 -0300
+
+    Refactor folder structure for improved organization
+
+[33mcommit 88b16d9d90575877f6563ed3fc379062f31709bf[m
+Merge: 4aa3610 fdebf20
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Fri Jul 19 00:04:39 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-node-react into develop
+
+[33mcommit 51bf80daf22a351b42af1ba3fe385edb7b89d2f3[m
+Merge: 985f5c7 fdebf20
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 23:36:30 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit fdebf20cc9d8f51261f1fce97a1f683029e96666[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 23:35:52 2024 -0300
+
+    Update global styles with variables
+
+[33mcommit 3c62ea6f784b097cef0079a2cdb33fe4f5fb8928[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 23:35:27 2024 -0300
+
+    add: algunas variables por defecto
+
+[33mcommit 985f5c743353ec6d2410f7f3d0060c541d5f7617[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 22:14:24 2024 -0300
+
+    chore: Remove unused CSS styles from page module
+
+[33mcommit ed033c51452db0087c1bc81cddf88fbedbb626af[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 21:41:34 2024 -0300
+
+    chore: Increase max-width of AuthPage container to 450px
+
+[33mcommit 8d763856ea17febb7189d73aa5df8d54e0a1fd21[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 21:41:11 2024 -0300
+
+    chore: Add global styles to layout component
+
+[33mcommit 21f0d6b5263e39edda7f947a1f4f97e2383eee5b[m
+Merge: baf65d3 f8a1e08
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 21:14:58 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit f8a1e0846838718a73e0e1a6eda166dd74b79c6f[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 21:14:12 2024 -0300
+
+    feat: Update font and global styles
+
+[33mcommit a7a25aba3ee3ee1a64e93e482c78c8ea88c103b0[m
+Merge: a562c28 413a58a
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Thu Jul 18 19:28:35 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-python-react into perfiles
+
+[33mcommit 94657cf7a35599ea3ed5db87579663bce73e1ad2[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 18 18:31:55 2024 -0300
+
+    globals
+
+[33mcommit adebf0b47abd0b9f6fef1430560db935eeaf2e3f[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 18 18:19:38 2024 -0300
+
+    globals
+
+[33mcommit 86633cea009a03c113e1d7146eb54c7c8a171ddb[m
+Merge: e6eeae5 413a58a
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 18 18:15:30 2024 -0300
+
+    Merge branch 'global-styles-and-variables' of https://github.com/No-Country-simulation/c19-75-t-node-react into migrate-to-module-scss
+
+[33mcommit baf65d30154803fd0c1fd15c1757ae9aefb8301d[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 03:19:35 2024 -0300
+
+    fixed some styles
+
+[33mcommit 7d590a30eee4813df681f377352709696311ebed[m
+Merge: e47b060 4aa3610
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 03:08:59 2024 -0300
+
+    Merge branch 'develop' of https://github.com/No-Country-simulation/c19-75-t-node-react into login
+
+[33mcommit 4aa3610d9969c97b283a1f56664ba83cabdff97a[m
+Merge: ccf2ca8 413a58a
+Author: Gianfranco <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 02:51:33 2024 -0300
+
+    Merge pull request #3 from No-Country-simulation/global-styles-and-variables
+    
+    add Icons module and component
+
+[33mcommit 413a58aab03e36ef7c65f631d969b87bb53184b8[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 02:47:55 2024 -0300
+
+    Rename icons.jsx to index.jsx
+
+[33mcommit 3c3fb28b426abad59ea58d43d7644945b4c4989d[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 02:14:13 2024 -0300
+
+    add Icons module and component
+
+[33mcommit e47b0602742a715f6c0459cdbd19974296adca19[m
+Merge: 0bee21f ccf2ca8
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 02:06:36 2024 -0300
+
+    Merge remote-tracking branch 'origin/develop' into login
+
+[33mcommit 0bee21f3811e489cf1544392b4be550a5d985974[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Thu Jul 18 01:49:16 2024 -0300
+
+    fix some styles
+
+[33mcommit a562c28f2f4cfbab9d829e983a6a8c3fb326d60c[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Wed Jul 17 22:52:16 2024 -0300
+
+    Feat: perfiles de usuarios
+
+[33mcommit 9c6bc6894c01f38188bc5aaee1b67dea72f19728[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Wed Jul 17 20:52:38 2024 -0300
+
+    Feat: perfiles de usuarios
+
+[33mcommit 92920cafc3d35068b703544b9caff58c15817672[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Wed Jul 17 20:31:16 2024 -0300
+
+    Feat: Creacion perfiles de usuarios
+
+[33mcommit e6eeae58861ff222aae9b78ed0826a6658badd81[m[33m ([m[1;31morigin/header[m[33m)[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Wed Jul 17 18:23:37 2024 -0300
+
+    marketplace
+
+[33mcommit ccf2ca84ea3facfa56304caac4aeae4a7a7f09b6[m
+Merge: 3073777 45828e6
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Wed Jul 17 18:08:35 2024 -0300
+
+    Merge pull request #2 from No-Country-simulation/global-styles-and-variables
+    
+    Global styles and variables files
+
+[33mcommit 5aa4694a68bf4f0da58e4868e1677e76d43190c2[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 16:32:45 2024 -0300
+
+    fixed: occupation and submit placement
+
+[33mcommit e98e9ef810a3fd201f70b55b840f9223cf531946[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 16:21:11 2024 -0300
+
+    add form validation and error handling UI
+
+[33mcommit b71e256b7aca6e147eee9884e8f782375ae685da[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 16:19:05 2024 -0300
+
+    create a custom errors component and add it to the inputs
+
+[33mcommit e9e12a1b5228d105ecb8ec518519e13bcefc6382[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 16:17:23 2024 -0300
+
+     Add login and registration validation
+
+[33mcommit 21e0045668293b1b6834ac1a8fc6e4f66e87c731[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 15:46:12 2024 -0300
+
+    Add signup page and form components
+
+[33mcommit 38e82f8fdb94a07bf3e18339b823cc726ca5c613[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 15:45:31 2024 -0300
+
+    Remove unused code and update ResetPasswordForm layout
+
+[33mcommit 12480af62158c473c7606eb02827fa80ab6d8903[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 15:43:46 2024 -0300
+
+    correccion de estilos y scss
+
+[33mcommit 971b92e0e332abdd17f38b51e70005e2dbfed98c[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 14:40:12 2024 -0300
+
+    ResetPassword rout, page, and form created
+
+[33mcommit 45828e650fb04cdea7ce3fc1a3eeac03ba35d498[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 03:58:56 2024 -0300
+
+    Remove unused global  styles
+
+[33mcommit ace0e840d2f6becbda1ed383afd6ac6dce4b3d75[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 03:44:09 2024 -0300
+
+    create variables.scss file for managing style variables
+
+[33mcommit 255648b8d29049a75676851a6163ea2f039cc1f0[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 03:42:54 2024 -0300
+
+    feat: Add global styles for basic elements and reset styles
+
+[33mcommit f0c760f6d36c39e78c73d04258c8ca48715b7f6b[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 03:06:11 2024 -0300
+
+    reset-passwrod & singup routes
+
+[33mcommit 8880dfa5a80d616f5df42fc401d33fc7d4d84874[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 03:05:35 2024 -0300
+
+    create login page
+
+[33mcommit f42dbcff6234c711f432b65760acfb88107c8377[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 02:52:37 2024 -0300
+
+    create button component
+
+[33mcommit 5a54a7feaee0d37071673df622233a1f15d64794[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 02:18:15 2024 -0300
+
+    create label component
+
+[33mcommit b718f163d65c66d22bf16cd1040658aab0d1e482[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 01:48:32 2024 -0300
+
+    create input component
+
+[33mcommit b6d6160da1bbd590331efd911521ae4cf1bcbaf1[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 00:39:31 2024 -0300
+
+    install react-icons & zod dependecies
+
+[33mcommit b09ca03a964e3c6f8f5289dee223dd6255b553a9[m
+Author: Gianfranco Iacono <iacono.gian13@gmail.com>
+Date:   Wed Jul 17 00:34:04 2024 -0300
+
+    first commit login
+
+[33mcommit e8d7247107a081bf95bee0089da313a14bdb2ff6[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 15 19:10:54 2024 -0300
+
+    footer
+
+[33mcommit 5daf56a09ba12c26ac39cd761d16ba6c1244251a[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 15 18:26:06 2024 -0300
+
+    componentes y sliders
+
+[33mcommit f21abd8dcaf702206ccb9ef285fdf33ec9285cdb[m[33m ([m[1;31morigin/basedatos[m[33m)[m
+Author: Brenda Giambelluca <brengiambelluca@gmail.com>
+Date:   Mon Jul 15 18:24:42 2024 -0300
+
+    feat: Creacion y conexion de base de datos
+
+[33mcommit 74cf033ce7f19c6e894b6db88035d7227157ce27[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Fri Jul 12 20:16:00 2024 -0300
+
+    carousel
+
+[33mcommit 4a13b43498e6c37d3fd6a5fb03480640eee5ca3b[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 11 18:38:18 2024 -0300
+
+    navbar
+
+[33mcommit fcae68542ad798e25c72a8a9b4ceafc07aeef11f[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 11 18:15:04 2024 -0300
+
+    pathname error
+
+[33mcommit d326c229712a39a904840723778d38f5a1d3ed33[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 11 17:39:16 2024 -0300
+
+    titulo
+
+[33mcommit e41c182395a0af7e7744b95088da4c91b277260f[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Thu Jul 11 17:35:38 2024 -0300
+
+    featured
+
+[33mcommit 06d00322c42633086ec25387a8ba916e40a77ff8[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Wed Jul 10 18:19:45 2024 -0300
+
+    error navbar
+
+[33mcommit 571896506a583cefe09069b68aaff7710a5839ee[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Wed Jul 10 18:03:49 2024 -0300
+
+    menu
+
+[33mcommit f39a6bcb72d28a6f65bb6929d708372422225445[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Tue Jul 9 18:37:53 2024 -0300
+
+    header
+
+[33mcommit 307377729e1b89f3eeb4ef6705faf7c664885a7e[m[33m ([m[1;31morigin/production[m[33m, [m[1;31morigin/autenticacion-usuario[m[33m)[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Tue Jul 9 17:07:12 2024 -0300
+
+    first commit develop
+
+[33mcommit 0d8b9c59ff95f19e6a207fe9d498a98493a462f9[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:55:31 2024 -0300
+
+    Delete package.json
+
+[33mcommit e465f940b90389c7183fa4016b47d9e4185b3b3a[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:55:22 2024 -0300
+
+    Delete package-lock.json
+
+[33mcommit 34f7854ab3681fe1cb7f241a8776cce1a785603c[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:55:13 2024 -0300
+
+    Delete next.config.mjs
+
+[33mcommit 2182c0bd1c91784c44682cb1247e920bd7780062[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:55:00 2024 -0300
+
+    Delete jsconfig.json
+
+[33mcommit c1adcf04f862d04754abb1b9996eee9c286b95d8[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:54:52 2024 -0300
+
+    Delete .gitignore
+
+[33mcommit 0ca6b1d10ca432cd23d9b1857955765c35c3fff8[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:54:33 2024 -0300
+
+    Delete .eslintrc.json
+
+[33mcommit 7410bf99209e6895e534e21de01ded7912974b3e[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:54:19 2024 -0300
+
+    Delete public directory
+
+[33mcommit 35a0cbd6927720834deccf1a4ed1793fc67d132a[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:54:07 2024 -0300
+
+    Delete components directory
+
+[33mcommit e45762af72209d9d31f301eeb34015ccfd065263[m
+Author: Ignacio Carrabs <106119739+nachocarrabs@users.noreply.github.com>
+Date:   Mon Jul 8 20:53:57 2024 -0300
+
+    Delete app directory
+
+[33mcommit 500ac879decc92f42a4edd0d944586605275a9be[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 8 20:49:20 2024 -0300
+
+    first commit api
+
+[33mcommit d9e27bc60f4bb15cac59920c94294b2a6362fe7d[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 8 20:48:40 2024 -0300
+
+    first commit client
+
+[33mcommit e22758b178ab8d538f3ec6ab7fc6e3769d4d2b87[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 8 20:16:44 2024 -0300
+
+    first commit
+
+[33mcommit 9b107882f16738a6f45cf127409ba3ee427e3d11[m
+Author: ignacio <ignaciocarrabs@gmail.com>
+Date:   Mon Jul 8 19:59:58 2024 -0300
+
+    Initial commit from Create Next App
