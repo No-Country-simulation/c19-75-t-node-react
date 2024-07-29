@@ -9,8 +9,13 @@ import { useRouter } from 'next/navigation';
 
 const ORDENAMIENTOS = {
     DEFAULT: 'Más relevantes',
-    PUNTUACION: 'Mayor puntuación',
     CERCANIA: 'Mas Cercano',
+};
+
+const ORDENAMIENTOS_WORKERS = {
+    ...ORDENAMIENTOS,
+    PUNTUACION: 'Mayor puntuación',
+    CANT_TRABAJOS: 'Cantidad de trabajos',
 };
 
 const CATEGORIAS = {
@@ -42,12 +47,18 @@ const MarketPlaceCardsSection = ({ pathname, initialData, categoria }) => {
         else router.push(`/${pathname}/${nuevaOpcion}`);
     };
 
+    const sortByRating = () =>
+        setData((prevData) => [...prevData].sort((a, b) => b.puntuacion - a.puntuacion));
+    const sortByCantWorks = () =>
+        setData((prevData) => [...prevData].sort((a, b) => b.cant_trabajos - a.cant_trabajos));
+    // const sortByDistance = () => {}
+    const sortByDefault = () => setData(originalData);
+
     useEffect(() => {
-        if (sort === ORDENAMIENTOS.PUNTUACION) {
-            setData((prevData) => [...prevData].sort((a, b) => b.puntuacion - a.puntuacion));
-        } else if (sort === ORDENAMIENTOS.DEFAULT) {
-            setData(originalData);
-        }
+        if (sort === ORDENAMIENTOS.PUNTUACION) sortByRating();
+        else if (sort === ORDENAMIENTOS.CANT_TRABAJOS) sortByCantWorks();
+        // else if (sort === ORDENAMIENTOS.CERCANIA) sortByDistance();
+        else if (sort === ORDENAMIENTOS.DEFAULT) sortByDefault();
     }, [sort, originalData]);
 
     return (
@@ -66,18 +77,21 @@ const MarketPlaceCardsSection = ({ pathname, initialData, categoria }) => {
                     )}
                     <span className={styles.sortBy}>Ordenar por</span>
                     <select className={styles.sortType} name="sort" id="sort" onChange={handleSort}>
-                        {Object.entries(ORDENAMIENTOS).map(([key, value]) => (
-                            <option key={key}>{value}</option>
-                        ))}
+                        {Object.entries(pathname === 'laburos' ? ORDENAMIENTOS : ORDENAMIENTOS_WORKERS).map(
+                            ([key, value]) => (
+                                <option key={key}>{value}</option>
+                            )
+                        )}
                     </select>
-                    {/* <ArrowDropdown otherStyles={styles.icon} onClick={() => setOpen(!open)} /> */}
                 </div>
             </div>
             <div className={styles.cards}>
                 {data === undefined ? (
                     <p>Cargando...</p>
                 ) : data.length > 0 ? (
-                    data.map((data) => <MarketPlaceCard key={data.id} data={data} pathname={pathname} />)
+                    data.map((item, idx) => (
+                        <MarketPlaceCard key={item.usuario_id + '_' + idx} data={item} pathname={pathname} />
+                    ))
                 ) : (
                     <p>
                         No hay {pathname} {categoria && 'esta categoría'}

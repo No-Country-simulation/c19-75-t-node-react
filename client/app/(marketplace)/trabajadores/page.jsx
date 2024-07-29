@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import styles from './Trabajadores.module.scss';
+import styles from '../MarketplaceLayout.module.scss';
 
 import { usePathname } from 'next/navigation';
 import MarketPlaceHeroSection from '@/containers/marketplace-page/hero-section';

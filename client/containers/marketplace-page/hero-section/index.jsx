@@ -4,13 +4,11 @@ import styles from './HeroSection.module.scss';
 const MarketPlaceHeroSection = ({ pathname, categoria }) => {
     const getDescriptionText = () => {
         if (pathname === 'trabajadores') {
-            if (categoria) {
-                return `profesionales en ${categoria} que podrían darte una solución.`;
-            } else {
-                return 'profesionales que podrían darte una solución.';
-            }
+            if (categoria) return `profesionales en ${categoria} que podrían darte una solución.`;
+            else return 'profesionales que podrían darte una solución.';
         } else {
-            return `${pathname} en ${categoria}`;
+            if (categoria) return `${pathname} en ${categoria} disponibles a los que puedes postularte.`;
+            else return `${pathname} disponibles a los que puedes postularte.`;
         }
     };
     return (
