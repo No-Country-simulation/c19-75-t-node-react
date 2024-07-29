@@ -16,7 +16,7 @@ function Home() {
   const [trabajos, setTrabajos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/trabajos')
+    fetch('http://localhost:5000/api/trabajos/mejores')
       .then(response => response.json())
       .then(data => {
         setTrabajos(data);
@@ -44,7 +44,6 @@ function Home() {
             apellido={trabajo.apellido}
             foto={trabajo.foto}
             puntuacion={trabajo.puntuacion}
-            comentario={trabajo.comentario}
             fotos={trabajo.fotos}
           />
         ))}
