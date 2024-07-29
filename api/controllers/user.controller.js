@@ -1,5 +1,4 @@
 const connectDB = require('../config/db');
-const sql = require('mssql');
 
 const getUserById = async (req, res) => {
     try {
@@ -127,91 +126,8 @@ const getProfessionalsByCategory = async (req, res) => {
     }
 };
 
-//Crear un nuevo usuario
-const register = async (req, res) => {
-    const { nombre, apellido, ciudad, cp, provincia, tel, mail, pass, esprofesional } = req.body;
-
-    if (!nombre || !apellido || !ciudad || !cp || !provincia || !tel || !mail || !pass || esprofesional === undefined) {
-        return res.status(400).json({ error: 'Por favor, ingresar nombre, apellido, ciudad, provincia, cp, tel, mail, pass y esprofesional' });
-    }
-
-    try {
-        const pool = await connectDB();
-
-        // Iniciar una transacción para que ambas acciones se completen juntas (ya que si el usuario es profesional, 
-        //tambien se crea el registro en usuarios), si una falla, se revierte todo.
-        const transaction = new sql.Transaction(pool);
-        await transaction.begin();
-
-        // Crear nuevo usuario
-        const usuarioResult = await transaction.request()
-            .input('nombre', sql.NVarChar, nombre)
-            .input('apellido', sql.NVarChar, apellido)
-            .input('ciudad', sql.NVarChar, ciudad)
-            .input('cp', sql.Int, cp)
-            .input('provincia', sql.NVarChar, provincia)
-            .input('tel', sql.NVarChar, tel)
-            .input('mail', sql.NVarChar, mail)
-            .input('pass', sql.NVarChar, pass)
-            .input('esprofesional', sql.Bit, esprofesional)
-            .query(`
-                INSERT INTO usuarios (
-                    nombre, 
-                    apellido, 
-                    ciudad, 
-                    cp,
-                    provincia,
-                    tel,
-                    mail,
-                    password,
-                    esprofesional
-                ) 
-                OUTPUT INSERTED.id 
-                VALUES (
-                    @nombre, 
-                    @apellido, 
-                    @ciudad, 
-                    @cp,
-                    @provincia,
-                    @tel,
-                    @mail,
-                    @pass,
-                    @esprofesional
-                )
-            `);
-
-        //output inserted.id para q devuelva el id del usuario nuevo creado
-
-        const usuarioId = usuarioResult.recordset[0].id;
-
-        // Crear una entrada en la tabla profesionales si el usuario es profesional
-        if (esprofesional) {
-            await transaction.request()
-                .input('usuario_id', sql.Int, usuarioId)
-                .query('INSERT INTO profesionales (usuario_id) VALUES (@usuario_id)');
-        }
-
-        // Confirmar la transacción
-        await transaction.commit();
-
-        res.status(201).json({ message: 'Usuario creado exitosamente' });
-    } catch (err) {
-        console.error('Error al crear el usuario:', err);
-
-        try {
-            // Intentar deshacer la transacción en caso de error
-            await transaction.rollback();
-        } catch (rollbackErr) {
-            console.error('Error al deshacer la transacción:', rollbackErr);
-        }
-
-        res.status(500).json({ error: 'Error al crear el usuario' });
-    }
-}
-
 module.exports = {
     getUserById,
     getAllProfessionals,
     getProfessionalsByCategory,
-    register
 };
