@@ -69,6 +69,46 @@ const getAvailableJobsByCategory = async (req, res) => {
     }
 };
 
+//obtener a UN trabajo especifico por ID
+const getJobById = async (req, res) => {
+    const trabajoId = req.params.trabajoId; // Obtener el ID del trabajo
+
+    try {
+        const pool = await connectDB();
+        const trabajoResultado = await pool.request()
+            .input('trabajoId', sql.Int, trabajoId) // Pasar el ID del trabajo como parámetro
+            .query(`
+               SELECT
+                t.titulo AS titulo,
+                t.descripcion AS descripcion,
+                t.fotos AS fotos,
+                t.cliente_id AS cliente_id,
+                t.profesional_id AS profesional_id,
+                t.estado AS estado,
+                c.nombre AS categoria_nombre,
+                uc.nombre AS cliente_nombre,
+                uc.apellido AS cliente_apellido,
+                CASE
+                    WHEN t.estado = 'finalizado' THEN CONCAT(up.nombre, ' ', up.apellido)
+                    ELSE NULL
+                    END AS profesional_nombre
+                FROM trabajos t
+                JOIN trabajoCategorias tc ON t.id = tc.trabajoID
+                JOIN categorias c ON tc.categoriaID = c.id
+                JOIN usuarios uc ON t.cliente_id = uc.id
+                LEFT JOIN profesionales p ON t.profesional_id = p.id
+                LEFT JOIN usuarios up ON p.usuario_id = up.id
+                WHERE t.id = @trabajoID;
+            `);
+
+        const trabajo = trabajoResultado.recordset;
+        res.status(200).json(trabajo);
+    } catch (err) {
+        console.error('Error al obtener el trabajo:', err);
+        res.status(500).json({ error: 'Error al obtener el trabajo' });
+    }
+};
+
 
 //Crear un nuevo trabajo
 async function createTrabajo(req, res) {
@@ -125,5 +165,6 @@ async function createTrabajo(req, res) {
 module.exports = {
     getAvailableJobs,
     getAvailableJobsByCategory,
+    getJobById,
     createTrabajo
 };
