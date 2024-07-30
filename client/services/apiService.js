@@ -9,7 +9,7 @@ export const fetchProvincias = async () => {
 };
 
 export const fetchLocalidades = async (provinciaId) => {
-  const response = await fetch(`${API_BASE_URL}/localidades?provincia=${provinciaId}&orden=nombre&max=100`);
+  const response = await fetch(`${API_BASE_URL}/localidades?provincia=${provinciaId}&orden=nombre&max=999`);
   if (!response.ok) {
     throw new Error('Error al obtener las localidades');
   }
