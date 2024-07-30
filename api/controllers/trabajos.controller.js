@@ -2,11 +2,29 @@ const connectDB = require('../config/db');
 const sql = require('mssql');
 
 
-//Obtener todos los trabajos
-const getAllTrabajos = async (req, res) => {
+//Obtener todos los trabajos disponibles
+const getAvailableJobs = async (req, res) => {
     try {
         const pool = await connectDB();
-        const trabajosResultado = await pool.request().query('SELECT t.titulo AS titulo, t.fotos As fotos, t.id as id, u.nombre AS nombre, u.apellido AS apellido, u.foto AS foto, v.puntuacion as puntuacion, v.comentario AS comentario FROM trabajos t JOIN profesionales p ON t.profesional_id = p.id JOIN usuarios u ON p.usuario_id = u.id LEFT JOIN valoraciones v ON t.id = v.trabajo_id;');
+        const trabajosResultado = await pool.request().query(`
+          SELECT 
+                t.titulo AS titulo, 
+                t.fotos AS fotos, 
+                t.id AS id, 
+                t.cliente_id AS cliente_id, 
+                u.nombre AS nombre, 
+                u.apellido AS apellido, 
+                u.provincia AS provincia, 
+                u.ciudad AS ciudad, 
+                u.barrio AS barrio,
+                c.nombre AS categoria_nombre
+                FROM trabajos t
+                JOIN usuarios u ON t.cliente_id = u.id
+                LEFT JOIN trabajoCategorias tc ON t.id = tc.TrabajoID
+                LEFT JOIN categorias c ON tc.CategoriaID = c.id
+                WHERE t.estado = 'en busqueda';
+      
+        `);
 
         trabajos = trabajosResultado.recordset
         res.status(200).json(trabajos);
@@ -70,6 +88,6 @@ async function createTrabajo(req, res) {
 
 
 module.exports = {
-    getAllTrabajos,
+    getAvailableJobs,
     createTrabajo
 };
