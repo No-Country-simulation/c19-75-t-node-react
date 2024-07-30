@@ -1,0 +1,157 @@
+/* .tableContainer {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    .tableHeader{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #f0f0f0;
+        cursor: pointer;
+        .tableTitle{
+            font-weight: bold;
+
+        }
+        .tableStatus{
+            padding: 10px;
+        }
+    }
+    .subTables{
+        .subTable{
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+    }
+
+}
+.panelControl{
+    font-size: 23px;
+    margin-bottom: 10px;
+}*/
+
+/* TableComponent.module.scss */
+
+.tableContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+        border-radius: 5px;
+    .tableHeader{
+        width: 100%;
+        background-color: #ffffff;
+        padding: 10px;
+        cursor: pointer;
+        justify-content: space-between;
+        
+        .tableHeader:hover {
+            background-color: #e0e0e0;
+          }
+        .tableTitle{
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .tableHeaderContent{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #ffffff;
+
+            .fila{
+                display: flex;
+                justify-content: space-between;
+                .titles{
+                    font-size: 20px;
+                }
+            }
+            .tableHeaderSolicitantes{
+                width: 30%;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .tableHeaderLaburoDe{
+                width: 30%;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .tableHeaderLaburoPara{
+                width: 30%;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .tableHeaderEstado{
+                width: 20%;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        }
+        .tableStatus{
+            font-size: 14px;
+            color: #666;
+        }
+    }
+    .subTables{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+        width: 100%;
+        .subTable{
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            flex-basis: 100%;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            .subTableTitle{
+                width: 20%;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .subTableSolicitante{
+                width: 30%;
+                margin-right: 10px;
+            }
+            .actionButtons{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                .acceptButton{
+                    background-color: #4CAF50;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .rejectButton{
+                    background-color: #FF9800;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+            .subTableValue{
+                width: 20%;
+                font-size: 14px;
+                color: #666;
+            }
+        }
+    }
+}
+.profileTables{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+  
+  
+  
+  
+  

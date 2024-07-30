@@ -194,15 +194,81 @@ import { MdVerified } from "react-icons/md";
 import Link from "next/link";
 import { FaCheck } from "react-icons/fa";
 import TrabajosSlider from "@/components/trabajosSlider";
+import ProfileTables from "@/components/tables";
 
 const PerfilUsuario = ({ params, searchParams }) => {
   const { userSessionData, sessionActive } = useSessionContext();
   const { userId } = params;
   const { opcion } = searchParams;
   const [user, setUser] = useState(null);
-  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
+  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(true); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
   const [solicitudEnviada, setSolicitudEnviada] = useState(false);
- 
+
+  const tables = [
+    {
+      title: "Solicitudes",
+      status: "Estado",
+      subTables: [
+        {
+          title: "Pintura exterior",
+          solicitante: "Juan Pérez",
+          value: { aceptar: true, rechazar: true },
+        },
+        {
+          title: "Pintar baño",
+          solicitante: "María González",
+          value: { aceptar: true, rechazar: true },
+        },
+        {
+          title: "Revestimiento exterior",
+          solicitante: "Carlos Rodríguez",
+          value: { aceptar: true, rechazar: true },
+        },
+      ],
+    },
+    {
+      title: "Postulaciones",
+      status: "Estado",
+      subTables: [
+        {
+          title: "Pintar mueble de madera",
+          solicitante: "Ana Martínez",
+          value: "Pendiente",
+        },
+        {
+          title: "Pintar cocina",
+          solicitante: "Luis Sánchez",
+          value: "Pendiente",
+        },
+        {
+          title: "Pintar habitacion",
+          solicitante: "Elena López",
+          value: "Rechazado",
+        },
+      ],
+    },
+    {
+      title: "Trabajos",
+      status: "Estado",
+      subTables: [
+        {
+          title: "Pintar abertura",
+          solicitante: "Roberto Fernández",
+          value: "En progreso",
+        },
+        {
+          title: "Revestimiento interior",
+          solicitante: "Sofía Díaz",
+          value: "Completado",
+        },
+        {
+          title: "Revestimiento para techo",
+          solicitante: "Diego Morales",
+          value: "Pendiente",
+        },
+      ],
+    },
+  ];
 
   useEffect(() => {
     console.log("userId:", userId);
@@ -217,7 +283,6 @@ const PerfilUsuario = ({ params, searchParams }) => {
     }
 
     if (userId) {
-      // Función para obtener los datos del usuario desde la API
       const fetchUser = async () => {
         try {
           const response = await fetch(
@@ -271,12 +336,26 @@ const PerfilUsuario = ({ params, searchParams }) => {
               </span>
             </div>
           </div>
-          <h2 className={styles.titles}>Acerca de sus trabajos</h2>
-          
-          <TrabajosSlider data={user.trabajosData} width={500} height={280} />
+
+          {isViewingOwnProfile ? (
+            <ProfileTables tables={tables} />
+          ) : (
+            <div>
+              <h2 className={styles.titles}>Acerca de sus trabajos</h2>
+              <TrabajosSlider
+                data={user.trabajosData}
+                width={500}
+                height={280}
+              />
+            </div>
+          )}
 
           <div className={styles.trabajador}>
-            <h2 className={styles.titles}>Acerca del trabajador</h2>
+            {isViewingOwnProfile ? (
+              <h2 className={styles.titles}>Acerca de mi</h2>
+            ) : (
+              <h2 className={styles.titles}>Acerca del trabajador</h2>
+            )}
             <div className={styles.user}>
               <img
                 src={user.foto ? `/${user.foto}` : "/usuario_default.png"}
@@ -334,7 +413,11 @@ const PerfilUsuario = ({ params, searchParams }) => {
             </div>
           </div>
           <div className={styles.reviews}>
-            <h2 className={styles.titles}>Valoraciones</h2>
+            {isViewingOwnProfile ? (
+              <h2 className={styles.titles}>Mis valoraciones</h2>
+            ) : (
+              <h2 className={styles.titles}>Valoraciones</h2>
+            )}
             <div>
               {user?.trabajosData.map((trabajo, index) => {
                 const fecha = new Date(trabajo.fecha_creacion);
