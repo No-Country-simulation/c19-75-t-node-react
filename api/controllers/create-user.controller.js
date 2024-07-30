@@ -8,10 +8,10 @@ const sql = require('mssql');
  * @returns {object} - Response object with user data or error message
  */
 const createUser = async (req, res) => {
-    const { nombre, apellido, ciudad, cp, provincia, tel, mail, pass, esprofesional, categorias } = req.body;
+    const { nombre, apellido, ciudad, cp, provincia, tel, mail, pass, esprofesional, categorias, barrio } = req.body;
 
-    if (!nombre || !apellido || !ciudad || !cp || !provincia || !tel || !mail || !pass || esprofesional === undefined) {
-        return res.status(400).json({ error: 'Por favor, ingresar nombre, apellido, ciudad, provincia, cp, tel, mail, pass y esprofesional' });
+    if (!nombre || !apellido || !ciudad || !cp || !provincia || !tel || !mail || !pass || !barrio || esprofesional === undefined) {
+        return res.status(400).json({ error: 'Por favor, ingresar nombre, apellido, ciudad, provincia, cp, tel, mail, barrios, pass y esprofesional' });
     }
 
     const pool = await connectDB();
@@ -29,6 +29,7 @@ const createUser = async (req, res) => {
             .input('ciudad', sql.NVarChar, ciudad)
             .input('cp', sql.Int, cp)
             .input('provincia', sql.NVarChar, provincia)
+            .input('barrio', sql.NVarChar, barrio)
             .input('tel', sql.NVarChar, tel)
             .input('mail', sql.NVarChar, mail)
             .input('pass', sql.NVarChar, pass)
@@ -40,6 +41,7 @@ const createUser = async (req, res) => {
                     ciudad, 
                     cp,
                     provincia,
+                    barrio,
                     tel,
                     mail,
                     password,
@@ -52,6 +54,7 @@ const createUser = async (req, res) => {
                     @ciudad, 
                     @cp,
                     @provincia,
+                    @barrio,
                     @tel,
                     @mail,
                     @pass,
