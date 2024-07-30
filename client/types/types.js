@@ -8,6 +8,17 @@ export const CATEGORIES = [
   { id: 7, name: 'Albañilería', url: 'albanileria' },
   { id: 8, name: 'Carpintería', url: 'carpinteria' },
 ];
+export const PROFESIONS = [
+  { id: 1, name: 'Pintor' },
+  { id: 2, name: 'Herrero' },
+  { id: 3, name: 'Plomero' },
+  { id: 4, name: 'Electricista' },
+  { id: 5, name: 'Jardinero' },
+  { id: 6, name: 'Mantenimiento' },
+  { id: 7, name: 'Albañil' },
+  { id: 8, name: 'Carpintero' },
+];
+
 // Default types
 export const tJob = {
   job_id: null,
