@@ -36,8 +36,6 @@ const MarketPlaceCardsSection = ({ pathname, initialData, categoria }) => {
     const [originalData, _] = useState(initialData || []);
     const [sort, setSort] = useState(ORDENAMIENTOS.DEFAULT);
 
-    console.log(data);
-
     const handleSort = (event) => {
         const nuevaOpcion = event.target.value;
         setSort(nuevaOpcion);
@@ -91,11 +89,10 @@ const MarketPlaceCardsSection = ({ pathname, initialData, categoria }) => {
                 {data === undefined ? (
                     <p>Cargando...</p>
                 ) : data.length > 0 ? (
-                    <h1>TEST</h1>
+                    data.map((item, idx) => (
+                        <MarketPlaceCard key={item.usuario_id + '_' + idx} data={item} pathname={pathname} />
+                    ))
                 ) : (
-                    // data.map((item, idx) => (
-                    //     <MarketPlaceCard key={item.usuario_id + '_' + idx} data={item} pathname={pathname} />
-                    // ))
                     <p>
                         No hay {pathname} {categoria && 'esta categoría'}
                     </p>

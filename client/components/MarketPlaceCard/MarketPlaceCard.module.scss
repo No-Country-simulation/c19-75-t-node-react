@@ -56,7 +56,7 @@
             justify-self: flex-end;
             align-self: flex-end;
             max-height: 38px;
-            min-width: 95px;
+            min-width: 115px;
             max-width: 125px;
             grid-area: btn;
             padding: 4px 10px;
@@ -99,7 +99,7 @@
             }
             .userConainer {
                 grid-area: user;
-                margin-left: auto;
+                margin: 0 auto;
                 display: flex;
 
                 .user {
@@ -126,7 +126,7 @@
                     border-radius: 6px;
                     font-weight: 500;
                     height: fit-content;
-                    min-width: 95px;
+                    min-width: 115px;
                     width: 100%;
                     max-width: fit-content;
                     text-align: center;

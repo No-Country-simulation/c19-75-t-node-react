@@ -3,14 +3,14 @@ import styles from './MarketPlaceCard.module.scss';
 
 import { FaHeart, FaStar, FaRegHeart } from 'react-icons/fa';
 import { Star } from '../Icons';
+import { CATEGORIES } from '@/types/types';
 
 const tDataMaerketPlace = {
     id: null, //
     title: 'Titulo',
     prov: 'Provincia', //
     city: 'Ciudad', //
-    address: 'Calle', //
-    num_address: '000', //
+    barrio: 'Barrio', //
     img: '', //
 };
 
@@ -30,6 +30,7 @@ const tWorkerMarketPlace = {
 const tJobMarketPlace = {
     ...tDataMaerketPlace,
     desc: 'Descripcion',
+    comentario: 'Comentario',
     client_id: null,
     client_name: 'Nombre',
     client_lastName: 'Apellido',
@@ -49,8 +50,7 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
     if (data) {
         if (data?.provincia) item.prov = data?.provincia;
         if (data?.ciudad) item.city = data?.ciudad;
-        if (data?.direccion) item.address = data?.direccion;
-        if (data?.num_direccion) item.num_address = data?.num_direccion;
+        if (data?.barrio) item.barrio = data?.barrio;
         item.img = data?.foto;
         if (isWorker) {
             item.id = data?.usuario_id;
@@ -76,11 +76,11 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
         } else {
             item.id = data?.id;
             if (data?.titulo) item.title = data?.titulo;
-            if (data?.descripcion) item.desc = data?.descripcion;
+            if (data?.descripcion) item.desc = data?.descripcion; // FIXME: el laburo no tiene descripcion :(
             if (data?.cliente_id) item.client_id = data?.cliente_id;
-            if (data?.client_name) item.client_name = data?.client_name;
-            if (data?.client_lastName) item.client_lastName = data?.client_lastName;
-            if (data?.categoria) item.category = data?.categoria;
+            if (data?.nombre) item.client_name = data?.nombre;
+            if (data?.apellido) item.client_lastName = data?.apellido;
+            if (data?.categoria_nombre) item.category = data?.categoria_nombre;
             if (data?.subcategoria) item.subcategory = data?.subcategoria;
         }
     }
@@ -148,12 +148,17 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
                 </div>
                 <div className={styles.addressContainer}>
                     <span>
-                        {item.prov} / {item.city} / {item.address} / {item.num_address}
+                        {item.prov} / {item.city} / {item.barrio}
                     </span>
                 </div>
             </>
         );
     };
+
+    const CATEGORY_MAP = CATEGORIES.reduce((acc, category) => {
+        acc[category.name] = category.url;
+        return acc;
+    }, {});
 
     return (
         <div className={styles.card} key={keyProp + item?.title}>
@@ -174,7 +179,11 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
                 <button className={styles.button}>
                     <Link
                         className={styles.buttonLink}
-                        href={isWorker ? `/usuario/${item?.id}` : `/laburos/${item?.category}/${item?.id}`}
+                        href={
+                            isWorker
+                                ? `/usuario/${item?.id}`
+                                : `/laburos/${CATEGORY_MAP[item?.category]}/${item?.id}`
+                        }
                     >
                         {isWorker ? 'Ver Perfil' : 'Ver Oferta'}
                     </Link>

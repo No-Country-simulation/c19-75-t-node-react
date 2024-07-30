@@ -16,11 +16,10 @@ const Laburos = () => {
 
     const fetchLaburos = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/trabajos/');
+            const response = await fetch('http://localhost:5000/api/trabajos/jobsMarketPlace');
             const data = await response.json();
             setLaburos(data);
         } catch (error) {
-            console.error('Error fetching trabajadores:', error);
             setError('Error al obtener los trabajadores');
         } finally {
             setLoading(false);

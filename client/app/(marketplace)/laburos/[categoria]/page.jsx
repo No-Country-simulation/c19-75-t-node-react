@@ -6,23 +6,12 @@ import styles from '../../MarketplaceLayout.module.scss';
 import { usePathname } from 'next/navigation';
 import MarketPlaceHeroSection from '@/containers/marketplace-page/hero-section';
 import MarketPlaceCardsSection from '@/containers/marketplace-page/cards-section';
-
-const CATEGORIAS = {
-    0: 'Todas las categorias',
-    1: 'pintureria',
-    2: 'herreria',
-    3: 'plomeria',
-    4: 'electricitstas',
-    5: 'jardineria',
-    6: 'mantenimiento',
-    7: 'albanileria',
-    8: 'carpinteria',
-};
+import { CATEGORIES } from '@/types/types';
 
 const getIdFromCategory = (categoryName) => {
-    for (const [id, name] of Object.entries(CATEGORIAS)) {
-        if (name === categoryName) {
-            return Number(id);
+    for (const [_, cat] of Object.entries(CATEGORIES)) {
+        if (cat.url === categoryName) {
+            return cat.id;
         }
     }
     return null; // Devuelve null si la categoría no se encuentra
@@ -32,24 +21,24 @@ const LaburosPorOficio = ({ params }) => {
     const pathname = usePathname();
     const firstPath = pathname.split('/')[1];
     const { categoria } = params;
-    console.log('categoria:', categoria);
     const [laburos, setLaburos] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const fetchLaburos = async () => {
         try {
-            const id = getIdFromCategory(categoria);
-            if (id === null) {
+            const categoriaId = getIdFromCategory(categoria);
+            if (categoriaId === null) {
                 throw new Error('Categoría no encontrada');
             }
-            // TODO: Implement this
-            // const response = await fetch('http://localhost:5000/api/trabajos/categorias/${id}');
-            // const data = await response.json();
-            // setLaburos(data);
+            const response = await fetch(
+                `http://localhost:5000/api/trabajos/jobsMarketPlace/category/${categoriaId}`
+            );
+            const data = await response.json();
+            setLaburos(data);
         } catch (error) {
-            // console.error('Error fetching trabajadores:', error);
-            // setError('Error al obtener los trabajadores');
+            console.error('Error fetching trabajadores:', error);
+            setError('Error al obtener los trabajadores');
         } finally {
             setLoading(false);
         }
