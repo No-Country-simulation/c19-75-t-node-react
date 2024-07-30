@@ -34,6 +34,41 @@ const getAvailableJobs = async (req, res) => {
     }
 };
 
+const getAvailableJobsByCategory = async (req, res) => {
+    const categoriaId = req.params.categoriaId; // Obtener el ID de la categoría desde los parámetros de la solicitud
+
+    try {
+        const pool = await connectDB();
+        const trabajosResultado = await pool.request()
+            .input('categoriaId', sql.Int, categoriaId) // Pasar el ID de la categoría como parámetro
+            .query(`
+                SELECT 
+                    t.titulo AS titulo, 
+                    t.fotos AS fotos, 
+                    t.id AS id, 
+                    t.cliente_id AS cliente_id, 
+                    u.nombre AS nombre, 
+                    u.apellido AS apellido, 
+                    u.provincia AS provincia, 
+                    u.ciudad AS ciudad, 
+                    u.barrio AS barrio,
+                    c.nombre AS categoria_nombre
+                FROM trabajos t
+                JOIN usuarios u ON t.cliente_id = u.id
+                LEFT JOIN trabajoCategorias tc ON t.id = tc.TrabajoID
+                LEFT JOIN categorias c ON tc.CategoriaID = c.id
+                WHERE t.estado = 'en busqueda' 
+                AND c.id = @categoriaId;
+            `);
+
+        const trabajos = trabajosResultado.recordset;
+        res.status(200).json(trabajos);
+    } catch (err) {
+        console.error('Error al obtener los trabajos:', err);
+        res.status(500).json({ error: 'Error al obtener los trabajos' });
+    }
+};
+
 
 //Crear un nuevo trabajo
 async function createTrabajo(req, res) {
@@ -89,5 +124,6 @@ async function createTrabajo(req, res) {
 
 module.exports = {
     getAvailableJobs,
+    getAvailableJobsByCategory,
     createTrabajo
 };
