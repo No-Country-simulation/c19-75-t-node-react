@@ -7,8 +7,19 @@ import { usePathname } from 'next/navigation';
 import { logout } from '@/actions/auth';
 import { useSessionContext } from '@/context/SessionContext';
 
+const CATEGORIES = [
+    { id: 1, name: 'Pinturería', url: 'pintureria' },
+    { id: 2, name: 'Herrería', url: 'herreria' },
+    { id: 3, name: 'Plomería', url: 'plomeria' },
+    { id: 4, name: 'Electricidad', url: 'electricidad' },
+    { id: 5, name: 'Jardinería', url: 'jardineria' },
+    { id: 6, name: 'Mantenimiento', url: 'mantenimiento' },
+    { id: 7, name: 'Albañilería', url: 'albanileria' },
+    { id: 8, name: 'Carpintería', url: 'carpinteria' },
+];
+
 const Header = () => {
-    const { userSessionData, setSessionActive } = useSessionContext();
+    const { userSessionData, setSessionActive, sessionActive } = useSessionContext();
     const [active, setActive] = useState(true);
     const [open, setOpen] = useState(false);
 
@@ -26,17 +37,43 @@ const Header = () => {
         };
     }, []);
 
-    // const userSessionData = {
-    //     id: 1,
-    //     name: 'Nacho',
-    //     isWorker: true, // true | false
-    // };
-    // const userSessionData = null;
-
     const handleLogout = async () => {
         await logout();
         setSessionActive(false);
         setOpen(false);
+    };
+
+    const NavbarReder = () => {
+        // Mapea las páginas a las redirecciones
+        const redirectMap = {
+            signup: 'trabajadores',
+            login: 'trabajadores',
+            'reset-password': 'trabajadores',
+            laburos: 'laburos',
+            trabajadores: 'trabajadores',
+            '': userSessionData?.isWorker ? 'laburos' : 'trabajadores',
+            usuario: userSessionData?.isWorker ? 'laburos' : 'trabajadores',
+        };
+
+        // Obtén la página actual home (/) | signup | login | register | user | marketplace (laburos / trabajadores)
+        const actualPage = pathname.split('/')[1];
+
+        // Usa el objeto de configuración para determinar la redirección
+        const redirectPage = redirectMap[actualPage] || 'trabajadores';
+
+        return (
+            <>
+                {CATEGORIES.map((category) => (
+                    <Link
+                        key={category.url}
+                        href={`/${redirectPage}/${category.url}`}
+                        className={styles.link}
+                    >
+                        {category.name}
+                    </Link>
+                ))}
+            </>
+        );
     };
 
     const SignupRender = () => {
@@ -152,90 +189,7 @@ const Header = () => {
                 <>
                     <hr />
                     <div className={styles.menu}>
-                        <Link
-                            href={
-                                userSessionData?.isWorker
-                                    ? '/laburos/mantenimiento'
-                                    : '/trabajadores/mantenimiento'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Mantenimiento
-                        </Link>
-                        <Link
-                            href={
-                                userSessionData?.isWorker
-                                    ? '/laburos/albanileria'
-                                    : '/trabajadores/albanileria'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Albañiería
-                        </Link>
-                        <Link
-                            href={userSessionData?.isWorker ? '/laburos/plomeria' : '/trabajadores/plomeria'}
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Plomería
-                        </Link>
-                        <Link
-                            href={userSessionData?.isWorker ? '/laburos/gasista' : '/trabajadores/gasistas'}
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Gasistas
-                        </Link>
-                        <Link
-                            href={
-                                userSessionData?.isWorker
-                                    ? '/laburos/electricista'
-                                    : '/trabajadores/electricistas'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Electricistas
-                        </Link>
-                        <Link
-                            href={
-                                userSessionData?.isWorker ? '/laburos/jardineria' : '/trabajadores/jardineria'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Jardinería
-                        </Link>
-
-                        <Link
-                            href={
-                                userSessionData?.isWorker ? '/laburos/pintureria' : '/trabajadores/pintureria'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Pinturería
-                        </Link>
-                        <Link
-                            href={
-                                userSessionData?.isWorker
-                                    ? '/laburos/carpinteria'
-                                    : '/trabajadores/carpinteria'
-                            }
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Carpintería
-                        </Link>
-                        <Link
-                            href={userSessionData?.isWorker ? '/laburos/herreria' : '/trabajadores/herreria'}
-                            className={styles.link}
-                            legacyBehavior
-                        >
-                            Herrería
-                        </Link>
+                        <NavbarReder />
                     </div>
                     <hr />
                 </>
