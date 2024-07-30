@@ -6,17 +6,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { logout } from '@/actions/auth';
 import { useSessionContext } from '@/context/SessionContext';
-
-const CATEGORIES = [
-    { id: 1, name: 'Pinturería', url: 'pintureria' },
-    { id: 2, name: 'Herrería', url: 'herreria' },
-    { id: 3, name: 'Plomería', url: 'plomeria' },
-    { id: 4, name: 'Electricidad', url: 'electricidad' },
-    { id: 5, name: 'Jardinería', url: 'jardineria' },
-    { id: 6, name: 'Mantenimiento', url: 'mantenimiento' },
-    { id: 7, name: 'Albañilería', url: 'albanileria' },
-    { id: 8, name: 'Carpintería', url: 'carpinteria' },
-];
+import { CATEGORIES } from '@/types/types';
 
 const Header = () => {
     const { userSessionData, setSessionActive, sessionActive } = useSessionContext();
