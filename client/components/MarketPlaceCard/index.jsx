@@ -38,7 +38,7 @@ const tJobMarketPlace = {
     subcategory: 'Subcategoria',
 };
 
-const MarketPlaceCard = ({ keyProp, data, pathname }) => {
+const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
     const isWorker = pathname === 'trabajadores';
 
     // Reorganizar la info de data segun el tipo de de dato trabajador o laburo
@@ -46,7 +46,6 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
 
     // TODO: Ver bien los datos que traemos de la db
     // FIXME: Cambiar todo esto dependiendo de los datos traidos de la db
-    // FIXME: Los if no van, esto es par mostrar el card algo armado
     if (data) {
         if (data?.provincia) item.prov = data?.provincia;
         if (data?.ciudad) item.city = data?.ciudad;
@@ -55,8 +54,11 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
         if (isWorker) {
             item.id = data?.usuario_id;
             if (data?.nombre && data?.apellido) item.title = data?.nombre + ' ' + data?.apellido;
-            if (data?.categoria) {
-                const arrCategories = data?.categoria.split('/');
+            if (data?.categorias || data?.categoria) {
+                let arrCategories = [];
+                if (data?.categorias) arrCategories = data?.categorias.split(',');
+                else arrCategories = data?.categoria.split(',');
+                console;
                 item.professions = arrCategories.map((cat) => {
                     return {
                         profession_name: cat,
@@ -68,10 +70,10 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
             if (data?.puntuacion) item.rating = data?.puntuacion;
             if (item?.rating === 0) {
                 item.cant_works_done = 0;
-            } else if (item.rating < 3) {
-                item.cant_works_done = Math.round(Math.random() * 50);
+            } else if (item.rating <= 3) {
+                item.cant_works_done = Math.round(Math.random() * 30);
             } else {
-                item.cant_works_done = Math.round(Math.random() * 150);
+                item.cant_works_done = Math.round(Math.random() * 130);
             }
         } else {
             item.id = data?.id;
@@ -125,9 +127,7 @@ const MarketPlaceCard = ({ keyProp, data, pathname }) => {
                     })}
                 </div>
                 <div className={styles.addressContainer}>
-                    <span>
-                        {item?.prov && `${item.prov} / ${item.city} / ${item.address} / ${item.num_address}`}
-                    </span>
+                    <span>{item?.prov && `${item.prov} / ${item.city} / ${item.barrio}`}</span>
                 </div>
             </>
         );

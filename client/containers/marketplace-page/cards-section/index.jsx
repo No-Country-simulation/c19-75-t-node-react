@@ -90,7 +90,12 @@ const MarketPlaceCardsSection = ({ pathname, initialData, categoria }) => {
                     <p>Cargando...</p>
                 ) : data.length > 0 ? (
                     data.map((item, idx) => (
-                        <MarketPlaceCard key={item.usuario_id + '_' + idx} data={item} pathname={pathname} />
+                        <MarketPlaceCard
+                            key={item.usuario_id + '_' + idx}
+                            data={item}
+                            pathname={pathname}
+                            categoria={categoria}
+                        />
                     ))
                 ) : (
                     <p>

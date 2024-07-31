@@ -56,10 +56,6 @@ const TrabajadoresPorCategoria = ({ params }) => {
         if (categoria) fetchProfesionales();
     }, [categoria]);
 
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
-
     return (
         <>
             <MarketPlaceHeroSection pathname={firstPath} categoria={categoria} />

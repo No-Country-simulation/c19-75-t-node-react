@@ -48,9 +48,6 @@ const LaburosPorOficio = ({ params }) => {
         fetchLaburos();
     }, []);
 
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
     return (
         <>
             <MarketPlaceHeroSection pathname={firstPath} categoria={categoria} />

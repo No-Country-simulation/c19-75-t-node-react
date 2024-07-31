@@ -31,9 +31,6 @@ const Trabajadores = () => {
         fetchTrabajadores();
     }, []);
 
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
     return (
         <>
             <MarketPlaceHeroSection pathname={firstPath} categoria={null} />
