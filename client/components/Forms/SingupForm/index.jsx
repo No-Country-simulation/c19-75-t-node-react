@@ -16,6 +16,7 @@ import Label from '@/components/Forms/Label';
 import Select from '../Select';
 import ZodErrors from '../Custom';
 import { useSessionContext } from '@/context/SessionContext';
+import { useRouter } from 'next/navigation';
 
 const INITIAL_STATE_FORM = {
   zodErrors: {},
@@ -44,6 +45,7 @@ const SingupForm = ({ userTypeSelected }) => {
   const [formState, formAction, pending] = useFormState(singup, INITIAL_STATE_FORM);
   const { provincias, localidades, setSelectedProvincia, error } = useLocationData();
   const { setSessionActive } = useSessionContext();
+  const router = useRouter();
 
   useEffect(() => {
     if (formState?.success) {
