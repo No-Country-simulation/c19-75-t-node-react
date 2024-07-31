@@ -1,41 +1,41 @@
-.feature{
-        background-color: #0b1041 ;
+.feature {
+    background-color: #0b1041;
+    display: flex;
+    justify-content: center;
+    padding: 100px 25px;
+    .container {
+        width: 1400px;
         display: flex;
-        justify-content: center;
-        padding: 100px 0px;
-    .container{
-            width: 1400px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        .item{
+        align-items: center;
+        gap: 15px;
+        .item {
             display: flex;
             flex-direction: column;
             gap: 5px;
-            h1{
+            h1 {
                 color: white;
                 margin: 0;
             }
-            h2{
+            h2 {
                 color: white;
                 font-style: italic;
                 font-weight: 300;
                 margin-top: 0;
                 margin-bottom: 40px;
             }
-            .title{
+            .title {
                 color: white;
                 font-weight: 600;
                 display: flex;
                 align-items: center;
                 font-size: 18px;
-                .icon{
+                .icon {
                     color: #9bd002;
                     font-size: 25px;
                     margin-right: 7px;
                 }
             }
-            p{
+            p {
                 color: white;
             }
             .button {
@@ -51,11 +51,11 @@
                 cursor: pointer;
                 margin-bottom: 20px;
                 margin-top: 10px;
-                :hover{
+                :hover {
                     background-color: #6f9401;
                 }
             }
-            img{
+            img {
                 width: 720px;
             }
         }

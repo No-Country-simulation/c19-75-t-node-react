@@ -26,8 +26,6 @@ const LoginForm = () => {
     const { setSessionActive } = useSessionContext();
     const [formState, formAction, pending] = useFormState(login, INITIAL_STATE_FORM);
 
-    console.log('LOGIN', formState?.success);
-
     useEffect(() => {
         if (formState?.success) {
             router.push('/');

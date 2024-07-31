@@ -1,11 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-import styles from '@/app/trabajadores/Trabajadores.module.scss';
-import TrabajadoresPage from '@/containers/trabajadores-page';
+import styles from '../../MarketplaceLayout.module.scss';
+
+import { usePathname } from 'next/navigation';
+import MarketPlaceHeroSection from '@/containers/marketplace-page/hero-section';
+import MarketPlaceCardsSection from '@/containers/marketplace-page/cards-section';
 
 const CATEGORIAS = {
-    // FIXME: Complementar con las categorías de la base de datos
+    0: 'Todas las categorias',
     1: 'pintureria',
     2: 'herreria',
     3: 'plomeria',
@@ -25,7 +28,9 @@ const getIdFromCategory = (categoryName) => {
     return null; // Devuelve null si la categoría no se encuentra
 };
 
-const TrabajadoresPorOficio = ({ params }) => {
+const TrabajadoresPorCategoria = ({ params }) => {
+    const pathname = usePathname();
+    const firstPath = pathname.split('/')[1];
     const { categoria } = params;
     const [trabajadores, setTrabajadores] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -51,15 +56,20 @@ const TrabajadoresPorOficio = ({ params }) => {
         if (categoria) fetchProfesionales();
     }, [categoria]);
 
-    if (loading) {
-        return <p>Cargando...</p>;
-    }
-
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
-
-    return <TrabajadoresPage inicialTrabajadores={trabajadores} categoria={categoria} />;
+    return (
+        <>
+            <MarketPlaceHeroSection pathname={firstPath} categoria={categoria} />
+            {loading ? (
+                <div className={styles.loading}>Cargando...</div>
+            ) : (
+                <MarketPlaceCardsSection
+                    pathname={firstPath}
+                    initialData={trabajadores}
+                    categoria={categoria}
+                />
+            )}
+        </>
+    );
 };
 
-export default TrabajadoresPorOficio;
+export default TrabajadoresPorCategoria;

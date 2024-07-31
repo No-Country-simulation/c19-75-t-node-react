@@ -1,0 +1,19 @@
+.marketplace_layout {
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 1400px;
+    width: calc(100% - 50px);
+    min-height: 60vh;
+
+    gap: 1rem;
+
+    .loading {
+        font-size: 35px;
+    }
+
+    .error {
+        font-size: 48px;
+    }
+}
