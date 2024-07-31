@@ -59,6 +59,14 @@ const getBestTrabajos = async (req, res) => {
         `);
 
         const trabajos = bestTrabajosResultado.recordset;
+        res.status(200).json(trabajos);
+    } catch (err) {
+        console.error('Error al obtener los trabajos:', err);
+        res.status(500).json({ error: 'Error al obtener los trabajos' });
+    }
+}
+
+
 const getAvailableJobsByCategory = async (req, res) => {
     const categoriaId = req.params.categoriaId; // Obtener el ID de la categoría desde los parámetros de la solicitud
 
@@ -94,11 +102,6 @@ const getAvailableJobsByCategory = async (req, res) => {
         res.status(500).json({ error: 'Error al obtener los trabajos' });
     }
 };
-
-
-module.exports = {
-    getAllTrabajos,
-    getBestTrabajos
 
 //obtener a UN trabajo especifico por ID
 const getJobById = async (req, res) => {
@@ -196,6 +199,7 @@ async function createTrabajo(req, res) {
 module.exports = {
     getAvailableJobs,
     getAvailableJobsByCategory,
+    getBestTrabajos,
     getJobById,
     createTrabajo
 };

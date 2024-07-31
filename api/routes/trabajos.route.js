@@ -1,8 +1,6 @@
 const express = require('express');
 const {
-    getAllTrabajos,
-    getBestTrabajos
-
+  getBestTrabajos,
   getAvailableJobs,
   getAvailableJobsByCategory,
   getJobById,
