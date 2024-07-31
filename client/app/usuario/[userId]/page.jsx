@@ -201,9 +201,10 @@ const PerfilUsuario = ({ params, searchParams }) => {
   const { userId } = params;
   const { opcion } = searchParams;
   const [user, setUser] = useState(null);
-  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(true); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
+  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
   const [solicitudEnviada, setSolicitudEnviada] = useState(false);
 
+  //En vez de esta tabla estaria el fetch que trae las los trabajos, sus clientes y estados.
   const tables = [
     {
       title: "Solicitudes",
