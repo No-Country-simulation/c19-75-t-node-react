@@ -109,6 +109,111 @@ const getJobById = async (req, res) => {
     }
 };
 
+//obtener todos los trabajos con estado [finalizado] POR ID de usuario
+const getTrabajosFinalizadosByUserId = async (req, res) => {
+    const userId = req.params.usuarioId; // Obtener el ID del usuario desde los parámetros de la solicitud
+    const userType = req.params.userType; // Obtener el tipo de usuario ('cliente' o 'profesional')
+
+    try {
+        const pool = await connectDB();
+        let trabajosResultado;
+
+        if (userType === 'cliente') {
+            // Caso: profesional viendo perfil de un cliente
+            trabajosResultado = await pool.request()
+                .input('userId', sql.Int, userId) // Pasar el ID del cliente como parámetro
+                .query(`
+                    SELECT 
+                        t.titulo AS titulo, 
+                        t.fotos AS fotos, 
+                        t.id AS id, 
+                        V.puntuacion AS puntuacion, 
+                        v.comentario AS comentario
+                    FROM trabajos t
+                    JOIN valoraciones v ON t.id = v.trabajo_id
+                    WHERE t.cliente_id = @userId AND t.estado = 'finalizado';
+                `);
+        } else if (userType === 'profesional') {
+            // Caso: cliente viendo perfil de un profesional
+            trabajosResultado = await pool.request()
+                .input('userId', sql.Int, userId) // Pasar el ID del profesional como parámetro
+                .query(`
+                    SELECT 
+                        t.titulo AS titulo, 
+                        t.fotos AS fotos, 
+                        t.id AS id, 
+                        V.puntuacion AS puntuacion, 
+                        v.comentario AS comentario
+                    FROM trabajos t
+                    JOIN valoraciones v ON t.id = v.trabajo_id
+                    WHERE t.profesional_id = @userId AND t.estado = 'finalizado';
+                `);
+        } else {
+            // Tipo de usuario no válido
+            return res.status(400).json({ error: 'Tipo de usuario no válido' });
+        }
+
+        const trabajos = trabajosResultado.recordset;
+        res.status(200).json(trabajos);
+    } catch (err) {
+        console.error('Error al obtener los trabajos:', err);
+        res.status(500).json({ error: 'Error al obtener los trabajos' });
+    }
+};
+
+//obtener todos los trabajos (sin importar su estado) POR ID de usuario
+//esto seria para cuando estoy viendo MI PROPIO PERFIL, SEA UN CLIENTE O UN PROFESIONAL
+const getAllTrabajosByUserId = async (req, res) => {
+    const userId = req.params.usuarioId; // Obtener el ID del usuario desde los parámetros de la solicitud
+    const userType = req.params.userType; // Obtener el tipo de usuario ('cliente' o 'profesional')
+
+    try {
+        const pool = await connectDB();
+        let trabajosResultado;
+
+        if (userType === 'cliente') {
+            // Caso: cliente viendo su perfil
+            trabajosResultado = await pool.request()
+                .input('userId', sql.Int, userId) // Pasar el ID del cliente como parámetro
+                .query(`
+                    SELECT 
+                        t.titulo AS titulo, 
+                        t.fotos AS fotos, 
+                        t.id AS trabajo_id, 
+                        t.estado AS estado,
+                        V.puntuacion AS puntuacion, 
+                        v.comentario AS comentario
+                    FROM trabajos t
+                    LEFT JOIN valoraciones v ON t.id = v.trabajo_id
+                    WHERE t.cliente_id = @userId;
+                `);
+        } else if (userType === 'profesional') {
+            // Caso: profesional viendo su perfil
+            trabajosResultado = await pool.request()
+                .input('userId', sql.Int, userId) // Pasar el ID del profesional como parámetro
+                .query(`
+                    SELECT 
+                        t.titulo AS titulo, 
+                        t.fotos AS fotos, 
+                        t.id AS trabajo_id, 
+                        V.puntuacion AS puntuacion, 
+                        v.comentario AS comentario
+                    FROM trabajos t
+                    LEFT JOIN valoraciones v ON t.id = v.trabajo_id
+                    WHERE t.profesional_id = @userId;
+                `);
+        } else {
+            // Tipo de usuario no válido
+            return res.status(400).json({ error: 'Tipo de usuario no válido' });
+        }
+
+        const trabajos = trabajosResultado.recordset;
+        res.status(200).json(trabajos);
+    } catch (err) {
+        console.error('Error al obtener los trabajos:', err);
+        res.status(500).json({ error: 'Error al obtener los trabajos' });
+    }
+};
 
 //Crear un nuevo trabajo
 async function createTrabajo(req, res) {
@@ -166,5 +271,7 @@ module.exports = {
     getAvailableJobs,
     getAvailableJobsByCategory,
     getJobById,
+    getTrabajosFinalizadosByUserId,
+    getAllTrabajosByUserId,
     createTrabajo
 };
