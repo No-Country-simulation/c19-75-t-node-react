@@ -1,0 +1,52 @@
+@import '@/styles/variables.scss';
+.cards_section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+
+        .right {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 5px;
+
+            .sortBy {
+                font-size: 14px;
+                font-weight: $font-weight-medium;
+            }
+
+            .sortType {
+                font-size: 13px;
+                cursor: pointer;
+                padding: 1px;
+                padding-top: 1.24px;
+                gap: 5px;
+                line-height: 1;
+
+                background-color: transparent;
+                border: none;
+
+                option {
+                    cursor: pointer;
+                }
+            }
+
+            .icon {
+                width: 20px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+    }
+}

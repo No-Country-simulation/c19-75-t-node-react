@@ -16,12 +16,13 @@ function Home() {
   const [trabajos, setTrabajos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/trabajos')
+
+    fetch('http://localhost:5000/api/trabajos/mejores')
       .then(response => response.json())
       .then(data => {
         setTrabajos(data);
       })
-      .catch(error => console.error('Error al obtener los trabajos:', error));
+      .catch((error) => console.error('Error al obtener los trabajos:', error));
   }, []);
 
   return (
@@ -29,7 +30,7 @@ function Home() {
       <Featured />
       <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
-          <CatCard key={card.id} item={card} />
+          <CatCard key={card.id} item={card} url={card.url} />
         ))}
       </Slide>
       <ServicesComponent />
@@ -44,7 +45,6 @@ function Home() {
             apellido={trabajo.apellido}
             foto={trabajo.foto}
             puntuacion={trabajo.puntuacion}
-            comentario={trabajo.comentario}
             fotos={trabajo.fotos}
           />
         ))}

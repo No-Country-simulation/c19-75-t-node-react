@@ -55,11 +55,14 @@ const getUserById = async (req, res) => {
     }
 };
 
-const getAllProfessionals = async (req, res) => {
+///Modulo para obtener todos los profesionales sin que se dupliquen, esta dividido en varias partes porq sino la consulta
+//tardaba mucho y se agotaba el tiempo de espera del servidor
+
+const getBasicProfessionalData = async () => {
     try {
         const pool = await connectDB();
         const result = await pool.request().query(`
-           SELECT 
+            SELECT 
                 p.id AS profesional_id,
                 u.id AS usuario_id,
                 u.nombre AS nombre,
@@ -67,16 +70,57 @@ const getAllProfessionals = async (req, res) => {
                 u.foto AS foto,
                 u.provincia AS provincia,
                 u.ciudad AS ciudad,
-                ISNULL(punt.puntuacion_promedio, 0) as puntuacion,
-                c.nombre AS categoria
+                u.barrio AS barrio,
+                ISNULL(punt.puntuacion_promedio, 0) AS puntuacion
             FROM Profesionales p
             INNER JOIN Usuarios u ON p.usuario_id = u.id
-            LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id
-            LEFT JOIN ProfesionalCategorias pc ON p.id = pc.ProfesionalID
-            LEFT JOIN Categorias c ON pc.CategoriaID = c.id;
+            LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id;
         `);
+        return result.recordset;
+    } catch (err) {
+        console.error('Error fetching basic professional data:', err);
+        throw err;
+    }
+};
 
-        const trabajadores = result.recordset;
+const getProfessionalCategories = async () => {
+    try {
+        const pool = await connectDB();
+        const result = await pool.request().query(`
+           SELECT 
+            p.id AS profesional_id,
+            STRING_AGG(c.nombre, ', ') AS categorias
+            FROM ProfesionalCategorias pc
+            INNER JOIN Categorias c ON pc.CategoriaID = c.id
+            INNER JOIN Profesionales p ON pc.ProfesionalID = p.id
+            GROUP BY p.id;
+        `);
+        return result.recordset;
+    } catch (err) {
+        console.error('Error fetching professional categories:', err);
+        throw err;
+    }
+};
+
+const getAllProfessionals = async (req, res) => {
+    try {
+        // Obtener datos básicos
+        const basicData = await getBasicProfessionalData();
+
+        // Obtener categorías
+        const categoriesData = await getProfessionalCategories();
+
+        // Crear un mapa de categorías por profesional
+        const categoriesMap = categoriesData.reduce((acc, curr) => {
+            acc[curr.profesional_id] = curr.categorias;
+            return acc;
+        }, {});
+
+        // Agregar las categorías a los datos básicos
+        const trabajadores = basicData.map(prof => ({
+            ...prof,
+            categorias: categoriesMap[prof.profesional_id] || ''
+        }));
 
         console.log(trabajadores); // Para depuración
 
@@ -87,6 +131,10 @@ const getAllProfessionals = async (req, res) => {
         res.status(500).json({ error: 'Error al obtener los profesionales' });
     }
 };
+
+//NOTA: LAS CATEGORIAS (EN CASO DE SER MAS DE UNA) LAS TRAE DE ESTA MANERA: categorias: 'Electricidad, Mantenimiento'
+//FIN GETALLPROFESSIONALS
+/////////////////////////////////////////////////////////////////////////////////
 
 const getProfessionalsByCategory = async (req, res) => {
     try {
@@ -129,5 +177,5 @@ const getProfessionalsByCategory = async (req, res) => {
 module.exports = {
     getUserById,
     getAllProfessionals,
-    getProfessionalsByCategory
+    getProfessionalsByCategory,
 };

@@ -7,4 +7,5 @@ const { login } = require('../controllers/login.controller');
 router.post('/check-email', isEmailRegistered);
 router.post('/login', login);
 
+
 module.exports = router;
