@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styles from "./NotificationBell.module.scss";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoMdNotifications  } from "react-icons/io";
 import useNotifications from "../utils/notifications";
 import Link from "next/link";
 
 const NotificationBell = () => {
   // const { notifications } = useNotifications();
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const [open, setOpen] = useState(false);
 
   const notifications = [
@@ -78,7 +78,7 @@ const NotificationBell = () => {
             active ? styles.active : styles.inactive
           }`}
         >
-          <IoIosNotificationsOutline
+          <IoMdNotifications
             className={`${styles.iconBell} ${
               active ? styles.activeIcon : styles.inactiveIcon
             }`}
