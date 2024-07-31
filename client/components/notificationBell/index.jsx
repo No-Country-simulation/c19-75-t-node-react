@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const NotificationBell = () => {
   // const { notifications } = useNotifications();
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
   const [open, setOpen] = useState(false);
 
   const notifications = [
