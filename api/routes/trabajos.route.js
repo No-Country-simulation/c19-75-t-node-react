@@ -8,10 +8,10 @@ const {
 const router = express.Router();
 
 // Definir la ruta para obtener todos los trabajos con estado [en busqueda]
-router.get('/jobsMarketPlace', getAvailableJobs); // TODO: PROBAR
+router.get('/jobsMarketPlace', getAvailableJobs); // TODO: Listo
 
 // Definir la ruta para obtener todos los trabajos con estado [en busqueda] POR CATEGORIA
-router.get('/jobsMarketPlace/category/:categoriaId', getAvailableJobsByCategory); // TODO: PROBAR
+router.get('/jobsMarketPlace/category/:categoriaId', getAvailableJobsByCategory); // TODO: Listo
 
 // Definir la ruta para obtener todos los trabajos con estado [en busqueda] POR CATEGORIA
 router.get('/:trabajoId', getJobById); // TODO: PROBAR
