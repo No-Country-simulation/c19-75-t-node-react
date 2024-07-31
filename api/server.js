@@ -19,6 +19,7 @@ connectDB().then(() => {
     app.use('/api/login', loginRouter);
     app.use('/api/postulaciones', postulacionesRouter);
 
+
     // Iniciar el servidor
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {

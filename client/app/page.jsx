@@ -16,9 +16,10 @@ function Home() {
   const [trabajos, setTrabajos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/trabajos')
-      .then((response) => response.json())
-      .then((data) => {
+
+    fetch('http://localhost:5000/api/trabajos/mejores')
+      .then(response => response.json())
+      .then(data => {
         setTrabajos(data);
       })
       .catch((error) => console.error('Error al obtener los trabajos:', error));
@@ -44,7 +45,6 @@ function Home() {
             apellido={trabajo.apellido}
             foto={trabajo.foto}
             puntuacion={trabajo.puntuacion}
-            comentario={trabajo.comentario}
             fotos={trabajo.fotos}
           />
         ))}
