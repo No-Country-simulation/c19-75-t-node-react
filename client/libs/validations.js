@@ -45,7 +45,7 @@ export const RegisterSchema = z.object({
   province: z.string().optional(),
   city: z.string().optional(),
   barrio: z.string().min(1, { message: messages.required }),
-  postalCode: z.string().optional(),
+  postalCode: z.string().min(1, { message: messages.required }),
   areaCode: z.string().optional(),
   phone: z
     .string()

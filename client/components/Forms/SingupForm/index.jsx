@@ -14,6 +14,8 @@ import Input from '@/components/Forms/Input';
 import ButtonForm from '@/components/Forms/ButtonForm';
 import Label from '@/components/Forms/Label';
 import Select from '../Select';
+import ZodErrors from '../Custom';
+import { useSessionContext } from '@/context/SessionContext';
 
 const INITIAL_STATE_FORM = {
   zodErrors: {},
@@ -41,6 +43,14 @@ const SingupForm = ({ userTypeSelected }) => {
   const [userOccupations, setUserOccupations] = useState([]);
   const [formState, formAction, pending] = useFormState(singup, INITIAL_STATE_FORM);
   const { provincias, localidades, setSelectedProvincia, error } = useLocationData();
+  const { setSessionActive } = useSessionContext();
+
+  useEffect(() => {
+    if (formState?.success) {
+      router.push('/');
+      setSessionActive(true);
+    }
+  }, [formState?.success]);
 
   return (
     <>
@@ -76,7 +86,7 @@ const SingupForm = ({ userTypeSelected }) => {
             <Input type="hidden" name="userType" value={userType} error={formState?.zodErrors?.userType} />
           </div>
         </div>
-        {/*  */}
+
         {userType && (
           <>
             <div className={styles.campo}>
@@ -90,6 +100,7 @@ const SingupForm = ({ userTypeSelected }) => {
                 name="password"
                 placeholder="Contraseña"
                 error={formState?.zodErrors?.password}
+                defaultValue="12345A$"
               />
             </div>
             <div className={styles.group}>
@@ -125,8 +136,6 @@ const SingupForm = ({ userTypeSelected }) => {
                 <Select id="localidad" name="city" options={localidades} error={formState?.zodErrors?.city}>
                   <option value="">Selecciona una ciudad</option>
                 </Select>
-
-                {/* <Input type="text" name="city" placeholder="Ciudad" error={formState?.zodErrors?.city} /> */}
               </div>
             </div>
             <div className={styles.group}>
@@ -186,6 +195,9 @@ const SingupForm = ({ userTypeSelected }) => {
                   ))}
                 </div>
               </div>
+            )}
+            {formState?.success !== null && (
+              <ZodErrors error={formState?.errors?.principal} type="principal" success={formState?.success} />
             )}
             <ButtonForm type="submit" pending={pending} textPending={'Creando Cuenta...'}>
               Crear Cuenta

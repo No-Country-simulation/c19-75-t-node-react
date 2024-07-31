@@ -2,7 +2,7 @@
 import { LoginSchema, RegisterSchema, ResetPasswordSchema } from '@/libs/validations';
 import { createSession, destroySession } from '@/libs/sessions';
 import { loginUser, getUserIdByEmail, createUser } from '@/actions/actions';
-// import { loginUser, getUserIdByEmail, createUser } from '@/data/db';
+import bcrypt from 'bcrypt';
 
 // * THIS WORK * //
 export async function login(prevState, formData) {
@@ -33,9 +33,16 @@ export async function login(prevState, formData) {
       success: false,
     };
   }
+  const { id } = res;
+  if (!id) {
+    return {
+      ...prevState,
+      errors: { principal: ['El email no esta registrado'] },
+      success: false,
+    };
+  }
 
   // 4. Comprobamos si las credenciales son correctas
-  const { id } = res;
   try {
     res = await loginUser(id, password);
   } catch (error) {
@@ -90,42 +97,79 @@ export async function singup(prevState, formData) {
   const {
     userType,
     email,
-    password,
-    name,
-    lastname,
-    province,
-    city,
-    barrio,
-    postalCode,
-    phone,
-    userOccupations,
+    // password,
+    // name,
+    // lastname,
+    // province,
+    // city,
+    // barrio,
+    // postalCode,
+    // phone,
+    // userOccupations,
   } = validateFields.data;
-  const userOccupationsArray = userOccupations.split(',').map((occupation) => parseInt(occupation, 10));
-
-  return null;
+  // const userOccupationsArray = userOccupations.split(',').map((occupation) => parseInt(occupation, 10));
 
   // 2. Comprobar si el usuario ya existe
-  const existingUser = false;
-
-  if (existingUser) {
+  let res = null;
+  try {
+    res = await getUserIdByEmail(email);
+  } catch (error) {
+    console.log('aca');
     return {
       ...prevState,
-      zodErrors: { email: ['El email ya esta registrado'] },
-      message: 'El email ya esta registrado',
+      errors: { principal: error },
+      success: false,
+    };
+  }
+
+  let { id } = res;
+  const existingUser = !id;
+
+  if (!existingUser) {
+    return {
+      ...prevState,
+      errors: { principal: ['El email ya esta registrado'] },
+      success: false,
     };
   }
 
   // 3. Crear el usuario en la base de datos
-  // const user = await createUser(validateFields.data);
+  const user = {
+    esprofesional: validateFields.data.userType === 'trabajador',
+    mail: validateFields.data.email,
+    pass: validateFields.data.password,
+    nombre: validateFields.data.name,
+    apellido: validateFields.data.lastname,
+    provincia: validateFields.data.province,
+    ciudad: validateFields.data.city,
+    barrio: validateFields.data.barrio,
+    cp: validateFields.data.postalCode,
+    tel: validateFields.data.phone,
+    categorias: validateFields.data.userOccupations,
+  };
+  user.pass = await bcrypt.hash(user.pass, 10);
+  user.categorias = user.categorias.split(',').map((occupation) => parseInt(occupation, 10));
 
-  const user = {};
-  if (!user) {
-    return { message: 'Error al registrar el usuario' };
+  try {
+    res = await createUser(user);
+  } catch (error) {
+    return {
+      ...prevState,
+      errors: { principal: error },
+      success: false,
+    };
   }
 
   // 4. Crear la sesion
-  const isWorker = res.esprofesional;
-  await createSession(res.id, res.nombre, isWorker);
+  const isWorker = user.esprofesional;
+  const name = user.nombre;
+  id = res.id;
+  await createSession(id, name, isWorker);
+  return {
+    ...prevState,
+    errors: { principal: res.message },
+    success: true,
+  };
 }
 
 // FIXME: Completar con los campos faltantes y la implementacoin visual
