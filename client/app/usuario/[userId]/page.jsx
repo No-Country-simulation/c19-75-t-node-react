@@ -15,6 +15,7 @@ import Link from "next/link";
 import { FaCheck } from "react-icons/fa";
 import TrabajosSlider from "@/components/trabajosSlider";
 import ProfileTables from "@/components/tables";
+import useNotifications from '../../../components/utils/notifications';
 
 const PerfilUsuario = ({ params, searchParams }) => {
   const { userSessionData, sessionActive } = useSessionContext();
@@ -23,6 +24,11 @@ const PerfilUsuario = ({ params, searchParams }) => {
   const [user, setUser] = useState(null);
   const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
   const [solicitudEnviada, setSolicitudEnviada] = useState(false);
+  const { sendNotification } = useNotifications();
+  
+    const handleButtonClick = () => {
+      sendNotification('notificacion');
+    };
 
   //En vez de esta tabla estaria el fetch que trae las los trabajos, sus clientes y estados.
   const tables = [
@@ -376,7 +382,7 @@ const PerfilUsuario = ({ params, searchParams }) => {
               <span>{user.ciudad}</span>
             </div>
           </div>
-          <Link href="" legacyBehavior>
+          <Link href="" onClick={handleButtonClick} legacyBehavior>
             {
               <a
                 className={`${

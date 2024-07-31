@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { logout } from '@/actions/auth';
 import { useSessionContext } from '@/context/SessionContext';
+import NotificationBell from '../notificationBell';
 
 const Header = () => {
     const { userSessionData, setSessionActive } = useSessionContext();
@@ -119,7 +120,9 @@ const Header = () => {
                 </div>
                 <div className={styles.links}>
                     {!userSessionData ? (
+                        <>
                         <SignupRender />
+                        </>
                     ) : (
                         <>
                             {!userSessionData?.isWorker && (
@@ -135,6 +138,7 @@ const Header = () => {
                                 </button>
                             )}
                             <div className={styles.user}>
+                                <NotificationBell />
                                 <div onClick={() => setOpen(!open)}>
                                     <img src="" alt="" />
                                     <span className={styles.link}>
