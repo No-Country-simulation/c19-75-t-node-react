@@ -84,6 +84,7 @@ export async function singup(prevState, formData) {
     phone: formData.get('phone'),
     userOccupations: formData.get('userOccupations'),
   });
+
   if (!validateFields.success) {
     return {
       ...prevState,
@@ -94,20 +95,7 @@ export async function singup(prevState, formData) {
   }
 
   // Obtener los campos
-  const {
-    userType,
-    email,
-    // password,
-    // name,
-    // lastname,
-    // province,
-    // city,
-    // barrio,
-    // postalCode,
-    // phone,
-    // userOccupations,
-  } = validateFields.data;
-  // const userOccupationsArray = userOccupations.split(',').map((occupation) => parseInt(occupation, 10));
+  const { email } = validateFields.data;
 
   // 2. Comprobar si el usuario ya existe
   let res = null;
@@ -136,7 +124,7 @@ export async function singup(prevState, formData) {
   // 3. Crear el usuario en la base de datos
   const user = {
     esprofesional: validateFields.data.userType === 'trabajador',
-    mail: validateFields.data.email,
+    mail: email,
     pass: validateFields.data.password,
     nombre: validateFields.data.name,
     apellido: validateFields.data.lastname,
@@ -148,7 +136,8 @@ export async function singup(prevState, formData) {
     categorias: validateFields.data.userOccupations,
   };
   user.pass = await bcrypt.hash(user.pass, 10);
-  user.categorias = user.categorias.split(',').map((occupation) => parseInt(occupation, 10));
+  if (user.categorias)
+    user.categorias = user.categorias.split(',').map((occupation) => parseInt(occupation, 10));
 
   try {
     res = await createUser(user);

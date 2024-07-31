@@ -53,7 +53,7 @@ export const RegisterSchema = z.object({
     .regex(/^\d+$/, { message: 'Debe contener solo numeros' })
     .min(8, { message: 'El telefono es invalido, minimo 8 numeros' })
     .max(12, { message: 'El telefono es invalido, maximo 12 numeros' }),
-  userOccupations: z.string().optional(),
+  userOccupations: z.array(z.number()).optional().nullable(),
 });
 
 /*** RECUPERAR CONTRASEÑA ***/
