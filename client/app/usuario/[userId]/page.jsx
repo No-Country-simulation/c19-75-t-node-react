@@ -207,7 +207,6 @@ const PerfilUsuario = ({ params, searchParams }) => {
   const tables = [
     {
       title: "Solicitudes",
-      status: "Estado",
       subTables: [
         {
           title: "Pintura exterior",
@@ -224,11 +223,30 @@ const PerfilUsuario = ({ params, searchParams }) => {
           solicitante: "Carlos Rodríguez",
           value: { aceptar: true, rechazar: true },
         },
+        {
+          title: "Revestimiento exterior",
+          solicitante: "Carlos Rodríguez",
+          value: { aceptar: true, rechazar: true },
+        },
+        {
+          title: "Revestimiento exterior",
+          solicitante: "Carlos Rodríguez",
+          value: { aceptar: true, rechazar: true },
+        },
+        {
+          title: "Revestimiento exterior",
+          solicitante: "Carlos Rodríguez",
+          value: { aceptar: true, rechazar: true },
+        },
+        {
+          title: "Revestimiento exterior",
+          solicitante: "Carlos Rodríguez",
+          value: { aceptar: true, rechazar: true },
+        },
       ],
     },
     {
       title: "Postulaciones",
-      status: "Estado",
       subTables: [
         {
           title: "Pintar mueble de madera",
@@ -245,11 +263,30 @@ const PerfilUsuario = ({ params, searchParams }) => {
           solicitante: "Elena López",
           value: "Rechazado",
         },
+        {
+          title: "Pintar habitacion",
+          solicitante: "Elena López",
+          value: "Rechazado",
+        },
+        {
+          title: "Pintar habitacion",
+          solicitante: "Elena López",
+          value: "Rechazado",
+        },
+        {
+          title: "Pintar habitacion",
+          solicitante: "Elena López",
+          value: "Rechazado",
+        },
+        {
+          title: "Pintar habitacion",
+          solicitante: "Elena López",
+          value: "Rechazado",
+        },
       ],
     },
     {
-      title: "Trabajos",
-      status: "Estado",
+      title: "Laburos",
       subTables: [
         {
           title: "Pintar abertura",
@@ -260,6 +297,26 @@ const PerfilUsuario = ({ params, searchParams }) => {
           title: "Revestimiento interior",
           solicitante: "Sofía Díaz",
           value: "Completado",
+        },
+        {
+          title: "Revestimiento para techo",
+          solicitante: "Diego Morales",
+          value: "Pendiente",
+        },
+        {
+          title: "Revestimiento para techo",
+          solicitante: "Diego Morales",
+          value: "Pendiente",
+        },
+        {
+          title: "Revestimiento para techo",
+          solicitante: "Diego Morales",
+          value: "Pendiente",
+        },
+        {
+          title: "Revestimiento para techo",
+          solicitante: "Diego Morales",
+          value: "Pendiente",
         },
         {
           title: "Revestimiento para techo",

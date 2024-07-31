@@ -33,122 +33,121 @@
 /* TableComponent.module.scss */
 
 .tableContainer {
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin-bottom: 20px;
     border: 1px solid lightgray;
-        border-radius: 5px;
-    .tableHeader{
+    border-radius: 5px;
+
+    .tableHeader {
         width: 100%;
         background-color: #ffffff;
         padding: 10px;
         cursor: pointer;
-        justify-content: space-between;
-        
-        .tableHeader:hover {
-            background-color: #e0e0e0;
-          }
-        .tableTitle{
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+
+        .tableTitle {
             font-weight: bold;
             margin-right: 10px;
         }
-        .tableHeaderContent{
-            display: flex;
-            justify-content: space-between;
+
+        .tableHeaderContent {
+            width: 100%;
             padding: 10px;
             background-color: #ffffff;
+            &:hover {
+                background-color: #f0f0f0;
+            }
 
-            .fila{
+            .fila {
                 display: flex;
                 justify-content: space-between;
-                .titles{
-                    font-size: 20px;
+                
+                .headerTitles {
+                    font-weight: bold;
+                    font-size: 16px;
+                    width: 33%;
+                }
+                h3{
+                    font-weight: bold;
+                    font-size: 16px;
+                    padding-left: 93px;
                 }
             }
-            .tableHeaderSolicitantes{
-                width: 30%;
-                font-weight: bold;
-                margin-right: 10px;
-            }
-            .tableHeaderLaburoDe{
-                width: 30%;
-                font-weight: bold;
-                margin-right: 10px;
-            }
-            .tableHeaderLaburoPara{
-                width: 30%;
-                font-weight: bold;
-                margin-right: 10px;
-            }
-            .tableHeaderEstado{
-                width: 20%;
-                font-weight: bold;
-                margin-right: 10px;
-            }
-        }
-        .tableStatus{
-            font-size: 14px;
-            color: #666;
         }
     }
-    .subTables{
+
+    .subTablesWrapper {
+        max-height: 300px; 
+        overflow-y: auto;
+    }
+
+    .subTables {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: column;
         padding: 10px;
         width: 100%;
-        .subTable{
-            justify-content: space-between;
+
+        .subTable {
             display: flex;
-            flex-direction: row;
-            flex-basis: 100%;
+            justify-content: space-between;
             padding: 10px;
             border-bottom: 1px solid #ccc;
-            .subTableTitle{
-                width: 20%;
+
+            .subTableTitle {
+                width: 33%;
                 font-weight: bold;
-                margin-right: 10px;
             }
-            .subTableSolicitante{
-                width: 30%;
-                margin-right: 10px;
+
+            .subTableSolicitante {
+                width: 33%;
             }
-            .actionButtons{
+
+            .actionButtons {
+                width: 33%;
                 display: flex;
-                justify-content: space-between;
-                margin-top: 10px;
-                .acceptButton{
-                    background-color: #4CAF50;
-                    color: #fff;
+                justify-content: flex-end;
+                gap: 5px;
+
+                .acceptButton, .rejectButton {
+                    background-color: #ffffffa5;
                     padding: 5px 10px;
-                    border: none;
                     border-radius: 5px;
                     cursor: pointer;
                 }
-                .rejectButton{
-                    background-color: #FF9800;
-                    color: #fff;
-                    padding: 5px 10px;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
+
+                .acceptButton {
+                    border: 1px solid #9bd002;
+                    color: #9bd002;
+                }
+
+                .rejectButton {
+                    border: 1px solid #ff0000a5;
+                    color: #ff0000a5;
                 }
             }
-            .subTableValue{
-                width: 20%;
+
+            .subTableValue {
+                width: 33%;
                 font-size: 14px;
                 color: #666;
+                text-align: center;
             }
         }
     }
 }
-.profileTables{
+
+.profileTables {
+    h3{
+        font-size: 24px;
+    }
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 17px;
 }
   
   
