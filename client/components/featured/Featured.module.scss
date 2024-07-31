@@ -1,15 +1,16 @@
 .featured {
     height: 600px;
-        display: flex;
-        justify-content: center;
-        background-color: #707070;
-        background-color: #0B1041;
-        color: white;
+    display: flex;
+    justify-content: center;
+    background-color: #707070;
+    background-color: #0b1041;
+    color: white;
+    padding: 0 25px;
     .container {
         width: 1400px;
         display: flex;
         align-items: center;
-        .left { 
+        .left {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -34,31 +35,31 @@
                 background-color: white;
                 border-radius: 5px;
                 .searchInput {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                        img {
-                            width: 20px;
-                            height: 20px;
-                            margin: 10px;
-                        }
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    img {
+                        width: 20px;
+                        height: 20px;
+                        margin: 10px;
+                    }
 
-                        input { 
-                            border: none;
-                            outline: none;
-                        }
-                        .icon{
-                            margin: 15px;
-                            color: #707070;
-                            font-size: 20px;
-                        }
+                    input {
+                        border: none;
+                        outline: none;
+                    }
+                    .icon {
+                        margin: 15px;
+                        color: #707070;
+                        font-size: 20px;
+                    }
                 }
                 button {
                     color: white;
                     width: 120px;
                     height: 50px;
                     border: none;
-                    background-color: #9BD002;
+                    background-color: #9bd002;
                     border-top-right-radius: 5px;
                     border-bottom-right-radius: 5px;
                     cursor: pointer;
@@ -70,13 +71,13 @@
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                span{
+                span {
                     font-size: medium;
                     font-weight: 500;
                 }
                 button {
                     color: white;
-                    background-color: transparent ;
+                    background-color: transparent;
                     border: 1px solid white;
                     padding: 5px 10px;
                     border-radius: 20px;
