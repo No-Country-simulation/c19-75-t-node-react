@@ -22,7 +22,7 @@ const PerfilUsuario = ({ params, searchParams }) => {
   const { userId } = params;
   const { opcion } = searchParams;
   const [user, setUser] = useState(null);
-  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
+  const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(true); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
   const [solicitudEnviada, setSolicitudEnviada] = useState(false);
   const { sendNotification } = useNotifications();
 

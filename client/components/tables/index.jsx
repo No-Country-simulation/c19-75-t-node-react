@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./TableComponent.module.scss";
+import { IoIosArrowDown } from "react-icons/io";
 
 const TableComponent = ({ title, subTables }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,7 +9,12 @@ const TableComponent = ({ title, subTables }) => {
   return (
     <div className={styles.tableContainer}>
       <div className={styles.tableHeader} onClick={() => setIsOpen(!isOpen)}>
-        {!isOpen && <span className={styles.tableTitle}>{title}</span>}
+        {!isOpen && (
+          <div className={styles.tableTitle}>
+            {title}
+            <IoIosArrowDown className={styles.iconArrow} />
+          </div>
+        )}
         {isOpen && (
           <div className={styles.tableHeaderContent}>
             <div className={styles.fila}>
