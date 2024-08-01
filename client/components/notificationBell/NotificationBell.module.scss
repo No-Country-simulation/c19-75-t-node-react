@@ -1,0 +1,107 @@
+.notificationBellContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+    position: relative;
+    .notificationBell{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 33px;
+        height: 33px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(227, 70, 70);
+        border-radius: 100%;
+        position: relative;
+    .iconBell{
+        width: 22px;
+        height: 22px;
+        color: rgb(227, 70, 70);
+    }
+}
+    .inactive {
+        background-color: white;
+        border: 1px solid lightgray;
+        .inactiveIcon {
+            color: lightgray;
+        }
+    }
+    .active {
+        background-color: white;
+        border: 1px solid rgb(227, 70, 70);
+        .activeIcon {
+            color: rgb(227, 70, 70);
+        }
+    }
+    
+
+.notificationCount{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 17px;
+    height: 17px;
+    font-weight: bold;
+    color: white;
+    border-radius: 100%;
+    background-color: rgb(227, 70, 70);
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    font-size: 12px;
+}
+
+}
+.notificationsOpen {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 650px;
+    max-height: 350px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    .notificationFila{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        
+        .notification {
+            padding: 5px;
+            font-size: 12px;
+            .oferta{
+                font-size: 15px;
+            }
+            .usuario{
+                font-size: 15px;
+                font-weight: bold;
+            }
+            .trabajo{
+                font-size: 15px;
+                margin-left: 5px;
+            }
+        }
+        
+        .notification:last-child {
+            border-bottom: none;
+        }
+        .button{
+            border: 1px solid lightgrey;
+            padding: 10px;
+            border-radius: 5px;
+            h5{
+                color: rgb(157, 157, 157);
+            }
+        }
+    }
+}

@@ -1,0 +1,122 @@
+.tableContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+
+    .tableHeader {
+        width: 100%;
+        background-color: #ffffff;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+
+        .tableTitle {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .tableHeaderContent {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffffff;
+            &:hover {
+                background-color: #f0f0f0;
+            }
+
+            .fila {
+                display: flex;
+                justify-content: space-between;
+                
+                .headerTitles {
+                    font-weight: bold;
+                    font-size: 16px;
+                    width: 33%;
+                }
+                h3{
+                    font-weight: bold;
+                    font-size: 16px;
+                    padding-left: 93px;
+                }
+            }
+        }
+    }
+
+    .subTablesWrapper {
+        max-height: 300px; 
+        overflow-y: auto;
+    }
+
+    .subTables {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 100%;
+
+        .subTable {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+
+            .subTableTitle {
+                width: 33%;
+                font-weight: bold;
+            }
+
+            .subTableSolicitante {
+                width: 33%;
+            }
+
+            .actionButtons {
+                width: 33%;
+                display: flex;
+                justify-content: flex-end;
+                gap: 5px;
+
+                .acceptButton, .rejectButton {
+                    background-color: #ffffffa5;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                .acceptButton {
+                    border: 1px solid #9bd002;
+                    color: #9bd002;
+                }
+
+                .rejectButton {
+                    border: 1px solid #ff0000a5;
+                    color: #ff0000a5;
+                }
+            }
+
+            .subTableValue {
+                width: 33%;
+                font-size: 14px;
+                color: #666;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.profileTables {
+    h3{
+        font-size: 24px;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+  
+  
+  
+  
+  
