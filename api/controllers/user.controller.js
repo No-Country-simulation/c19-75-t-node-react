@@ -17,7 +17,7 @@ const getUserById = async (req, res) => {
         // Si el usuario es profesional, obtener datos adicionales
         if (user.esprofesional) {
             const profesionalResultados = await pool.request().query(`
-                SELECT p.*, punt.puntuacion_promedio, punt.total_valoraciones
+                SELECT p.*, punt.puntuacion_promedio AS puntuacion, punt.total_valoraciones AS cantLaburos
                 FROM Profesionales p
                 LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id
                 WHERE p.usuario_id = ${userId}

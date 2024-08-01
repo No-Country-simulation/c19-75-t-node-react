@@ -111,14 +111,14 @@ const getJobById = async (req, res) => {
 
 //obtener todos los trabajos con estado [finalizado] POR ID de usuario
 const getTrabajosFinalizadosByUserId = async (req, res) => {
-    const userId = req.params.usuarioId; // Obtener el ID del usuario desde los parámetros de la solicitud
+    const userId = req.params.usuarioId; // Obtener el ID del usuario (al q corresponde el perfil q estoy mirando) desde los parámetros de la solicitud
     const userType = req.params.userType; // Obtener el tipo de usuario ('cliente' o 'profesional')
 
     try {
         const pool = await connectDB();
         let trabajosResultado;
 
-        if (userType === 'cliente') {
+        if (userType === 'cliente') { //es decir estoy viendo el perfil de un cliente
             // Caso: profesional viendo perfil de un cliente
             trabajosResultado = await pool.request()
                 .input('userId', sql.Int, userId) // Pasar el ID del cliente como parámetro
@@ -126,14 +126,18 @@ const getTrabajosFinalizadosByUserId = async (req, res) => {
                     SELECT 
                         t.titulo AS titulo, 
                         t.fotos AS fotos, 
-                        t.id AS id, 
+                        t.id AS id_trabajo, 
+                        u.nombre AS nombre_profesional,
+                        u.apellido AS apellido_profesional,
                         V.puntuacion AS puntuacion, 
                         v.comentario AS comentario
                     FROM trabajos t
                     JOIN valoraciones v ON t.id = v.trabajo_id
+                    JOIN profesionales p ON t.profesional_id = p.id
+                    JOIN usuarios u ON p.usuario_id = u.id
                     WHERE t.cliente_id = @userId AND t.estado = 'finalizado';
                 `);
-        } else if (userType === 'profesional') {
+        } else if (userType === 'profesional') { //es decir, estyo viendo le perfil de un profesional
             // Caso: cliente viendo perfil de un profesional
             trabajosResultado = await pool.request()
                 .input('userId', sql.Int, userId) // Pasar el ID del profesional como parámetro
@@ -141,12 +145,15 @@ const getTrabajosFinalizadosByUserId = async (req, res) => {
                     SELECT 
                         t.titulo AS titulo, 
                         t.fotos AS fotos, 
-                        t.id AS id, 
+                        u.nombre AS nombre_cliente,
+                        u.apellido AS apellido_cliente,
+                        t.id AS id_trabajo, 
                         V.puntuacion AS puntuacion, 
                         v.comentario AS comentario
                     FROM trabajos t
                     JOIN valoraciones v ON t.id = v.trabajo_id
-                    WHERE t.profesional_id = @userId AND t.estado = 'finalizado';
+                    JOIN usuarios u ON t.cliente_id = u.id
+                    WHERE t.profesional_id = 2 AND t.estado = 'finalizado';
                 `);
         } else {
             // Tipo de usuario no válido
