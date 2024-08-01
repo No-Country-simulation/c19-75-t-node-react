@@ -177,22 +177,22 @@ const SingupForm = ({ userTypeSelected }) => {
                 <Label for="userOccupations">Ocupaciónes</Label>
                 <Input type="hidden" name="userOccupations" value={userOccupations} />
                 <div className={styles.campo__row}>
-                  {CATEGORIES.map((occupation) => (
+                  {CATEGORIES.map((cat) => (
                     <button
-                      key={occupation.id}
+                      key={cat.id}
                       type="button"
                       className={`${localStyles.optionOccupation} ${
-                        userOccupations.includes(occupation.id) ? localStyles.activeOccupation : ''
+                        userOccupations.includes(cat.id) ? localStyles.activeOccupation : ''
                       }`}
                       onClick={() => {
-                        if (userOccupations.includes(occupation.id)) {
-                          setUserOccupations(userOccupations.filter((id) => id !== occupation.id));
+                        if (userOccupations.includes(cat.id)) {
+                          setUserOccupations(userOccupations.filter((id) => id !== cat.id));
                         } else {
-                          setUserOccupations([...userOccupations, occupation.id]);
+                          setUserOccupations([...userOccupations, cat.id]);
                         }
                       }}
                     >
-                      {occupation.name}
+                      {cat.name}
                     </button>
                   ))}
                 </div>
