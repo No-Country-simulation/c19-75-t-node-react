@@ -10,12 +10,12 @@ import { FaStar } from "react-icons/fa";
 import { FaClockRotateLeft, FaLocationDot } from "react-icons/fa6";
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { GrDocumentVerified } from "react-icons/gr";
-import { MdVerified } from "react-icons/md";
+import { MdVerified, MdEdit } from "react-icons/md";
 import Link from "next/link";
 import { FaCheck } from "react-icons/fa";
 import TrabajosSlider from "@/components/trabajosSlider";
 import ProfileTables from "@/components/tables";
-import useNotifications from '../../../components/utils/notifications';
+import useNotifications from "../../../components/utils/notifications";
 
 const PerfilUsuario = ({ params, searchParams }) => {
   const { userSessionData, sessionActive } = useSessionContext();
@@ -25,10 +25,10 @@ const PerfilUsuario = ({ params, searchParams }) => {
   const [isViewingOwnProfile, setIsViewingOwnProfile] = useState(false); // Variable para saber si el usuario está viendo su propio perfil y renderizar ciertas opciones/acciones
   const [solicitudEnviada, setSolicitudEnviada] = useState(false);
   const { sendNotification } = useNotifications();
-  
-    const handleButtonClick = () => {
-      sendNotification('notificacion');
-    };
+
+  const handleButtonClick = () => {
+    sendNotification("notificacion");
+  };
 
   //En vez de esta tabla estaria el fetch que trae las los trabajos, sus clientes y estados.
   const tables = [
@@ -240,32 +240,46 @@ const PerfilUsuario = ({ params, searchParams }) => {
             ) : (
               <h2 className={styles.titles}>Acerca del trabajador</h2>
             )}
-            <div className={styles.user}>
-              <img
-                src={user.foto ? `/${user.foto}` : "/usuario_default.png"}
-                alt=""
-              />
-              <div className={styles.info}>
-                <div className={styles.name}>
-                  <span>{user.nombre + " " + user.apellido}</span>
-                  <div className={styles.stars}>
-                    <FaStar className={styles.icon} />
-                    <span>
-                      {user.profesionalData.puntuacion_promedio
-                        ? user.profesionalData.puntuacion_promedio
-                        : "Aún sin calificaciones"}
-                    </span>
+            <div className={styles.userContainer}>
+              <div className={styles.user}>
+                <img
+                  src={user.foto ? `/${user.foto}` : "/usuario_default.png"}
+                  alt=""
+                />
+                <div className={styles.info}>
+                  <div className={styles.name}>
+                    <span>{user.nombre + " " + user.apellido}</span>
+                    <div className={styles.stars}>
+                      <FaStar className={styles.icon} />
+                      <span>
+                        {user.profesionalData.puntuacion_promedio
+                          ? user.profesionalData.puntuacion_promedio
+                          : "Aún sin calificaciones"}
+                      </span>
+                    </div>
                   </div>
+                  <Link
+                    href={enlaceWhatsApp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.button}
+                  >
+                    Contactar
+                  </Link>
                 </div>
-                <Link
-                  href={enlaceWhatsApp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.button}
-                >
-                  Contactar
-                </Link>
               </div>
+              {isViewingOwnProfile ? (
+                <div className={styles.userRight}>
+                  <Link href="" className={styles.buttonEdit}>
+                    <>
+                      <MdEdit className={styles.iconEdit} />
+                      Editar perfil
+                    </>
+                  </Link>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div className={styles.box}>
               <div className={styles.items}>
@@ -284,7 +298,7 @@ const PerfilUsuario = ({ params, searchParams }) => {
                   </span>
                 </div>
                 <div className={styles.item}>
-                  <span className={styles.title}>Último trabajo</span>
+                  <span className={styles.title}>Barrio o Localidad</span>
                   <span className={styles.desc}></span>
                 </div>
               </div>
@@ -355,13 +369,18 @@ const PerfilUsuario = ({ params, searchParams }) => {
           </div>
         </div>
         <div className={styles.right}>
-          <h3>{user.nombre + " " + user.apellido}</h3>
-
-          <p>
-            {user.profesionalData.descripcion
-              ? user.profesionalData.descripcion
-              : "Este usuario aun no añadió una descripción personal"}
-          </p>
+          <div className={styles.title}>
+            <h3>{user.nombre + " " + user.apellido}</h3>
+            <p className={styles.stars}>
+              <span>Valoración</span>
+              <div className={styles.star}>
+                <span className={styles.promedio}>
+                  {user.profesionalData.puntuacion_promedio}
+                </span>
+                <FaStar className={styles.icon} />
+              </div>
+            </p>
+          </div>
           <div className={styles.details}>
             <div className={styles.item}>
               <FaClockRotateLeft className={styles.icon} />
@@ -382,26 +401,30 @@ const PerfilUsuario = ({ params, searchParams }) => {
               <span>{user.ciudad}</span>
             </div>
           </div>
-          <Link href="" onClick={handleButtonClick} legacyBehavior>
-            {
-              <a
-                className={`${
-                  solicitudEnviada ? styles.sendit : styles.button
-                }`}
-                onClick={() => {
-                  setSolicitudEnviada(true);
-                }}
-              >
-                {solicitudEnviada ? (
-                  <>
-                    Solicitud enviada <FaCheck />
-                  </>
-                ) : (
-                  "Contratar"
-                )}
-              </a>
-            }
-          </Link>
+          {!isViewingOwnProfile ? (
+            <Link href="" onClick={handleButtonClick} legacyBehavior>
+              {
+                <a
+                  className={`${
+                    solicitudEnviada ? styles.sendit : styles.button
+                  }`}
+                  onClick={() => {
+                    setSolicitudEnviada(true);
+                  }}
+                >
+                  {solicitudEnviada ? (
+                    <>
+                      Solicitud enviada <FaCheck />
+                    </>
+                  ) : (
+                    "Contratar"
+                  )}
+                </a>
+              }
+            </Link>
+          ) : (
+          <div className={styles.buttonDisabled}>Mi perfil</div>
+          )}
         </div>
       </div>
     </div>
