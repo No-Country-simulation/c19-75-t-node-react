@@ -47,13 +47,22 @@ const Footer = () => {
                     <div className={styles.item}>
                         <h2>Integrantes</h2>
                         <div className={styles.memberContainer}>
-                            <Link href="https://www.linkedin.com" target="_blanck">
+                            <Link
+                                href="https://www.linkedin.com/in/brenda-giambelluca-1258b52a3/"
+                                target="_blanck"
+                            >
                                 <Linkedin otherStyles={styles.icon} />
                                 <span>Brenda Giambelluca</span>
                             </Link>
                         </div>
                         <div className={styles.memberContainer}>
-                            <Link href="https://www.linkedin.com" target="_blanck">
+                            <Link href="https://www.linkedin.com/in/iaconogianfranco" target="_blanck">
+                                <Linkedin otherStyles={styles.icon} />
+                                <span>Gianfranco Iacono</span>
+                            </Link>
+                        </div>
+                        <div className={styles.memberContainer}>
+                            <Link href="https://www.linkedin.com/in/ignaciocarrabs/" target="_blanck">
                                 <Linkedin otherStyles={styles.icon} />
                                 <span>Ignacio Carrabs</span>
                             </Link>
@@ -61,13 +70,7 @@ const Footer = () => {
                         <div className={styles.memberContainer}>
                             <Link href="https://www.linkedin.com" target="_blanck">
                                 <Linkedin otherStyles={styles.icon} />
-                                <span>Nombre Apellido</span>
-                            </Link>
-                        </div>
-                        <div className={styles.memberContainer}>
-                            <Link href="https://www.linkedin.com" target="_blanck">
-                                <Linkedin otherStyles={styles.icon} />
-                                <span>Nombre Apellido</span>
+                                <span>Carlos Tapia</span>
                             </Link>
                         </div>
                     </div>
