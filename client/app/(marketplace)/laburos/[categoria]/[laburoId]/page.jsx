@@ -1,21 +1,36 @@
-import React from "react";
-import styles from "./LaburoPorOficioPage.module.scss";
+'use client';
+import styles from './LaburoPorOficioPage.module.scss';
 // import { Slider } from "infinite-react-carousel/lib";
-import { FaStar } from "react-icons/fa";
-import { FaClockRotateLeft } from "react-icons/fa6";
-import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from "react-icons/bi";
-import { GrDocumentVerified } from "react-icons/gr";
-import { MdVerified } from "react-icons/md";
-import Link from "next/link";
+import { FaStar } from 'react-icons/fa';
+import { FaClockRotateLeft } from 'react-icons/fa6';
+import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
+import { GrDocumentVerified } from 'react-icons/gr';
+import { MdVerified } from 'react-icons/md';
+import Link from 'next/link';
 
-const LaburoPorOficioPage = ({ oficio }) => {
+import { useState, useEffect } from 'react';
+
+const LaburoPorOficioPage = ({ params }) => {
+  const { categoria, laburoId } = params;
+  const [laburoData, setLaburoData] = useState(null);
+
+  console.log(laburoId);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/trabajos/${laburoId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLaburoData(data);
+      })
+      .catch((error) => console.error('Error al obtener el trabajo especifico:', error));
+  }, []);
+
+  console.log(' -> ', laburoData);
   return (
     <div className={styles.laburo}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <span className={styles.breadCrumbs}>
-            LABURAPP / TRABAJADOR / {oficio}
-          </span>
+          <span className={styles.breadCrumbs}>LABURAPP / TRABAJADOR / {categoria.toUpperCase()} </span>
           <h1>Titulo del laburo que se ofrece</h1>
           <div className={styles.user}>
             <img className={styles.pp} src="" alt="" />
@@ -38,10 +53,9 @@ const LaburoPorOficioPage = ({ oficio }) => {
           </Slider>*/}
           <h2 className={styles.titles}>Acerca del trabajo a realizar</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-            eius fugit voluptas, ipsa soluta sapiente debitis. Quos, alias
-            asperiores molestiae quaerat ipsa ducimus dolores fugit praesentium
-            magnam, a, itaque esse!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae eius fugit voluptas, ipsa
+            soluta sapiente debitis. Quos, alias asperiores molestiae quaerat ipsa ducimus dolores fugit
+            praesentium magnam, a, itaque esse!
           </p>
           <div className={styles.trabajador}>
             <h2 className={styles.titles}>Acerca del contratista</h2>
@@ -83,9 +97,8 @@ const LaburoPorOficioPage = ({ oficio }) => {
               </div>
               <hr />
               <p>
-                Mi nombre es Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Nulla similique, laboriosam numquam officia non sit
-                veritatis ab ut quasi quaerat blanditiis tempora distinctio
+                Mi nombre es Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla similique,
+                laboriosam numquam officia non sit veritatis ab ut quasi quaerat blanditiis tempora distinctio
                 accusantium obcaecati sunt! Architecto ea tenetur quos?
               </p>
             </div>
@@ -112,11 +125,9 @@ const LaburoPorOficioPage = ({ oficio }) => {
                 <span>5</span>
               </div>
               <p>
-                Me parecio un buen trabajo en tiempo y forma Lorem ipsum dolor,
-                sit amet consectetur adipisicing elit. Nulla quidem porro facere
-                dolore rerum, inventore fugit commodi vero quos, tenetur eveniet
-                provident deserunt sapiente praesentium dolorum nostrum vel
-                sequi eius?
+                Me parecio un buen trabajo en tiempo y forma Lorem ipsum dolor, sit amet consectetur
+                adipisicing elit. Nulla quidem porro facere dolore rerum, inventore fugit commodi vero quos,
+                tenetur eveniet provident deserunt sapiente praesentium dolorum nostrum vel sequi eius?
               </p>
               <div className={styles.helpful}>
                 <BiLike className={styles.likes} />
@@ -132,15 +143,12 @@ const LaburoPorOficioPage = ({ oficio }) => {
           <h3>Titulo del laburo que se ofrece</h3>
 
           <p>
-            Necesito pintar todas las paredes de mi casa, en total son 122 m2,
-            solicito un presupuesto antes de recibir postulaciones. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Velit sed blanditiis
-            libero autem cupiditate illum explicabo odio repellat obcaecati
-            consequuntur! Explicabo ipsa assumenda quod, ab unde ea quos
-            incidunt eos. Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Mollitia, at eius, sunt, fugiat quae quos quaerat nam modi
-            rerum expedita assumenda. Dolores ut tenetur tempore obcaecati minus
-            debitis possimus nulla.
+            Necesito pintar todas las paredes de mi casa, en total son 122 m2, solicito un presupuesto antes
+            de recibir postulaciones. Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit sed
+            blanditiis libero autem cupiditate illum explicabo odio repellat obcaecati consequuntur! Explicabo
+            ipsa assumenda quod, ab unde ea quos incidunt eos. Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Mollitia, at eius, sunt, fugiat quae quos quaerat nam modi rerum expedita
+            assumenda. Dolores ut tenetur tempore obcaecati minus debitis possimus nulla.
           </p>
           <div className={styles.details}>
             <div className={styles.item}>

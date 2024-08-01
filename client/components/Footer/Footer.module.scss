@@ -3,22 +3,22 @@
 .footer {
     display: flex;
     justify-content: center;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
     color: #999;
-
-    .icon {
-        fill: #999;
-        width: 24px;
-        height: 24px;
-
-        &:hover {
-            fill: $black-color;
-        }
-    }
 
     .container {
         width: 1400px;
         margin: 50px;
+
+        .icon {
+            fill: #999;
+        }
+
+        a {
+            height: 30px;
+            display: flex;
+            align-items: center;
+        }
 
         .top {
             display: flex;
@@ -27,16 +27,32 @@
             .item {
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 5px;
 
                 h2 {
                     font-size: $font-size-base;
                     font-weight: $font-weight-bold;
                     color: $gray-dark-color;
+                    color: $primary-color;
+                    margin-bottom: 5px;
+                    font-size: 14px;
+                }
+
+                .memberContainer {
+                    & > a {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                    }
                 }
 
                 span {
+                    font-size: 14px;
                     font-weight: 300;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
         }
@@ -76,6 +92,14 @@
                     display: flex;
                     align-items: center;
                     gap: 20px;
+                    .icon {
+                        width: 24px;
+                        height: 24px;
+
+                        &:hover {
+                            fill: $black-color;
+                        }
+                    }
                 }
             }
         }

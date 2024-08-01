@@ -16,10 +16,9 @@ function Home() {
   const [trabajos, setTrabajos] = useState([]);
 
   useEffect(() => {
-
     fetch('http://localhost:5000/api/trabajos/mejores')
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         setTrabajos(data);
       })
       .catch((error) => console.error('Error al obtener los trabajos:', error));
@@ -36,19 +35,21 @@ function Home() {
       <ServicesComponent />
       <HomeMarketplace />
       <OficioComp />
-      <SliderBasic
-        items={trabajos.map((trabajo) => (
-          <ProjectCard
-            key={trabajo.id}
-            titulo={trabajo.titulo}
-            nombre={trabajo.nombre}
-            apellido={trabajo.apellido}
-            foto={trabajo.foto}
-            puntuacion={trabajo.puntuacion}
-            fotos={trabajo.fotos}
-          />
-        ))}
-      />
+      {trabajos.length > 0 && (
+        <SliderBasic
+          items={trabajos.map((trabajo) => (
+            <ProjectCard
+              key={trabajo.id}
+              titulo={trabajo.titulo}
+              nombre={trabajo.nombre}
+              apellido={trabajo.apellido}
+              foto={trabajo.foto}
+              puntuacion={trabajo.puntuacion}
+              fotos={trabajo.fotos}
+            />
+          ))}
+        />
+      )}
     </>
   );
 }
