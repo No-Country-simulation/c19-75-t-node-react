@@ -7,7 +7,7 @@ import { useFormState } from 'react-dom';
 
 /* Data */ // FIXME: Remplace this data from bd or api
 import { singup } from '@/actions/auth';
-import { PROFESIONS } from '@/types/types';
+import { CATEGORIES } from '@/types/types';
 import { useLocationData } from '@/hook/useLocationData';
 
 import Input from '@/components/Forms/Input';
@@ -174,10 +174,10 @@ const SingupForm = ({ userTypeSelected }) => {
             </div>
             {userType === 'trabajador' && (
               <div className={styles.campo}>
-                <Label for="userOccupations">Ocupación</Label>
+                <Label for="userOccupations">Ocupaciónes</Label>
                 <Input type="hidden" name="userOccupations" value={userOccupations} />
                 <div className={styles.campo__row}>
-                  {PROFESIONS.map((occupation) => (
+                  {CATEGORIES.map((occupation) => (
                     <button
                       key={occupation.id}
                       type="button"
