@@ -71,7 +71,8 @@ const getBasicProfessionalData = async () => {
                 u.provincia AS provincia,
                 u.ciudad AS ciudad,
                 u.barrio AS barrio,
-                ISNULL(punt.puntuacion_promedio, 0) AS puntuacion
+                ISNULL(punt.puntuacion_promedio, 0) AS puntuacion, 
+                ISNULL(punt.total_valoraciones, 0) AS totalTrabajos
             FROM Profesionales p
             INNER JOIN Usuarios u ON p.usuario_id = u.id
             LEFT JOIN Puntuaciones punt ON p.id = punt.profesional_id;

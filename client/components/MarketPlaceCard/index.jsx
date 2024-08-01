@@ -66,15 +66,8 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                     };
                 });
             }
-
-            if (data?.puntuacion) item.rating = data?.puntuacion;
-            if (item?.rating === 0) {
-                item.cant_works_done = 0;
-            } else if (item.rating <= 3) {
-                item.cant_works_done = Math.round(Math.random() * 30);
-            } else {
-                item.cant_works_done = Math.round(Math.random() * 130);
-            }
+            item.rating = parseFloat(data?.puntuacion) || 0;
+            item.cant_works_done = parseInt(data?.totalTrabajos, 10) || 0;
         } else {
             item.id = data?.id;
             if (data?.titulo) item.title = data?.titulo;
@@ -93,20 +86,20 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                 <p className={styles.description}>{item.desc}</p>
 
                 <div className={styles.starContainer}>
-                    {item.cant_works_done !== 0 && (
+                    {item.cant_works_done > 0 ? (
                         <>
                             <span className={styles.rating}>{item.rating}</span>
-                            {Array.from({ length: 5 }).map((_, idx) => {
-                                return (
-                                    <Star
-                                        key={idx}
-                                        otherStyles={`${styles.icon} ${idx < item.rating ? styles.fill : ''}`}
-                                    />
-                                );
-                            })}
+                            {Array.from({ length: 5 }).map((_, idx) => (
+                                <Star
+                                    key={idx}
+                                    otherStyles={`${styles.icon} ${idx < item.rating ? styles.fill : ''}`}
+                                />
+                            ))}
+                            <span className={styles.works}>({item.cant_works_done})</span>
                         </>
+                    ) : (
+                        <p>Sin calificaciones</p>
                     )}
-                    <span className={styles.works}>({item.cant_works_done})</span>
                 </div>
 
                 <div className={styles.professionContainer}>
@@ -168,9 +161,8 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                 className={styles.image}
             />
             <div
-                className={`${styles.info} ${
-                    isWorker ? styles.info__grid_workers : styles.info__grid_laburos
-                }`}
+                className={`${styles.info} ${isWorker ? styles.info__grid_workers : styles.info__grid_laburos
+                    }`}
             >
                 <div className={styles.title}>
                     <h3>{item?.title}</h3>
