@@ -13,57 +13,46 @@ const NotificationBell = () => {
     {
       id: 1,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 2,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 3,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 4,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 5,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 6,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 7,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 8,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 9,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 10,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
     {
       id: 11,
       usuario: "Marta Lopez",
-      trabajo: "Limpiar cañeria",
     },
   ];
 
@@ -96,9 +85,8 @@ const NotificationBell = () => {
             <>
               <div className={styles.notificationFila}>
                 <ul key={notification.id} className={styles.notification}>
-                  <span className={styles.oferta}>Oferta de</span>
-                  <span className={styles.usuario}> {notification.usuario}:</span>
-                  <span className={styles.trabajo}> {notification.trabajo}</span>
+                  <span className={styles.oferta}>Solicitud de: </span>
+                  <span className={styles.usuario}> {notification.usuario}</span>
                 </ul>
                 <Link href="" className={styles.button}>
                   <h5>Ver solicitud</h5>

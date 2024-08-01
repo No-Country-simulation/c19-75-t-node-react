@@ -12,7 +12,6 @@
         align-items: center;
         width: 33px;
         height: 33px;
-        background-color: rgb(255, 255, 255);
         border: 1px solid rgb(227, 70, 70);
         border-radius: 100%;
         position: relative;
@@ -23,14 +22,13 @@
     }
 }
     .inactive {
-        background-color: white;
+        
         border: 1px solid lightgray;
         .inactiveIcon {
             color: lightgray;
         }
     }
     .active {
-        background-color: white;
         border: 1px solid rgb(227, 70, 70);
         .activeIcon {
             color: rgb(227, 70, 70);
@@ -59,7 +57,7 @@
     position: absolute;
     top: 40px;
     right: 0;
-    width: 650px;
+    width: 450px;
     max-height: 350px;
     background-color: white;
     border: 1px solid lightgray;
