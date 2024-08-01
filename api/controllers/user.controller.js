@@ -1,4 +1,5 @@
 const connectDB = require('../config/db');
+const sql = require('mssql');
 
 const getUserById = async (req, res) => {
     try {
@@ -174,8 +175,53 @@ const getProfessionalsByCategory = async (req, res) => {
     }
 };
 
+const getUsersByLocation = async (req, res) => {
+    try {
+        const pool = await connectDB();
+        const { provincia, ciudad } = req.query; // Obtener provincia y ciudad de los parámetros de consulta
+        //si no hay ciudad, filtra solo por provincia
+
+
+        let query = 'SELECT * FROM Usuarios WHERE esprofesional = 1';
+        let queryParams = {};
+
+        if (provincia) {
+            query += ' AND provincia = @provincia';
+            queryParams.provincia = provincia;
+        }
+
+        if (ciudad) {
+            query += ' AND ciudad = @ciudad';
+            queryParams.ciudad = ciudad;
+        }
+
+        const request = pool.request();
+
+        // Agregar los parámetros a la consulta
+        if (queryParams.provincia) {
+            request.input('provincia', sql.NVarChar, queryParams.provincia);
+        }
+        if (queryParams.ciudad) {
+            request.input('ciudad', sql.NVarChar, queryParams.ciudad);
+        }
+
+        const userResult = await request.query(query);
+
+        if (userResult.recordset.length === 0) {
+            return res.status(404).json({ error: 'No se encontraron usuarios para la ubicación dada' });
+        }
+
+        res.status(200).json(userResult.recordset);
+    } catch (err) {
+        console.error('Error fetching users by location:', err);
+        res.status(500).json({ error: 'Error al obtener los usuarios' });
+    }
+};
+
+
 module.exports = {
     getUserById,
     getAllProfessionals,
     getProfessionalsByCategory,
+    getUsersByLocation
 };

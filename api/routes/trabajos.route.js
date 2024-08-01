@@ -28,5 +28,4 @@ router.get('/allTrabajos/:usuarioId/:userType', getAllTrabajosByUserId);
 router.post('/', createTrabajo);
 
 
-
 module.exports = router;

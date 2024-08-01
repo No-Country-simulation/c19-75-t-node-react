@@ -6,27 +6,51 @@ const sql = require('mssql');
 const getAvailableJobs = async (req, res) => {
     try {
         const pool = await connectDB();
-        const trabajosResultado = await pool.request().query(`
-          SELECT 
-                t.titulo AS titulo, 
-                t.fotos AS fotos, 
-                t.id AS id, 
-                t.cliente_id AS cliente_id, 
-                u.nombre AS nombre, 
-                u.apellido AS apellido, 
-                u.provincia AS provincia, 
-                u.ciudad AS ciudad, 
-                u.barrio AS barrio,
-                c.nombre AS categoria_nombre
-                FROM trabajos t
-                JOIN usuarios u ON t.cliente_id = u.id
-                LEFT JOIN trabajoCategorias tc ON t.id = tc.TrabajoID
-                LEFT JOIN categorias c ON tc.CategoriaID = c.id
-                WHERE t.estado = 'en busqueda';
-      
-        `);
+        const { provincia, ciudad } = req.query; // provincia y ciudad de los parámetros de consulta
 
-        trabajos = trabajosResultado.recordset
+        let query = `
+        SELECT 
+            t.titulo AS titulo, 
+            t.fotos AS fotos, 
+            t.id AS id, 
+            t.cliente_id AS cliente_id, 
+            u.nombre AS nombre, 
+            u.apellido AS apellido, 
+            u.provincia AS provincia, 
+            u.ciudad AS ciudad, 
+            u.barrio AS barrio,
+            c.nombre AS categoria_nombre
+        FROM trabajos t
+        JOIN usuarios u ON t.cliente_id = u.id
+        LEFT JOIN trabajoCategorias tc ON t.id = tc.TrabajoID
+        LEFT JOIN categorias c ON tc.CategoriaID = c.id
+        WHERE t.estado = 'en busqueda'
+    `;
+        let queryParams = {};
+
+        if (provincia) {
+            query += ' AND u.provincia = @provincia';
+            queryParams.provincia = provincia;
+        }
+
+        if (ciudad) {
+            query += ' AND u.ciudad = @ciudad';
+            queryParams.ciudad = ciudad;
+        }
+
+        const request = pool.request();
+
+        // Agregar los parámetros a la consulta si existen
+        if (queryParams.provincia) {
+            request.input('provincia', sql.NVarChar, queryParams.provincia);
+        }
+        if (queryParams.ciudad) {
+            request.input('ciudad', sql.NVarChar, queryParams.ciudad);
+        }
+
+        const trabajosResultado = await request.query(query);
+
+        const trabajos = trabajosResultado.recordset;
         res.status(200).json(trabajos);
     } catch (err) {
         console.error('Error al obtener los trabajos:', err);
