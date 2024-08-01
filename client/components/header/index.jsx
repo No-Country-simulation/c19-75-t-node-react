@@ -135,7 +135,6 @@ const Header = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <Link href="/" className={styles.link}>
-            <img src="" />
             <span className={styles.text}>
               <span className={styles.labur}>Labur</span>app.
             </span>
@@ -162,8 +161,8 @@ const Header = () => {
               )}
               <div className={styles.user}>
                 <NotificationBell />
-                <div onClick={() => setOpen(!open)}>
-                  <img src="" alt="" />
+                <div className={styles.userContainer} onClick={() => setOpen(!open)}>
+                  <img src="/usuario_default.png" alt="user icon" />
                   <span className={styles.link}>{userSessionData ? userSessionData?.name : 'Menu'}</span>
                 </div>
                 {open && <OptionsRender isWorker={userSessionData?.isWorker} />}
