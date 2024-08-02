@@ -74,8 +74,42 @@ const getAllPostulacionesByTrabajoId = async (req, res) => {
     }
 };
 
+//obtener si yo profesional estoy postulado a un trabajo o no
+const getEstoyPostulado = async (req, res) => {
+    const trabajoId = parseInt(req.params.trabajoId, 10);
+    const profesionalId = parseInt(req.params.profesionalId, 10);
+
+    console.log(`Trabajo ID: ${trabajoId}, Profesional ID: ${profesionalId}`);
+
+    try {
+        const pool = await connectDB();
+        let postulacionResultado;
+
+        postulacionResultado = await pool.request()
+            .input('trabajoId', sql.Int, trabajoId)
+            .input('profesionalId', sql.Int, profesionalId)
+            .query(`
+            SELECT DISTINCT po.estado
+                FROM Postulacioness po
+                JOIN Profesionales p ON po.profesional_id = p.ID
+                JOIN Trabajos t ON po.trabajo_id = t.ID
+                WHERE p.ID = @profesionalId
+                AND t.ID = @trabajoId;
+            `);
+
+        console.log('Resultado de la consulta:', postulacionResultado.recordset);
+
+        const postulacion = postulacionResultado.recordset;
+        res.status(200).json(postulacion);
+    } catch (err) {
+        console.error('Error al obtener la relación:', err);
+        res.status(500).json({ error: 'Error al obtener la relación' });
+    }
+};
+
 
 module.exports = {
     createPostulacion,
-    getAllPostulacionesByTrabajoId
+    getAllPostulacionesByTrabajoId,
+    getEstoyPostulado
 };
