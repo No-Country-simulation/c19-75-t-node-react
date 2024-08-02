@@ -22,11 +22,7 @@ const AboutSection = ({ data }) => {
         <div className={styles.imgsContainer}>
           <h4>Imagenes</h4>
           <div className={styles.imgs}>
-            <img
-              src={data?.foto ? data.img : '/default_img_item.jpg'}
-              alt="SIN-IMAGEN"
-              className={styles.image}
-            />
+            <img src={data?.foto ? data.img : ''} alt="SIN-IMAGEN" className={styles.image} />
           </div>
         </div>
       </div>

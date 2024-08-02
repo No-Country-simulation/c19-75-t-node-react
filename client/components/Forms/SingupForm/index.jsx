@@ -102,7 +102,6 @@ const SingupForm = ({ userTypeSelected }) => {
                 name="password"
                 placeholder="Contraseña"
                 error={formState?.zodErrors?.password}
-                defaultValue="12345A$"
               />
             </div>
             <div className={styles.group}>

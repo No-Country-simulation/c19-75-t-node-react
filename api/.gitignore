@@ -3,3 +3,6 @@
 
 # local env files
 .env
+
+#Script de prueba para subir fotos a la BD
+insert_images.js

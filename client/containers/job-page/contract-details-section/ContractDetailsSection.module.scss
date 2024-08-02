@@ -55,6 +55,12 @@
     background-color: $gray-light-color;
     border-color: $gray-light-color;
     color: $black-color;
+
+    &:hover {
+      background-color: $gray-light-color;
+      border-color: $gray-light-color;
+      cursor: default;
+    }
   }
   .btnFinalizado,
   .btnContratado {
@@ -65,6 +71,28 @@
     &:hover {
       background-color: $detail-color;
       border-color: $detail-color;
+      cursor: default;
+    }
+  }
+  .btnRechazado {
+    background-color: rgba(255, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.5);
+    color: $white-color;
+
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.5);
+      border-color: rgba(255, 0, 0, 0.5);
+      cursor: default;
+    }
+  }
+  .btnAceptado {
+    background-color: rgb(82, 185, 99);
+    border-color: rgb(82, 185, 99);
+    color: $white-color;
+
+    &:hover {
+      background-color: rgb(82, 185, 99);
+      border-color: rgb(82, 185, 99);
       cursor: default;
     }
   }

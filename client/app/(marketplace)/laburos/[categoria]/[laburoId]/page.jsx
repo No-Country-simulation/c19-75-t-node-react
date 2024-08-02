@@ -112,7 +112,7 @@ const LaburoPorOficioPage = ({ params }) => {
       </span>
       <div className={styles.laburoSection}>
         <AboutSection data={bodyData} />
-        <ContractDetailsSection data={contractData} />
+        <ContractDetailsSection data={contractData} laburoId={laburoId}/>
         {laburoData?.estado === tStatus.Finalizado && (
           <ComentSection data={comentData} isUserWatchingOwnPage={owner} />
         )}

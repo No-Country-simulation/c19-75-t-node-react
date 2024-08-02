@@ -119,7 +119,7 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                     })}
                 </div>
                 <div className={styles.addressContainer}>
-                    <span>{item?.prov && `${item.prov} / ${item.city} / ${item.barrio}`}</span>
+                    <span>{item?.prov && `${item.prov} / ${item.city} / ${item.barrio || ''}`}</span>
                 </div>
             </>
         );
@@ -138,7 +138,7 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                 </div>
                 <div className={styles.addressContainer}>
                     <span>
-                        {item.prov} / {item.city} / {item.barrio}
+                        {item.prov} / {item.city} / {item.barrio || ''}
                     </span>
                 </div>
             </>
