@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useSessionContext } from '@/context/SessionContext';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { EnlaceExterno } from '@/components/Icons';
 
 // *contractDetailsSection
 // Cliente { nombre, apellido, id }
@@ -78,48 +79,7 @@ const ContractDetailsSection = ({ data, laburoId }) => {
     setStatusWorkerOnJob('Postulado');
   };
 
-  const RednerButonStatus = () => {
-    console.log('data status', data.job_status);
-    console.log('userWatching', userWatching);
-
-    if (data.job_status === tStatus.Finalizado || data.job_status === tStatus.EnProceso) {
-      return <button className={`${styles.btn} ${styles.btnFinalizado}`}>{data.job_status}</button>;
-    }
-    if (statusWorkerOnJob) {
-      return (
-        <button
-          className={`${styles.btn} ${
-            postulado
-              ? statusWorkerOnJob === 'Aceptado'
-                ? styles.btnAceptado
-                : statusWorkerOnJob === 'Rechazado'
-                ? styles.btnRechazado
-                : styles.btnPostulado
-              : ''
-          }`}
-          onClick={handleChangeStatus}
-        >
-          {!postulado ? data.job_status : statusWorkerOnJob}
-        </button>
-      );
-    }
-    // Cuando esta en busqueda
-    if (userWatching === tUserWatching.Worker || userWatching === tUserWatching.Visitor) {
-      setPlacement('Postularme');
-    }
-    if (userWatching === tUserWatching.Visitor) {
-      return (
-        <button className={styles.btn} onClick={handleRedirect}>
-          {placement || data.job_status}
-        </button>
-      );
-    }
-    return (
-      <button className={`${styles.btn} ${postulado ? styles.btnPostulado : ''}`} onClick={handlePostular}>
-        {placement || data.job_status}
-      </button>
-    );
-  };
+  console.log(data?.job_status);
 
   return (
     <section className={styles.contract}>
@@ -129,17 +89,22 @@ const ContractDetailsSection = ({ data, laburoId }) => {
       </div>
       <div className={styles.info}>
         <h4>Cliente</h4>
-        <Link href={`/usuario/${data.client_id}`}>
-          {data.client_name} {data.client_lastname}
+        <Link href={`/usuario/${data.client_id}`} className={styles.link}>
+          <span>
+            {data.client_name} {data.client_lastname}
+          </span>
+          <EnlaceExterno />
         </Link>
       </div>
-      {data?.job_status !== tStatus.EnBusqueda ||
-        (data?.job_status !== tStatus.enbuesqueda && (
-          <div className={styles.info}>
-            <h4>Trabajor</h4>
-            <Link href={`/usuario/${data.worker_id}`}>{data.worker_fullname}</Link>
-          </div>
-        ))}
+      {data?.job_status !== tStatus.EnBusqueda && data?.job_status !== tStatus.enbuesqueda && (
+        <div className={styles.info}>
+          <h4>Trabajor</h4>
+          <Link href={`/usuario/${data.worker_id}`} className={styles.link}>
+            <span>{data.worker_fullname}</span>
+            <EnlaceExterno />
+          </Link>
+        </div>
+      )}
       {data.job_status === tStatus.Finalizado || data.job_status === tStatus.EnProceso ? (
         <button className={`${styles.btn} ${styles.btnFinalizado}`}>{data.job_status}</button>
       ) : (

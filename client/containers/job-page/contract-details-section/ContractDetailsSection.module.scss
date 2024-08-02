@@ -28,6 +28,11 @@
     cursor: default;
   }
   .info {
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     a:hover {
       text-decoration: underline;
       text-decoration-color: $primary-color;

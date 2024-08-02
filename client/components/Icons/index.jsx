@@ -1,14 +1,15 @@
 import style from './Icons.module.scss';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import {
-    FaArrowLeft,
-    FaBookmark,
-    FaFilter,
-    FaSignOutAlt,
-    FaLinkedin,
-    FaFire,
-    FaPaintRoller,
-    FaStar,
+  FaArrowLeft,
+  FaBookmark,
+  FaFilter,
+  FaSignOutAlt,
+  FaLinkedin,
+  FaFire,
+  FaPaintRoller,
+  FaStar,
+  FaExternalLinkAlt,
 } from 'react-icons/fa'; // Importar desde 'fa'
 import { RiInstagramFill } from 'react-icons/ri'; // Importar desde 'ri'
 import { BsTwitterX } from 'react-icons/bs'; // Importar desde 'bs'
@@ -37,23 +38,26 @@ const Pintureria = ({ otherStyles }) => <FaPaintRoller className={`${style.icon}
 const Carpinteria = ({ otherStyles }) => <MdCarpenter className={`${style.icon} ${otherStyles}`} />;
 const Herreria = ({ otherStyles }) => <GiBlacksmith className={`${style.icon} ${otherStyles}`} />;
 
+const EnlaceExterno = ({ otherStyles }) => <FaExternalLinkAlt className={`${style.icon} ${otherStyles}`} />;
+
 export {
-    Bookmark,
-    Filter,
-    ArrowLeft,
-    SignOut,
-    Instagram,
-    Twitter,
-    Linkedin,
-    Mantenimiento,
-    Electricista,
-    Plomeria,
-    Gasista,
-    Albanileria,
-    Jardineria,
-    Pintureria,
-    Carpinteria,
-    Herreria,
-    ArrowDropdown,
-    Star,
+  Bookmark,
+  Filter,
+  ArrowLeft,
+  SignOut,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Mantenimiento,
+  Electricista,
+  Plomeria,
+  Gasista,
+  Albanileria,
+  Jardineria,
+  Pintureria,
+  Carpinteria,
+  Herreria,
+  ArrowDropdown,
+  Star,
+  EnlaceExterno,
 };
