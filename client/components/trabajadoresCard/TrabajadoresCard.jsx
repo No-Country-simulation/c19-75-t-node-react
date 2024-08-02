@@ -26,7 +26,9 @@ const TrabajadoresCard = ({ nombre, apellido, foto, puntuacion, categoria, usuar
         <img src={imagenCategoria} alt={nombre} className={styles.image} />
         <div className={styles.info}>
           <div className={styles.user}>
-            <img src={foto && foto.trim() !== "" ? foto : "/usuario_default.png"} alt={nombre} className={styles.profilePic} />
+            <img src={foto ? foto : "/usuario_default.png"}
+              alt={nombre}
+              className={styles.profilePic} />
             <span className={styles.username}>{nombre + ' ' + apellido}</span>
           </div>
           <div className={styles.star}>
