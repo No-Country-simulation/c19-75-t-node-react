@@ -1,7 +1,6 @@
 const connectDB = require('../config/db');
 const sql = require('mssql');
 
-
 //Obtener todos los trabajos disponibles
 const getAvailableJobs = async (req, res) => {
     try {
@@ -26,14 +25,13 @@ const getAvailableJobs = async (req, res) => {
       
         `);
 
-        trabajos = trabajosResultado.recordset
+        trabajos = trabajosResultado.recordset;
         res.status(200).json(trabajos);
     } catch (err) {
         console.error('Error al obtener los trabajos:', err);
         res.status(500).json({ error: 'Error al obtener los trabajos' });
     }
 };
-
 
 //para slideBasic
 const getBestTrabajos = async (req, res) => {
@@ -64,16 +62,14 @@ const getBestTrabajos = async (req, res) => {
         console.error('Error al obtener los trabajos:', err);
         res.status(500).json({ error: 'Error al obtener los trabajos' });
     }
-}
-
+};
 
 const getAvailableJobsByCategory = async (req, res) => {
     const categoriaId = req.params.categoriaId; // Obtener el ID de la categoría desde los parámetros de la solicitud
 
     try {
         const pool = await connectDB();
-        const trabajosResultado = await pool.request()
-            .input('categoriaId', sql.Int, categoriaId) // Pasar el ID de la categoría como parámetro
+        const trabajosResultado = await pool.request().input('categoriaId', sql.Int, categoriaId) // Pasar el ID de la categoría como parámetro
             .query(`
                 SELECT 
                     t.titulo AS titulo, 
@@ -109,8 +105,7 @@ const getJobById = async (req, res) => {
 
     try {
         const pool = await connectDB();
-        const trabajoResultado = await pool.request()
-            .input('trabajoId', sql.Int, trabajoId) // Pasar el ID del trabajo como parámetro
+        const trabajoResultado = await pool.request().input('trabajoId', sql.Int, trabajoId) // Pasar el ID del trabajo como parámetro
             .query(`
                SELECT
                 t.titulo AS titulo,
@@ -135,7 +130,7 @@ const getJobById = async (req, res) => {
                 WHERE t.id = @trabajoID;
             `);
 
-        const trabajo = trabajoResultado.recordset;
+        const trabajo = trabajoResultado.recordset[0];
         res.status(200).json(trabajo);
     } catch (err) {
         console.error('Error al obtener el trabajo:', err);
@@ -143,39 +138,46 @@ const getJobById = async (req, res) => {
     }
 };
 
-
 //Crear un nuevo trabajo
 async function createTrabajo(req, res) {
     const { cliente_id, titulo, descripcion, categoria_id } = req.body;
 
     if (!cliente_id || !titulo || !descripcion || !categoria_id) {
-        return res.status(400).json({ error: 'Por favor, ingresar cliente_id, titulo, descripcion y categoria' });
+        return res
+            .status(400)
+            .json({ error: 'Por favor, ingresar cliente_id, titulo, descripcion y categoria' });
     }
 
     try {
         const pool = await connectDB();
 
-        // Iniciar una transacción para que ambas acciones se completen juntas (ya que al crear el trabajo, 
+        // Iniciar una transacción para que ambas acciones se completen juntas (ya que al crear el trabajo,
         //se crea tambien la postulacion para ese trabajo), si una falla, se revierte todo.
         const transaction = new sql.Transaction(pool);
         await transaction.begin();
 
         // Crear el nuevo trabajo
-        const trabajoResult = await transaction.request()
+        const trabajoResult = await transaction
+            .request()
             .input('cliente_id', sql.Int, cliente_id)
             .input('titulo', sql.NVarChar, titulo)
             .input('descripcion', sql.NVarChar, descripcion)
             .input('estado', sql.NVarChar, 'en busqueda')
-            .query('INSERT INTO trabajos (cliente_id, titulo, descripcion, estado) OUTPUT INSERTED.id VALUES (@cliente_id, @titulo, @descripcion, @estado)');
+            .query(
+                'INSERT INTO trabajos (cliente_id, titulo, descripcion, estado) OUTPUT INSERTED.id VALUES (@cliente_id, @titulo, @descripcion, @estado)'
+            );
         //output inserted.id para q devuelva el id del trabajo nuevo creado
 
         const trabajoId = trabajoResult.recordset[0].id;
 
         // Crear una entrada en la tabla trabajoCategoria
-        await transaction.request()
+        await transaction
+            .request()
             .input('categoria_id', sql.Int, categoria_id)
             .input('trabajo_id', sql.Int, trabajoId)
-            .query('INSERT INTO trabajoCategorias (categoriaId, trabajoId) VALUES (@categoria_id, @trabajo_id)');
+            .query(
+                'INSERT INTO trabajoCategorias (categoriaId, trabajoId) VALUES (@categoria_id, @trabajo_id)'
+            );
 
         // Confirmar la transacción
         await transaction.commit();
@@ -195,11 +197,10 @@ async function createTrabajo(req, res) {
     }
 }
 
-
 module.exports = {
     getAvailableJobs,
     getAvailableJobsByCategory,
     getBestTrabajos,
     getJobById,
-    createTrabajo
+    createTrabajo,
 };
