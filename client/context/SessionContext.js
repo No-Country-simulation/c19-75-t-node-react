@@ -27,6 +27,20 @@ export const SessionProvider = ({ children }) => {
     return loggedUserId === Number(profileUserId);
   };
 
+  const tUserWatching = {
+    Visitor: 'visitor',
+    My: 'my',
+    Client: 'client',
+    Worker: 'worker',
+    none: null,
+  };
+
+  const whoIsWatching = (pageId) => {
+    if (!userSessionData) return tUserWatching.Visitor; // No hay usuario logueado
+    if (isUserWatchingOwnPage(pageId)) return tUserWatching.My; // El usuario logueado esta viendo su propia pagina
+    return userSessionData.isWorker ? tUserWatching.Worker : tUserWatching.Client; // El usuario logueado esta viendo la pagina de otro usuario
+  };
+
   return (
     <SessionContext.Provider
       value={{
@@ -36,6 +50,7 @@ export const SessionProvider = ({ children }) => {
         sessionActive,
         isUserWatchingOwnPage,
         loggedUserId,
+        whoIsWatching,
       }}
     >
       {children}
