@@ -112,6 +112,9 @@ const getJobById = async (req, res) => {
                     c.nombre AS categoria_nombre,
                     uc.nombre AS cliente_nombre,
                     uc.apellido AS cliente_apellido,
+                    uc.provincia AS provincia,
+                    uc.ciudad AS ciudad,
+                    uc.barrio AS barrio,
                     CASE
                         WHEN t.estado = 'finalizado' THEN CONCAT(up.nombre, ' ', up.apellido)
                         ELSE NULL
