@@ -1,9 +1,9 @@
 const express = require('express');
 const {
-    getUserById,
-    getAllProfessionals,
-    getProfessionalsByCategory,
-    getUsersByLocation
+  getUserById,
+  getAllProfessionals,
+  getProfessionalsByCategory,
+  getUsersByLocation
 } = require('../controllers/user.controller');
 const router = express.Router();
 

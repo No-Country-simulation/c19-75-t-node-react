@@ -6,7 +6,7 @@ const {
 const router = express.Router();
 
 //DEfinir la ruta para crear la postulación
-router.post('/', createPostulacion);
+router.post('/', createPostulacion); // TODO: PROBAR
 
 //DEfinir la ruta para obtener las postulaciones de un trabajo en especifico
 router.get('/porTrabajo/:trabajoId/:userType', getAllPostulacionesByTrabajoId);
