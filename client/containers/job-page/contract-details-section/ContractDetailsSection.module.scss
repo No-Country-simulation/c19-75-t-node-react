@@ -1,0 +1,141 @@
+@import '@/styles/variables.scss';
+.contract {
+  height: fit-content;
+  min-height: 100px;
+  min-width: 225px;
+  width: fit-content;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h4 {
+    font-size: 15px;
+  }
+  a {
+    display: block;
+  }
+  .cat {
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    font-weight: 500;
+    height: fit-content;
+    width: 100%;
+    max-width: fit-content;
+    text-align: center;
+    padding: 2px 6px;
+    font-size: 12px;
+    cursor: default;
+  }
+  .info {
+    a:hover {
+      text-decoration: underline;
+      text-decoration-color: $primary-color;
+    }
+  }
+
+  .btn {
+    color: $white-color;
+    font-size: 14px;
+    font-weight: 600;
+    grid-area: btn;
+    padding: 4px 10px;
+    margin-top: 10px;
+    border: 2px solid $primary-color;
+    border-radius: 6px;
+    background-color: $primary-color;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+    &:hover {
+      background-color: $gray-medium-color;
+      border-color: $gray-medium-color;
+    }
+  }
+  .btnPostulado {
+    background-color: $gray-light-color;
+    border-color: $gray-light-color;
+    color: $black-color;
+  }
+  .btnFinalizado,
+  .btnContratado {
+    background-color: $detail-color;
+    border-color: $detail-color;
+    color: $white-color;
+
+    &:hover {
+      background-color: $detail-color;
+      border-color: $detail-color;
+      cursor: default;
+    }
+  }
+}
+
+.right {
+  flex: 1;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 150px;
+  max-height: 470px;
+  height: auto;
+  overflow-y: auto;
+
+  > * {
+    flex-shrink: 0;
+  }
+
+  p {
+    color: rgb(110, 110, 110);
+  }
+
+  .details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .icon {
+        width: 20px;
+      }
+    }
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 300;
+      color: gray;
+
+      .icon {
+        width: 14px;
+        color: #9bd002;
+      }
+    }
+  }
+
+  .button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #9bd002;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-weight: 500;
+    font-size: 19px;
+    border-radius: 5px;
+  }
+}

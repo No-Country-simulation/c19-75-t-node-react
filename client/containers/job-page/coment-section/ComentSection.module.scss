@@ -1,0 +1,89 @@
+@import '@/styles/variables.scss';
+
+.coment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(4, auto);
+    grid-column-gap: 0px;
+    grid-row-gap: 10px;
+    grid-template-areas:
+      'title rating'
+      'hr hr'
+      'textarea textarea'
+      'z btn';
+
+    .title {
+      grid-area: title;
+    }
+    hr {
+      grid-area: hr;
+    }
+    .rating {
+      grid-area: rating;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 600;
+
+      .star {
+        fill: $star-color;
+      }
+
+      select {
+        padding: 5px;
+        border: 2px solid $gray-medium-color;
+        border-radius: 6px;
+        outline: none;
+        color: $black-color;
+        background-color: $white-color;
+        cursor: pointer;
+        &:focus {
+          border: 2px solid $primary-color;
+        }
+      }
+    }
+
+    .textarea {
+      grid-area: textarea;
+      padding: 10px;
+      border: 2px solid $gray-medium-color;
+      outline: none;
+      border-radius: 6px;
+      resize: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: $black-color;
+      background-color: $white-color;
+      height: 100px;
+
+      &:focus {
+        border: 2px solid $primary-color;
+      }
+    }
+    .btn {
+      grid-area: btn;
+      margin-left: auto;
+      color: $white-color;
+      font-size: 14px;
+      font-weight: 600;
+      grid-area: btn;
+      padding: 4px 10px;
+      border: 2px solid $primary-color;
+      border-radius: 6px;
+      background-color: $primary-color;
+    }
+  }
+  .comentWorkerView {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

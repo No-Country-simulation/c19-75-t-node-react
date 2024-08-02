@@ -1,0 +1,47 @@
+@import '@/styles/variables.scss';
+.about {
+  display: flex;
+  flex-direction: column;
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+      font-size: 32px;
+    }
+
+    .ubiContainer {
+      .ubi {
+        list-style-position: inside;
+      }
+    }
+
+    .imgsContainer {
+      display: grid;
+      .imgs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        .image {
+          font-size: 12px;
+          grid-area: image;
+          width: 125px;
+          height: 125px;
+          background-color: $gray-lighter-color;
+          border: 1px solid $gray-light-color;
+          border-radius: 6px;
+          object-fit: cover;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: zoom-in;
+        }
+      }
+    }
+  }
+  h4 {
+    margin-bottom: 5px;
+  }
+}
