@@ -102,26 +102,35 @@ const getJobById = async (req, res) => {
         const trabajoResultado = await pool.request()
             .input('trabajoId', sql.Int, trabajoId) // Pasar el ID del trabajo como parámetro
             .query(`
-               SELECT
-                t.titulo AS titulo,
-                t.descripcion AS descripcion,
-                t.fotos AS fotos,
-                t.cliente_id AS cliente_id,
-                t.profesional_id AS profesional_id,
-                t.estado AS estado,
-                c.nombre AS categoria_nombre,
-                uc.nombre AS cliente_nombre,
-                uc.apellido AS cliente_apellido,
-                CASE
-                    WHEN t.estado = 'finalizado' THEN CONCAT(up.nombre, ' ', up.apellido)
-                    ELSE NULL
-                    END AS profesional_nombre
+                    SELECT
+                    t.titulo AS titulo,
+                    t.descripcion AS descripcion,
+                    t.fotos AS fotos,
+                    t.cliente_id AS cliente_id,
+                    t.profesional_id AS profesional_id,
+                    t.estado AS estado,
+                    c.nombre AS categoria_nombre,
+                    uc.nombre AS cliente_nombre,
+                    uc.apellido AS cliente_apellido,
+                    CASE
+                        WHEN t.estado = 'finalizado' THEN CONCAT(up.nombre, ' ', up.apellido)
+                        ELSE NULL
+                    END AS profesional_nombre,
+                    CASE
+                        WHEN t.estado = 'finalizado' THEN v.puntuacion
+                        ELSE NULL
+                    END AS puntuacion,
+                    CASE
+                        WHEN t.estado = 'finalizado' THEN v.comentario
+                        ELSE NULL
+                    END AS valoracion
                 FROM trabajos t
                 JOIN trabajoCategorias tc ON t.id = tc.trabajoID
                 JOIN categorias c ON tc.categoriaID = c.id
                 JOIN usuarios uc ON t.cliente_id = uc.id
                 LEFT JOIN profesionales p ON t.profesional_id = p.id
                 LEFT JOIN usuarios up ON p.usuario_id = up.id
+                LEFT JOIN valoraciones v ON t.id = v.trabajo_id
                 WHERE t.id = @trabajoID;
             `);
 
