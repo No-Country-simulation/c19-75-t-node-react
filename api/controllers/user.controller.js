@@ -179,21 +179,19 @@ const getProfessionalsByCategory = async (req, res) => {
 const getUsersByLocation = async (req, res) => {
     try {
         const pool = await connectDB();
-        const { provincia, ciudad } = req.query; // Obtener provincia y ciudad de los parámetros de consulta
-        //si no hay ciudad, filtra solo por provincia
-
+        const { provincia, ciudad } = req.query; // Obtener provincia y ciudad de los parámetros de consulta en string
 
         let query = 'SELECT * FROM Usuarios WHERE esprofesional = 1';
         let queryParams = {};
 
         if (provincia) {
             query += ' AND provincia = @provincia';
-            queryParams.provincia = provincia;
+            queryParams.provincia = provincia.trim();
         }
 
         if (ciudad) {
             query += ' AND ciudad = @ciudad';
-            queryParams.ciudad = ciudad;
+            queryParams.ciudad = ciudad.trim();
         }
 
         const request = pool.request();
