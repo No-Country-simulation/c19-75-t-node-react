@@ -4,6 +4,8 @@ import styles from './MarketPlaceCard.module.scss';
 import { Star } from '../Icons';
 import { CATEGORIES } from '@/types/types';
 
+import { useRouter } from 'next/navigation';
+
 const tDataMaerketPlace = {
     id: null, //
     title: 'Titulo',
@@ -38,6 +40,7 @@ const tJobMarketPlace = {
 };
 
 const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
+    const router = useRouter();
     const isWorker = pathname === 'trabajadores';
 
     // Reorganizar la info de data segun el tipo de de dato trabajador o laburo
@@ -147,13 +150,17 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
         return acc;
     }, {});
 
+    const handleClick = () => {
+        if (isWorker) {
+            router.push(`/usuario/${item?.id}`);
+        } else {
+            router.push(`/laburos/${CATEGORY_MAP[item?.category]}/${item?.id}`);
+        }
+    };
+
     return (
         <div className={styles.card} key={keyProp + item?.title}>
-            <img
-                src={data?.foto ? item?.img : '/default_img_item.jpg'}
-                alt="SIN-IMAGEN"
-                className={styles.image}
-            />
+            <img src={data?.foto ? item?.img : ''} alt="SIN-IMAGEN" className={styles.image} />
             <div
                 className={`${styles.info} ${
                     isWorker ? styles.info__grid_workers : styles.info__grid_laburos
@@ -163,17 +170,8 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                     <h3>{item?.title}</h3>
                 </div>
                 {isWorker ? renderInfoWorker() : renderInfoJob()}
-                <button className={styles.button}>
-                    <Link
-                        className={styles.buttonLink}
-                        href={
-                            isWorker
-                                ? `/usuario/${item?.id}`
-                                : `/laburos/${CATEGORY_MAP[item?.category]}/${item?.id}`
-                        }
-                    >
-                        {isWorker ? 'Ver Perfil' : 'Ver Oferta'}
-                    </Link>
+                <button className={styles.button} onClick={handleClick}>
+                    {isWorker ? 'Ver Perfil' : 'Ver Oferta'}
                 </button>
             </div>
         </div>
