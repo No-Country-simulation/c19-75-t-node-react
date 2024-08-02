@@ -1,0 +1,105 @@
+.mainContainer {
+    width: 100%;
+    height: 480px;
+    margin: 0 auto;
+    overflow: hidden;
+  
+    .imageList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+  
+    .listItem {
+      display: inline-block;
+      width: 100%;
+      flex: 0 0 auto;
+      position: relative;
+      .overlay{
+        .desc{
+            color: white;
+        }
+      }
+    }
+  }
+  
+  /* Slider container */
+  .sliderContainer {
+    position: relative;
+    height: 100%;
+  }
+  
+  /* Dots carousel */
+  .dotsContainer {
+    display: flex;
+    justify-content: center;
+  
+    .dotContainerItem {
+      margin: 8px 3px;
+      cursor: pointer;
+      font-size: 12px;
+      text-align: center;
+  
+      &.active {
+        background: #ccc;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+      }
+    }
+  }
+  
+  /* Arrows */
+  .leftArrow,
+  .rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 50px;
+    font-weight: 700;
+    color: #585858;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .leftArrow {
+    left: 32px;
+  }
+  
+  .rightArrow {
+    right: 32px;
+  }
+  
+  .containerImages {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+  }
+  
+  .imageItem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    padding: 10px;
+  }
+  
+  .overlay h3,
+  .overlay p,
+  .overlay .desc {
+    margin: 10px 0;
+  }
+  
+  

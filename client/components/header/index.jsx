@@ -8,6 +8,7 @@ import { logout } from '@/actions/auth';
 import { useSessionContext } from '@/context/SessionContext';
 import { CATEGORIES } from '@/types/types';
 import { useRouter } from 'next/navigation';
+import NotificationBell from '../notificationBell';
 
 const Header = () => {
   const router = useRouter();
@@ -147,7 +148,9 @@ const Header = () => {
         </div>
         <div className={styles.links}>
           {!userSessionData ? (
-            <SignupRender />
+            <>
+              <SignupRender />
+            </>
           ) : (
             <>
               {!userSessionData?.isWorker && (
@@ -156,6 +159,7 @@ const Header = () => {
                 </button>
               )}
               <div className={styles.user}>
+                <NotificationBell />
                 <div onClick={() => setOpen(!open)}>
                   <img src="" alt="" />
                   <span className={styles.link}>{userSessionData ? userSessionData?.name : 'Menu'}</span>
