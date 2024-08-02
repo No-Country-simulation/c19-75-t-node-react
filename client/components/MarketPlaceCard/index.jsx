@@ -47,6 +47,7 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
     const item = isWorker ? tWorkerMarketPlace : tJobMarketPlace;
 
     if (data) {
+        console.log(data)
         item.prov = data?.provincia;
         item.city = data?.ciudad;
         item.barrio = data?.barrio;
@@ -67,6 +68,8 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
             }
             item.rating = parseFloat(data?.puntuacion) || 0;
             item.cant_works_done = parseInt(data?.totalTrabajos, 10) || 0;
+            console.log(data.puntuacion)
+            console.log(item.rating)
             // item.cant_works_done = 2; // FIXME: ESTO ES SOLO PARA MOSTRAR
         } else {
             item.id = data?.id;
@@ -162,9 +165,8 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
         <div className={styles.card} key={keyProp + item?.title}>
             <img src={data?.foto ? item?.img : ''} alt="SIN-IMAGEN" className={styles.image} />
             <div
-                className={`${styles.info} ${
-                    isWorker ? styles.info__grid_workers : styles.info__grid_laburos
-                }`}
+                className={`${styles.info} ${isWorker ? styles.info__grid_workers : styles.info__grid_laburos
+                    }`}
             >
                 <div className={styles.title}>
                     <h3>{item?.title}</h3>

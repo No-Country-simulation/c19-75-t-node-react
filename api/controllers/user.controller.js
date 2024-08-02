@@ -154,6 +154,7 @@ const getProfessionalsByCategory = async (req, res) => {
                 u.provincia AS provincia,
                 u.ciudad AS ciudad,
                 ISNULL(punt.puntuacion_promedio, 0) as puntuacion,
+                ISNULL(punt.total_valoraciones, 0) AS totalTrabajos,
                 c.nombre AS categoria
                 FROM Profesionales p
                 INNER JOIN Usuarios u ON p.usuario_id = u.id
