@@ -74,8 +74,8 @@ const PerfilUsuario = ({ params, searchParams }) => {
                                 </p>
                                 <p className={estilo.textoValoracion}>
                                     Calificación:{' '}
-                                    {user.profesionalData.puntuacion_promedio
-                                        ? user.profesionalData.puntuacion_promedio
+                                    {user.profesionalData.puntuacion
+                                        ? user.profesionalData.puntuacion
                                         : 'Este usuario aún no tiene calificaciones'}
                                     ★
                                 </p>
