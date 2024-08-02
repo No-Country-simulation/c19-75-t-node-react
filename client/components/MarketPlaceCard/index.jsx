@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import styles from './MarketPlaceCard.module.scss';
 
-import { FaHeart, FaStar, FaRegHeart } from 'react-icons/fa';
 import { Star } from '../Icons';
 import { CATEGORIES } from '@/types/types';
 
@@ -44,21 +43,18 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
     // Reorganizar la info de data segun el tipo de de dato trabajador o laburo
     const item = isWorker ? tWorkerMarketPlace : tJobMarketPlace;
 
-    // TODO: Ver bien los datos que traemos de la db
-    // FIXME: Cambiar todo esto dependiendo de los datos traidos de la db
     if (data) {
-        if (data?.provincia) item.prov = data?.provincia;
-        if (data?.ciudad) item.city = data?.ciudad;
-        if (data?.barrio) item.barrio = data?.barrio;
+        item.prov = data?.provincia;
+        item.city = data?.ciudad;
+        item.barrio = data?.barrio;
         item.img = data?.foto;
         if (isWorker) {
             item.id = data?.usuario_id;
-            if (data?.nombre && data?.apellido) item.title = data?.nombre + ' ' + data?.apellido;
+            item.title = data?.nombre + ' ' + data?.apellido;
             if (data?.categorias || data?.categoria) {
                 let arrCategories = [];
                 if (data?.categorias) arrCategories = data?.categorias.split(',');
                 else arrCategories = data?.categoria.split(',');
-                console;
                 item.professions = arrCategories.map((cat) => {
                     return {
                         profession_name: cat,
@@ -66,24 +62,17 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                     };
                 });
             }
-
-            if (data?.puntuacion) item.rating = data?.puntuacion;
-            if (item?.rating === 0) {
-                item.cant_works_done = 0;
-            } else if (item.rating <= 3) {
-                item.cant_works_done = Math.round(Math.random() * 30);
-            } else {
-                item.cant_works_done = Math.round(Math.random() * 130);
-            }
+            item.rating = parseFloat(data?.puntuacion) || 0;
+            item.cant_works_done = parseInt(data?.totalTrabajos, 10) || 0;
+            // item.cant_works_done = 2; // FIXME: ESTO ES SOLO PARA MOSTRAR
         } else {
             item.id = data?.id;
-            if (data?.titulo) item.title = data?.titulo;
-            if (data?.descripcion) item.desc = data?.descripcion; // FIXME: el laburo no tiene descripcion :(
-            if (data?.cliente_id) item.client_id = data?.cliente_id;
-            if (data?.nombre) item.client_name = data?.nombre;
-            if (data?.apellido) item.client_lastName = data?.apellido;
-            if (data?.categoria_nombre) item.category = data?.categoria_nombre;
-            if (data?.subcategoria) item.subcategory = data?.subcategoria;
+            item.title = data?.titulo;
+            item.client_id = data?.cliente_id;
+            item.client_name = data?.nombre;
+            item.client_lastName = data?.apellido;
+            item.category = data?.categoria_nombre;
+            item.subcategory = data?.subcategoria;
         }
     }
 
@@ -93,20 +82,20 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
                 <p className={styles.description}>{item.desc}</p>
 
                 <div className={styles.starContainer}>
-                    {item.cant_works_done !== 0 && (
+                    {item.cant_works_done > 0 ? (
                         <>
                             <span className={styles.rating}>{item.rating}</span>
-                            {Array.from({ length: 5 }).map((_, idx) => {
-                                return (
-                                    <Star
-                                        key={idx}
-                                        otherStyles={`${styles.icon} ${idx < item.rating ? styles.fill : ''}`}
-                                    />
-                                );
-                            })}
+                            {Array.from({ length: 5 }).map((_, idx) => (
+                                <Star
+                                    key={idx}
+                                    otherStyles={`${styles.icon} ${idx < item.rating ? styles.fill : ''}`}
+                                />
+                            ))}
+                            <span className={styles.works}>({item.cant_works_done})</span>
                         </>
+                    ) : (
+                        <span className={styles.works}>Sin calificaciones ({item.cant_works_done})</span>
                     )}
-                    <span className={styles.works}>({item.cant_works_done})</span>
                 </div>
 
                 <div className={styles.professionContainer}>
@@ -135,8 +124,6 @@ const MarketPlaceCard = ({ keyProp, data, pathname, categoria }) => {
     const renderInfoJob = () => {
         return (
             <>
-                <p className={styles.description}>{item.desc}</p>
-
                 <div className={styles.userConainer}>
                     <Link href={`/usuario/${item.client_id}`} className={styles.user}>
                         {item.client_name} {item.client_lastName}

@@ -74,38 +74,23 @@
 
         &__grid_laburos {
             grid-template-columns: 1fr auto;
-            grid-template-rows: repeat(3, auto) 1fr auto;
+            grid-template-rows: repeat(3, auto);
             grid-template-areas:
                 'title user'
-                'title category'
-                'ubi category'
-                'desc category'
-                'desc btn';
+                'ubi z'
+                'category btn';
 
-            .description {
-                grid-area: desc;
-                max-width: 800px;
-                margin-top: 5px;
-                font-size: 14px;
-                font-weight: 300;
-                line-height: 1.1;
-                text-wrap: wrap;
-                word-break: break-all;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 4; // Número de líneas visibles
-                -webkit-box-orient: vertical;
-            }
             .userConainer {
                 grid-area: user;
                 margin: 0 auto;
                 display: flex;
 
                 .user {
+                    text-align: center;
                     line-height: 1;
-                    font-size: 12px;
+                    font-size: 14px;
                     font-weight: 500;
+                    max-width: 115px;
                 }
 
                 .user:hover {
@@ -117,7 +102,7 @@
             .categoryContainer {
                 grid-area: category;
                 display: flex;
-                margin-left: auto;
+                margin-top: auto;
                 align-items: center;
                 max-width: 125px;
 
