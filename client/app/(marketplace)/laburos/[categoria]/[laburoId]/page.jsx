@@ -28,9 +28,9 @@ const DataBasic = {
   job_rating: 5,
   client_name: 'Nombre',
   client_lastname: 'Apellido',
-  client_province: 'Buenos Aires',
-  client_city: 'La Plata',
-  client_barrio: 'Los Hornos',
+  client_province: 'Provincia',
+  client_city: 'Ciudad',
+  client_barrio: '',
   client_id: null,
   worker_fullname: 'Nombre Apellido',
   worker_id: null,
@@ -56,6 +56,7 @@ const LaburoPorOficioPage = ({ params }) => {
       .then((response) => response.json())
       .then((data) => {
         setLaburoData(data);
+        console.log('Data:', data);
         // Filter data for ContractDetailsSection
         const newContractData = {
           cat_name: data?.categoria_nombre || DataBasic.cat_name,
@@ -82,8 +83,8 @@ const LaburoPorOficioPage = ({ params }) => {
           client_id: data?.cliente_id || DataBasic.client_id,
           client_name: data?.cliente_nombre || DataBasic.client_name,
           client_lastname: data?.cliente_apellido || DataBasic.client_lastname,
-          job_rating: data?.rating || DataBasic.job_rating,
-          job_coment: data?.comentario || DataBasic.job_coment,
+          job_rating: data?.puntuacion || DataBasic.job_rating,
+          job_coment: data?.valoracion || DataBasic.job_coment,
         };
         setComentData(newComentData);
         setLoading(false);
@@ -112,7 +113,7 @@ const LaburoPorOficioPage = ({ params }) => {
       </span>
       <div className={styles.laburoSection}>
         <AboutSection data={bodyData} />
-        <ContractDetailsSection data={contractData} laburoId={laburoId}/>
+        <ContractDetailsSection data={contractData} laburoId={laburoId} />
         {laburoData?.estado === tStatus.Finalizado && (
           <ComentSection data={comentData} isUserWatchingOwnPage={owner} />
         )}

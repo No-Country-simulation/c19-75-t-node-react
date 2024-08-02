@@ -79,8 +79,6 @@ const ContractDetailsSection = ({ data, laburoId }) => {
     setStatusWorkerOnJob('Postulado');
   };
 
-  console.log(data?.job_status);
-
   return (
     <section className={styles.contract}>
       <div className={styles.info}>

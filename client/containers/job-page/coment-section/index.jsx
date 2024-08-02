@@ -46,10 +46,14 @@ const ComentSection = ({ data, isUserWatchingOwnPage }) => {
         </form>
       ) : (
         <div className={styles.comentWorkerView}>
-          <h4>
+          <h4 className={styles.title}>
             Valoracion de {data.client_name} {data.client_lastname}
           </h4>
-          <hr />
+          <div className={styles.rating}>
+            <p>{data.job_rating}</p>
+            <Star otherStyles={styles.star} />
+          </div>
+          <hr className={styles.hr} />
           <p>{data.job_coment}</p>
         </div>
       )}

@@ -82,8 +82,37 @@
     }
   }
   .comentWorkerView {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr repeat(3, auto);
+    grid-template-areas:
+      'title rating'
+      'hr hr'
+      'coment coment';
+
+    grid-row-gap: 10px;
+
+    .title {
+      grid-area: title;
+      margin: auto 0;
+    }
+    .hr {
+      grid-area: hr;
+    }
+    .rating {
+      grid-area: rating;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      p {
+        color: $gray-dark-color;
+        font-size: 20px;
+      }
+      .star {
+        font-size: 20px;
+        fill: $star-color;
+      }
+    }
   }
 }
